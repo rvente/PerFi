@@ -1,4 +1,4 @@
-# PerFi - Frontend
+# PerFi - Master
 
-This is the frontend master branch. This branch will house working versions of frontend code.
+This branch will house working versions of frontend and backend code.
 
