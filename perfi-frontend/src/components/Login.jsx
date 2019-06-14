@@ -1,19 +1,30 @@
 import React, { Component } from 'react';
+import { browserHistory, withRouter } from 'react-router'
 
 class Login extends Component {
+  constructor(props){
+    super(props);
+
+    this.changePage = this.changePage.bind(this);
+  }
+
+  changePage(){
+    console.log(this.props.history.push(`/newaccount`));
+  }
+
   render(){
     return (
       <div>
         <h1>Login</h1>
         <form action="/login" method="post">
-        Email: <input type="text" /><br/>
-        Password:<input type="text" /><br/><br/>
+        Email: <input type="email" name="email" required/><br/>
+        Password:<input type="password" name="password" required/><br/><br/>
         <button type="submit">Login</button>
-        <button type="button">New Account</button>
+        <button type="button" onClick={this.changePage}>New Account</button>
         </form>
       </div>
     );
   }
 }
 
-export default Login;
+export default withRouter(Login);
