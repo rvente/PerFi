@@ -1,0 +1,161 @@
+$base_light: white;
+$base_dark: #222;
+$lighter_dark: #333;
+$brdr-rad: 5px;
+
+nav {
+	ul {
+		list-style-type: none;
+		margin: 0;
+		text-align: center;
+		background-color: $base_dark;
+		display: flex;
+	  flex-flow: row wrap;
+    align-content: flex-start;
+    justify-content: center;
+    align-items: center;
+	}
+	li {
+		float: top;
+		margin: 25px;
+		a {
+			display: inline;
+			color: $base_light;
+			margin: 10%;
+      padding: 20px;
+			text-decoration: none;
+			text-align: center;
+			align-content: center;
+			transition: all .4s ease-in-out;
+			&:hover {
+				background-color: $lighter_dark;
+				border-radius: $brdr-rad;
+				transition: all .3s ease-in-out;
+        animation-delay: .2s;
+			}
+		}
+	}
+}
+@media only screen and (max-width: 600px) {
+    nav {
+        ul {
+            padding: 30px;
+		        text-align: center;
+		        background-color: $base_dark;
+		        display: flex;
+            a {
+                margin: 0px;
+                padding: 5px;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 375px) {
+    nav {
+        ul {
+            padding: 5px;
+		        text-align: center;
+		        background-color: $base_dark;
+		        display: block;
+            a {
+                margin: 0px;
+                padding: 5px;
+            }
+        }
+    }
+}
+
+button {
+	background-color: $base_dark;
+	text-align: center;
+	justify-content: center;
+	font-size: 15px;
+	margin: 5px;
+	padding: 10px;
+  border-width: 0px;
+	border-radius: $brdr-rad;
+	box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.2);
+	transition: all .3s ease-in-out;
+}
+
+
+@mixin color-button ($color) {
+    border-color: darken($color, 40%);
+    background-color: lighten($color, 7%);
+	  color: darken($color, 30%);
+    &:hover {
+        text-shadow: 0px 0px 2px grey;
+	      color: $base_light;
+        /* font-weight: bold; */
+        background-color: darken( $color, 10% );
+    }
+}
+
+
+// todo: see if you can replace the margin in the below class with a margin on
+// the inner ul of the card class
+
+.button-list-container {
+    /* visibility: hidden; */
+    opacity: 0;
+    margin: 15px;
+		transition: all .4s ease-in-out;
+	  ul {
+		    list-style-type: none;
+		    margin: 0;
+		    text-align: center;
+		    display: flex;
+	      flex-flow: row wrap;
+        align-content: flex-start;
+        justify-content: center;
+        align-items: center;
+	      li {
+		        float: top;
+	      }
+	  }
+}
+
+.green {
+    @include color-button(#CFF0CF);
+}
+
+.red {
+    @include color-button(#FFCCCC);
+}
+
+.blue {
+    @include color-button(#CFCFF0);
+}
+
+.wrapper {
+	ul {
+		li {
+			a {
+				display: inline;
+				color: $base_light;
+				text-decoration: none;
+				font-size: calc(5px + 2vmin);
+				transition: all .3s ease-in-out;
+				text-align: center;
+				align-content: center;
+			}
+		}
+	}
+}
+.wrapper-home {
+	ul {
+		li {
+			display: inline;
+		}
+	}
+}
+
+input {
+	&:hover {
+		padding: 13px;
+	}
+	&:focus {
+		padding: 13px;
+	}
+}
