@@ -1,3 +1,6 @@
 // This file unifies all of the style sheets for all components
+// That means the watch-css script only needs to generate one css file
+// and only one css file needs to be imported.
+// That import takes place in App.jsx
 
 @import 'Card.scss', 'NavBar.scss';

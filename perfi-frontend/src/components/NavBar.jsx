@@ -1,11 +1,10 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import "../css/Global.css";
 
 
-var DumbComponent = (props) => {
+var DumbComponent = () => {
     return(
-        <div>{props.output}</div>
+        <div></div>
     );
 };
 
@@ -19,17 +18,17 @@ function NavBar() {
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="/Student/">Student</Link>
+              <Link to="/Transaction/">Transaction</Link>
             </li>
             <li>
-              <Link to="/Campus/">Campus</Link>
+              <Link to="/Budget/">Budget</Link>
             </li>
           </ul>
         </nav>
         <Route exact path="/" exact component={DumbComponent} />
-        <Route exact path="/Transaction/" component={DumbComponent} />
-        <Route exact path="/Campus/" component={DumbComponent} />
-        <Route exact path="/Budget/" component={DumbComponent} />
+        <Route path="/Home/" component={DumbComponent} />
+        <Route path="/Transaction/" component={DumbComponent} />
+        <Route path="/Budget/" component={DumbComponent} />
       </div>
     </Router>
   );

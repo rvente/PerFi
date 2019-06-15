@@ -1,12 +1,15 @@
 $base_light: white;
 $base_dark: #222;
-$lighter_dark: #333;
+$lighter_dark: lighten($base_dark, 5%);
 $brdr-rad: 5px;
 
 nav {
+    // prevent select navbar text
+    user-select: none;
+
 	ul {
 		list-style-type: none;
-		margin: 0;
+		margin: 0px;
 		text-align: center;
 		background-color: $base_dark;
 		display: flex;
@@ -15,27 +18,42 @@ nav {
     justify-content: center;
     align-items: center;
 	}
+
 	li {
 		float: top;
 		margin: 25px;
+
 		a {
 			display: inline;
 			color: $base_light;
-			margin: 10%;
-      padding: 20px;
+			margin: 25px;
+      // margin: 10%; has bug where
+      // clicking causes margin to expand
+      padding: 15px;
 			text-decoration: none;
 			text-align: center;
 			align-content: center;
 			transition: all .4s ease-in-out;
-			&:hover {
+
+			&:hover {// activated on hover
 				background-color: $lighter_dark;
 				border-radius: $brdr-rad;
-				transition: all .3s ease-in-out;
+				transition: all .2s ease-in-out;
         animation-delay: .2s;
 			}
+
+      &:active {
+          $steel_blue_4: #36648b;
+          $clicked_color: darken($steel_blue_4, 10%);
+          background-color: $clicked_color;
+				  transition: all .01s ease-in-out;
+	        box-shadow: 0px 0px 8px 3px darken($clicked_color, 10%);
+      }
 		}
 	}
 }
+
+// large phone screen
 @media only screen and (max-width: 600px) {
     nav {
         ul {
@@ -44,13 +62,14 @@ nav {
 		        background-color: $base_dark;
 		        display: flex;
             a {
-                margin: 0px;
-                padding: 5px;
+                margin: -5px;
+                padding: 15px;
             }
         }
     }
 }
 
+// small phone screen
 @media only screen and (max-width: 375px) {
     nav {
         ul {
