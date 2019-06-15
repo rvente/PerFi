@@ -1,0 +1,19 @@
+.login-boxes {
+    table {
+        text-align: left;
+        background-color: white;
+        margin: auto;
+    }
+}
+
+input {
+    border-radius: $brdr_rad;
+	  &:hover {
+	  }
+	  &:focus {
+	  }
+}
+
+button {
+    user-select: none;
+}

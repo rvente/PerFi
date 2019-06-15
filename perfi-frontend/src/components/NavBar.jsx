@@ -5,6 +5,7 @@ import Login from './Login.jsx';
 
 const LoginComponent = () => (<Login />);
 
+// dumb component used for templating
 var DumbComponent = () => {
     return(
         <div></div>
@@ -20,15 +21,15 @@ function NavBar() {
             <li> <Link to="/">Home</Link> </li>
             <li> <Link to="/Transaction/">Transaction</Link> </li>
             <li> <Link to="/Budget/">Budget</Link> </li>
-            <li> <Link to="/Login/">Login</Link> </li>
+            <li> <Link to="/Account/">Account</Link> </li>
           </ul>
         </nav>
         <Route path="/" exact component={DumbComponent} />
         <Route path="/Home/" component={DumbComponent} />
         <Route path="/Transaction/" component={DumbComponent} />
         <Route path="/Budget/" component={DumbComponent} />
-        <Route path="/Login" component={LoginComponent}/>
-        <Route path="/newaccount" component={NewAccount}/>
+        <Route path="/Account/" component={LoginComponent}/>
+        <Route path="/NewAccount/" component={NewAccount}/>
       </div>
     </Router>
   );

@@ -1,17 +1,14 @@
-import React, { Component } from 'react'; // Used to render app as a component
+import React from 'react';
 import NavBar from './NavBar';
-
 import '../css/App.css';
 import '../css/Global.css';
 
-class App extends Component {
-  render(){
-    return (
-        <div className="App">
-          <NavBar/>
-        </div>
-    );
-  }
+function App() {
+  return (
+    <div className="App">
+        <NavBar/>
+    </div>
+  );
 }
 
 export default App;

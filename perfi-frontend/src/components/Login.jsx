@@ -9,19 +9,29 @@ class Login extends Component {
   }
 
   changePage(){
-    console.log(this.props.history.push(`/newaccount`));
+    console.log(this.props.history.push(`/NewAccount`));
   }
 
   render(){
     return (
-      <div>
+        <div>
         <h1>Login</h1>
-        <form action="/login" method="post">
-        Email: <input type="email" name="email" required/><br/>
-        Password:<input type="password" name="password" required/><br/><br/>
+          <div className="login-boxes">
+        <form  action="/Login/" method="post">
+          <table>
+            <tr>
+              <td> Email: </td>
+              <td> <input type="email" name="email" required/> </td>
+            </tr>
+            <tr>
+              <td> Password: </td>
+              <td> <input type="password" name="password" required/> </td>
+            </tr>
+          </table>
         <button type="submit">Login</button>
         <button type="button" onClick={this.changePage}>New Account</button>
         </form>
+          </div>
       </div>
     );
   }
