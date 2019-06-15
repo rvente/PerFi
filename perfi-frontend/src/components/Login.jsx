@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { browserHistory, withRouter } from 'react-router'
+import { withRouter } from 'react-router';
 
 class Login extends Component {
   constructor(props){
