@@ -48,7 +48,6 @@ passport.deserializeUser(async (id, done) => {
   }
 })
 
-
 // Static middleware
 app.use(express.static(path.join(__dirname, '..', 'public')))
 
@@ -81,13 +80,3 @@ db.sync()
       http://localhost:3000/
       `))
   })
-
-// get log-in
-//  post to
-//  get
-//  put
-//  delete
-
-// add account
-//  post
-//

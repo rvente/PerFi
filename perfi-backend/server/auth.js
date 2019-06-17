@@ -4,12 +4,14 @@ module.exports = router
 
 router.use('/google', require('./oauth'))
 
-router.get('/me', (req, res, next) => {
+// home page request
+router.get('/Home', (req, res, next) => {
   res.json(req.user || {})
 })
 
+// creates new user in database
 // post new user from /newuser
-router.post('/newuser', async (req, res, next) => {
+router.post('/NewAccount', async (req, res, next) => {
   // check fields if complete
   if(req.body.username &&
     req.body.email &&
@@ -36,7 +38,37 @@ router.post('/newuser', async (req, res, next) => {
   }
 }
 
-router.put('/login', async (req, res, next) => {
+// creates new user in database
+// post new user from /newuser
+router.post('/NewTransaction', async (req, res, next) => {
+  // check if fields complete
+  if(req.body.date &&
+    req.body.cost &&
+    req.body.title &&
+    req.body.category &&
+    req.body.userid) {
+
+      var transactionData = {
+        date: req.body.date,
+        cost: req.body.cost,
+        title: req.body.title,
+        category: req.body.category,
+        userid: req.body.userid
+      }
+  // insert new user into db
+    User.create(userData, function(err,user){
+      if(err) {
+        return next(err)
+      }
+      else {
+        return res.redirect('/');
+      }
+    });
+  }
+}
+
+// Login request
+router.put('/Account', async (req, res, next) => {
   try {
     const user = await User.findOne({
       where: {
@@ -56,10 +88,12 @@ router.put('/login', async (req, res, next) => {
   }
 })
 
-router.delete('/logout', (req, res, next) => {
+// Logout, deletes session request
+router.delete('/LogOut', (req, res, next) => {
   req.logout()
   req.session.destroy((err) => {
     if (err) return next(err)
     res.status(204).end()
   })
 })
+

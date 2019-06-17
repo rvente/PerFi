@@ -2,6 +2,7 @@ const Sequelize = require('sequelize')
 const db = new Sequelize('postgres://localhost/perfi', {logging:false})
 
 
+// creates dummy database
 // defines User module
 const User = db.define('users', {
 	username: {
@@ -41,6 +42,7 @@ const Transaction = db.define('transactions', {
 		type: Sequelize.STRING
 	}
 })
+
 
 module.exports = {
 	db, User, Transaction
