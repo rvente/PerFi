@@ -5,14 +5,15 @@ const db = new Sequelize('postgres://localhost/perfi', {logging:false})
 // creates dummy database
 // defines User module
 const User = db.define('users', {
+	id: {
+		type: Sequelize.INTEGER,
+		unique:true
+	},
 	username: {
 		type: Sequelize.STRING
 	},
 	email: {
 		type: Sequelize.STRING
-		validate: {
-			isEmail: true
-		}
 	},
 	firstname: {
 		type: Sequelize.STRING
@@ -39,7 +40,10 @@ const Transaction = db.define('transactions', {
 		type: Sequelize.STRING
 	},
 	userid: {
-		type: Sequelize.STRING
+		type: Sequelize.INTEGER
+	},
+	subscription: {
+		type: Sequelize.INTEGER
 	}
 })
 

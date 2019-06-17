@@ -20,18 +20,20 @@ const seed = async () => {
 
 		await Transaction.create({
 			date: '06-21-2019',
-			cost: '5.00',
+			cost: 5.00,
 			title: 'matcha',
 			category: 'food',
-			userid: '1'
+			userid: 1,
+			subscription: 1
 		})
 
 		await Transaction.create({
 			date: '06-22-2019',
-			cost: '12.00',
+			cost: 12.00,
 			title: 'T-shirt',
 			category: 'clothes',
-			userid: '2'
+			userid: 2,
+			subscription: 0
 		})
 
 		console.log(`
