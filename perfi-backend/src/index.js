@@ -20,7 +20,7 @@ const Main = withRouter(class extends Component {
     return (
       <Switch>
         <Route exact path='/home' component={HomePage} />
-        <Route exact path='/account' component={AccountPage} />
+        <Route exact path='/auth/account' component={AccountPage} />
         <Route component={Login} />
       </Switch>
     )

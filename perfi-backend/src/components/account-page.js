@@ -5,18 +5,17 @@ import {logout} from './store/index'
 
 const AccountPage = (props) => {
 
+ const {user, handleClick} = props
+
 return (
   <div>
     <header>Account</header>
   </div>
-  )
-/*  const {user, handleClick} = props
-
+/*  
   if (!user.id) {
     return <Redirect to='/' />
   }
 
-  return (
     <div className='h100 w100 flex column align-items-center justify-center'>
       <div className='flex'>
         <h1>Welcome back {user.email}!</h1>
@@ -24,6 +23,7 @@ return (
       <div>
         <button className='btn bg-red white p1 rounded' onClick={handleClick}>Logout</button>
       }
+      </div>
       </div>
     </div>
   )
@@ -45,8 +45,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
           ownProps.history.push('/')
         })
     }
-  }*/
+  }
 }
-
+*/)}
 //export default connect(mapStateToProps, mapDispatchToProps)(AccountPage)
 export default AccountPage;
