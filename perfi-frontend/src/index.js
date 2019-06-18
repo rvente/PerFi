@@ -6,6 +6,7 @@ import store, {getMe} from './store/index'
 import LoginComponent from './components/Login'
 import Transaction from './components/AddTransaction';
 import RegisterComponent from './components/Register';
+import HomePage from './components/HomePage';
 
 const DumbComponent = () => {return(<div></div>);};
 
@@ -20,8 +21,8 @@ const Main = withRouter(class extends Component {
   render () {
     return (
       <Switch>
-        <Route path="/" exact component={DumbComponent} />
-        <Route path="/Home/" component={DumbComponent} />
+        <Route path="/" exact component={HomePage} />
+        <Route path="/Home/" component={HomePage} />
         <Route path="/Transaction/" component={Transaction} />
         <Route path="/Budget/" component={DumbComponent} />
         <Route path="/Account/" component={LoginComponent}/>

@@ -3,6 +3,7 @@ import { withRouter } from 'react-router';
 import {login} from '../store/index';
 import LoginForm from './LoginForm';
 import {connect} from 'react-redux';
+import Cookies from 'js-cookie';
 
 const Login = (props) => {
   const {handleSubmit} = props
@@ -26,9 +27,13 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       const email = evt.target.email.value
       const password = evt.target.password.value
       dispatch(login({email, password}))
-       .then(() => {
+        .then(() => {
+          Cookies.set("loggedIn", 'true')
+        })
+        .then(() => {
           ownProps.history.push('/account')
         })
+
     }
   }
 }
