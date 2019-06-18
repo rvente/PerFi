@@ -12,15 +12,17 @@ const AccountPage = (props) => {
 
   return (
     <div>
-      <header>Account</header>
-    </div>
-    <div className='h100 w100 flex column align-items-center justify-center'>
-      <div className='flex'>
-        <h1>Welcome back {user.email}!</h1>
-      </div>
       <div>
-        <button className='btn bg-red white p1 rounded' onClick={handleClick}>Logout</button>
-      }
+        <header>Account</header>
+      </div>
+      <div className='h100 w100 flex column align-items-center justify-center'>
+        <div className='flex'>
+          <h1>Welcome back {user.email}!</h1>
+        </div>
+        <div>
+          <button className='btn bg-red white p1 rounded' onClick={handleClick}>Logout</button>
+        }
+        </div>
       </div>
     </div>
   )
