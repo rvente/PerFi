@@ -46,8 +46,11 @@ export const logout = () => dispatch => {
     .catch(console.error.bind(console))
 }
 
-export const register = () => dispatch => {
-  return axios.post('/newaccount')
+export const register = (formData) => dispatch => {
+  console.log("form", formData);
+  return axios.post('/newaccount', formData)
+    .then(res => res.data)
+    .then((res) => console.log("hey"))
 }
 
 const reducer = (state = initialState, action) => {

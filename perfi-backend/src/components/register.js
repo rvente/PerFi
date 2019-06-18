@@ -21,9 +21,12 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       const email = evt.target.email.value
       const password = evt.target.password.value
       dispatch(login({email, password}))
-       // .then(() => {
+        .then(() => {
+          
+        })
+       .then(() => {
           ownProps.history.push('/account')
-        //})
+        })
     }
   }
 }
