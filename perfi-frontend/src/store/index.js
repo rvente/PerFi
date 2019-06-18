@@ -10,7 +10,13 @@ const initialState = {
 const GET_USER = "GET_USER";
 const GET_ACCOUNT = "GET_ACCOUNT";
 
-const gotMe = user => ({
+// unimplemented
+const ADD_TRANSACTION = 'ADD_TRANSACTION'
+const REMOVE_TRANSACTION = 'REMOVE_TRANSACTION'
+const ADD_BUDGET = 'ADD_BUDGET'
+const REMOVE_BUDGET = 'REMOVE_BUDGET'
+
+const gotMe = (user) => ({
   type: GET_USER,
   user
 });
@@ -48,6 +54,12 @@ export const logout = () => dispatch => {
     .then(() => dispatch(gotMe(initialState.user)))
     .catch(console.error.bind(console));
 };
+
+// for registering a new user
+export const register = () => dispatch => {
+  return axios.post('http://localhost:3000/auth/newaccount')
+    .then((res)=>console.log(res))
+}
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
