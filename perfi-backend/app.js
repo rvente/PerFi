@@ -9,7 +9,8 @@ const app = express()
 const PORT = 3000
 var cors = require('cors')
 
-app.use(cors())
+// middleware that should allow open access for requests to routes 
+app.use(cors());
 
 //This tells express to log via morgan
 //and morgan to log in the "combined" pre-defined format

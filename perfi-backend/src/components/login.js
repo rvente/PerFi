@@ -1,16 +1,19 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {login} from './store/index'
-import LocalLoginForm from './login-form'
+import LoginForm from './login-form'
+import NavigationBar from './navigation-bar'
 
 const Login = (props) => {
   const {handleSubmit} = props
 
   return (
     <div className='h100 w100 flex column align-items-center justify-center'>
+        <NavigationBar />
+
       <header>Log In</header>
       <div className='flex w50'>
-          <LocalLoginForm handleSubmit={handleSubmit} />
+          <LoginForm handleSubmit={handleSubmit} />
       </div>
     </div>
   )
