@@ -1,9 +1,7 @@
-// TODO: unify all primary buttons under the same styling
-button {
-    user-select: none;
-}
+@import 'GlobalVars.scss';
 
 button {
+  user-select: none !important;
 	background-color: $base_dark;
 	text-align: center;
 	justify-content: center;
@@ -17,6 +15,11 @@ button {
 	transition: all .3s ease-in-out;
 }
 
+*:focus {
+    outline: 1 !important;
+    outline-color: $steel_blue_4;
+    outline-offset: 5px;
+}
 
 @mixin color-button ($color) {
     border-color: darken($color, 40%);

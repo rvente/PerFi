@@ -1,7 +1,4 @@
-$base_light: white;
-$base_dark: #222;
-$lighter_dark: lighten($base_dark, 5%);
-$brdr-rad: 5px;
+@import 'GlobalVars.scss';
 
 nav {
     // prevent select navbar text
@@ -42,7 +39,6 @@ nav {
 			}
 
       &:active {
-          $steel_blue_4: #36648b;
           $clicked_color: darken($steel_blue_4, 10%);
           background-color: $clicked_color;
 				  transition: all .01s ease-in-out;

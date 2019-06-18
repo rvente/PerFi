@@ -162,6 +162,7 @@ button {
   user-select: none; }
 
 button {
+  user-select: none !important;
   background-color: #222;
   text-align: center;
   justify-content: center;
@@ -173,6 +174,11 @@ button {
   border-radius: 5px;
   box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.2);
   transition: all .3s ease-in-out; }
+
+*:focus {
+  outline: 1 !important;
+  outline-color: #36648b;
+  outline-offset: 5px; }
 
 .button-list-container {
   /* visibility: hidden; */
@@ -231,6 +237,7 @@ button {
   align-content: center; }
 
 .wrapper-home ul li {
-    user-select: none;
-    display: inline;
-}
+  display: inline; }
+
+* {
+  -moz-outline-radius: 5px; }
