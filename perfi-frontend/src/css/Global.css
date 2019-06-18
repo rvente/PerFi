@@ -231,4 +231,6 @@ button {
   align-content: center; }
 
 .wrapper-home ul li {
-  display: inline; }
+    user-select: none;
+    display: inline;
+}

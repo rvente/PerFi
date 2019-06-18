@@ -13,3 +13,7 @@ input {
 	  &:focus {
 	  }
 }
+
+button {
+    user-select: none;
+}
