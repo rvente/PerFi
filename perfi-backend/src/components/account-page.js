@@ -10,12 +10,14 @@ return (
     <header>Account</header>
   </div>
   )
-/*  const {user, handleClick} = props
+
+  const {user, handleClick} = props
+
 
   if (!user.id) {
     return <Redirect to='/' />
   }
-
+/*
   return (
     <div className='h100 w100 flex column align-items-center justify-center'>
       <div className='flex'>

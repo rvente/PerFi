@@ -4,6 +4,7 @@ import NavBar from './NavBar';
 import NewAccount from './NewAccount.jsx';
 import Login from './Login.jsx';
 import Transaction from './AddTransaction.jsx';
+import RegisterComponent from './Register.jsx';
 import '../css/App.css';
 import '../css/Global.css';
 
@@ -24,6 +25,7 @@ function App() {
           <Route path="/Budget/" component={DumbComponent} />
           <Route path="/Account/" component={LoginComponent}/>
           <Route path="/NewAccount/" component={NewAccount}/>
+          <Router path="/Register/" component={RegisterComponent}/>
         </div>
       </Router>
     </div>
