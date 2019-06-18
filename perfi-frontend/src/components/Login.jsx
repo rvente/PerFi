@@ -19,6 +19,7 @@ class Login extends Component {
           <div className="login-boxes">
         <form  action="/Login/" method="post">
           <table>
+            <tbody>
             <tr>
               <td> Email: </td>
               <td> <input type="email" name="email" required/> </td>
@@ -27,6 +28,7 @@ class Login extends Component {
               <td> Password: </td>
               <td> <input type="password" name="password" required/> </td>
             </tr>
+            </tbody>
           </table>
         <button type="submit">Login</button>
         <button type="button" onClick={this.changePage}>New Account</button>

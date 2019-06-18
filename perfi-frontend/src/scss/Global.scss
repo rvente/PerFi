@@ -3,6 +3,9 @@
 // and only one css file needs to be imported.
 // That import takes place in App.jsx
 
+<<<<<<< HEAD
+@import 'Card.scss', 'NavBar.scss', 'Login.scss', 'Buttons.scss';
+=======
 @import 'Card.scss', 'NavBar.scss', 'Login.scss';
 
 
@@ -10,3 +13,4 @@
 button {
     user-select: none;
 }
+>>>>>>> master
