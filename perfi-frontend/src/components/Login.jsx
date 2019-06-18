@@ -9,7 +9,7 @@ class Login extends Component {
   }
 
   changePage(){
-    console.log(this.props.history.push(`/Home`));
+    console.log(this.props.history.push(`/NewAccount`));
   }
 
   render(){
@@ -17,7 +17,7 @@ class Login extends Component {
         <div>
         <h1>Login</h1>
           <div className="login-boxes">
-        <form  action="/auth/account" method="put">
+        <form  action="/Login/" method="post">
           <table>
             <tbody>
             <tr>
