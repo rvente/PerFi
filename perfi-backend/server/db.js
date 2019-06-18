@@ -5,10 +5,6 @@ const db = new Sequelize('postgres://localhost/perfi', {logging:false})
 // creates dummy database
 // defines User module
 const User = db.define('users', {
-	id: {
-		type: Sequelize.INTEGER,
-		unique:true
-	},
 	username: {
 		type: Sequelize.STRING
 	},
@@ -23,7 +19,10 @@ const User = db.define('users', {
 	}, 
 	password: {
 		type: Sequelize.STRING
-	}
+	},
+    budget: {
+        type: Sequelize.DOUBLE
+    }
 })
 
 const Transaction = db.define('transactions', {
