@@ -6,13 +6,14 @@ import store, {getMe} from './components/store/index'
 import Login from './components/login'
 import AccountPage from './components/account-page'
 import HomePage from './components/home-page'
+import RegisterPage from './components/register'
 
 const Main = withRouter(class extends Component {
   componentDidMount () {
     store.dispatch(getMe())
-      .then(() => {
-        this.props.history.push('/')
-      })
+      // .then(() => {
+      //   this.props.history.push('/')
+      // })
   }
 
 
@@ -21,6 +22,7 @@ const Main = withRouter(class extends Component {
       <Switch>
         <Route exact path='/home' component={HomePage} />
         <Route exact path='/account' component={AccountPage} />
+        <Route exact path='/register' component={RegisterPage} />
         <Route component={Login} />
       </Switch>
     )
