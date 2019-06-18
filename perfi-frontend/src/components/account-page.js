@@ -1,7 +1,7 @@
-import React from 'react'
-import {Redirect} from 'react-router-dom'
-import {connect} from 'react-redux'
-import {logout} from './store/index'
+import React from "react";
+import { Redirect } from "react-router-dom";
+import { connect } from "react-redux";
+import { logout } from "../store/index";
 
 const AccountPage = (props) => {
 
@@ -48,7 +48,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         })
     }
   }*/
-}
+};
 
 //export default connect(mapStateToProps, mapDispatchToProps)(AccountPage)
 export default AccountPage;
