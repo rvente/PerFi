@@ -2,11 +2,13 @@ import React from 'react'
 import {Redirect} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {logout} from './store/index'
+import Cookies from 'js-cookie'
 
 const AccountPage = (props) => {
   const {user, handleClick} = props
 
-  if (!user.id) {
+  if (!Cookies.get("loggedIn")) {
+    console.log('hey');
     return <Redirect to='/' />
   }
 
@@ -21,7 +23,6 @@ const AccountPage = (props) => {
         </div>
         <div>
           <button className='btn bg-red white p1 rounded' onClick={handleClick}>Logout</button>
-        }
         </div>
       </div>
     </div>
@@ -42,6 +43,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       dispatch(logout())
         .then(() => {
           ownProps.history.push('/')
+        })
+        .then(() => {
+          Cookies.set("loggedIn", false)
         })
     }
   }

@@ -46,6 +46,10 @@ export const logout = () => dispatch => {
     .catch(console.error.bind(console))
 }
 
+export const register = () => dispatch => {
+  return axios.post('/newaccount')
+}
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_USER:
