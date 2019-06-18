@@ -6,15 +6,22 @@ import {logout} from './store/index'
 const AccountPage = (props) => {
   const {user, handleClick} = props
 
-  console.log(user.id);
-  // if (!user.id) {
-  //   return <Redirect to='/' />
-  // }
+  if (!user.id) {
+    return <Redirect to='/' />
+  }
 
   return (
     <div>
       <header>Account</header>
-      <button onClick={handleClick} />
+    </div>
+    <div className='h100 w100 flex column align-items-center justify-center'>
+      <div className='flex'>
+        <h1>Welcome back {user.email}!</h1>
+      </div>
+      <div>
+        <button className='btn bg-red white p1 rounded' onClick={handleClick}>Logout</button>
+      }
+      </div>
     </div>
   )
 }
