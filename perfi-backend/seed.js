@@ -1,4 +1,4 @@
-const {db, User, Transaction} = require('./server/db')
+const {db, User, Transaction} = require('./db')
 
 const seed = async () => {
 	try {
@@ -8,14 +8,14 @@ const seed = async () => {
 			email: 'john@john.com',
 			password: '12345',
 			firstname: 'John',
-			lastname: 'J'
+			lastname: 'Nhoj'
 		})
 		await User.create({
 			username: 'TimmyBoy',
 			email: 'Tim@tim.com',
 			password: '12345',
 			firstname: 'Tim',
-			lastname: 'T'
+			lastname: 'Mit'
 		})
 
 		await Transaction.create({
