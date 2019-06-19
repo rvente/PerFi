@@ -5,7 +5,7 @@ import LoggedInHomePage from './LoggedInHomePage'
 const HomePage = () => {
   if(Cookies.get("loggedIn") === 'true'){
     return(
-      <LoggedInHomePage/>
+      <LoggedInHomePage />
     )
   }
 

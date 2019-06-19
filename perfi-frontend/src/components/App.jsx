@@ -18,12 +18,15 @@ function App() {
       <Router>
         <div>
           <NavBar/>
-          <Route path="/" exact component={DumbComponent} />
-          <Route path="/Home/" component={DumbComponent} />
-          <Route path="/Transaction/" component={Transaction} />
-          <Route path="/Budget/" component={DumbComponent} />
-          <Route path="/Account/" component={LoginComponent}/>
-          <Route path="/NewAccount/" component={RegisterComponent}/>
+        {/* Login page */}
+            <Route path="/" exact component={DumbComponent} />
+        {/* Home page */}
+            <Route path="/home/" component={DumbComponent} />
+            <Route path="/transactions/" component={Transaction} />
+            <Route path="/budgets/" component={DumbComponent} />
+        {/* Account page */}
+            <Route path="/account/" component={LoginComponent}/>
+            <Route path="/newaccount/" component={RegisterComponent}/>
         </div>
       </Router>
     </div>

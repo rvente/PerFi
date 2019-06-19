@@ -5,9 +5,10 @@ const RegisterForm = (props) => {
 
   return (
     <form onSubmit={handleSubmit}>
+      Username: <input type="text" name="username"></input><br />
+      Email: <input type="email" name="email"></input><br />
       First Name: <input type="text" name="firstname"></input><br />
       Last Name: <input type="text" name="lastname"></input><br />
-      Email: <input type="email" name="email"></input><br />
       Password: <input type="password" name="password1"></input><br/>
       Password Again: <input type="password" name="password2"></input><br/>
       <button type="submit">Register</button>
