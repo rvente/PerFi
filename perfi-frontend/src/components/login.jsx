@@ -7,9 +7,9 @@ const Login = props => {
   const { handleSubmit } = props;
 
   return (
-    <div className="h100 w100 flex column align-items-center justify-center">
-      <header>Log In</header>
-      <div className="flex w50">
+    <div className="">
+      <h1>Log In</h1>
+      <div className="">
         <LocalLoginForm handleSubmit={handleSubmit} />
       </div>
     </div>

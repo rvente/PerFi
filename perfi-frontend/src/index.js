@@ -2,6 +2,8 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
+import "./css/App.css";
+import "./css/Global.css";
 import * as serviceWorker from "./serviceWorker";
 import { Provider } from "react-redux";
 import {
@@ -16,9 +18,13 @@ import AccountPage from "./components/account-page";
 import Home from "./components/Home";
 import NavBar from "./components/NavBar";
 import NewAccount from "./components/NewAccount.jsx";
-import LoginComponent from "./components/Login.jsx";
+import LoginComponent from "./components/Login-Old.jsx";
 import Transaction from "./components/AddTransaction.jsx";
 import NotFound from "./components/NotFound.jsx";
+// dumb component used for templating
+var DumbComponent = () => {
+  return <div />;
+};
 
 const Main = withRouter(
   class extends Component {
