@@ -18,14 +18,15 @@ import NavBar from "./components/NavBar";
 import NewAccount from "./components/NewAccount.jsx";
 import LoginComponent from "./components/Login.jsx";
 import Transaction from "./components/AddTransaction.jsx";
+import NotFound from "./components/NotFound.jsx";
 
 const Main = withRouter(
   class extends Component {
-    // componentDidMount() {
-    //   store.dispatch(getMe()).then(() => {
-    //     this.props.history.push("/");
-    //   });
-    // }
+    componentDidMount() {
+      store.dispatch(getMe()).then(() => {
+        this.props.history.push("/");
+      });
+    }
 
     render() {
       return (
@@ -33,10 +34,10 @@ const Main = withRouter(
           <Route path="/" exact component={Login} />
           <Route path="/Home/" component={Home} />
           <Route path="/Transaction/" component={Transaction} />
-          {/* <Route path="/Budget/" component={DumbComponent} /> */}
           <Route path="/Account/" component={AccountPage} />
           <Route path="/NewAccount/" component={NewAccount} />
           <Route path="/Budget/" component={Home} />
+          <Route component={NotFound} />
         </Switch>
       );
     }
