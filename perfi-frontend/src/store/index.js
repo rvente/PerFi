@@ -66,6 +66,10 @@ export const logout = () => dispatch => {
     .catch(console.error.bind(console));
 };
 
+export const register = formData => dispatch => {
+  return console.log(formData);
+}
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_USER:
