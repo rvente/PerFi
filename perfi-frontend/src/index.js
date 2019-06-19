@@ -2,7 +2,8 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import App from "./App";
+import "./css/App.css";
+import "./css/Global.css";
 import * as serviceWorker from "./serviceWorker";
 import { Provider } from "react-redux";
 import {
@@ -14,32 +15,36 @@ import {
 import store, { getMe } from "./store/index";
 import Login from "./components/login";
 import AccountPage from "./components/account-page";
-import HomePage from "./components/home-page";
+import Home from "./components/Home";
 import NavBar from "./components/NavBar";
 import NewAccount from "./components/NewAccount.jsx";
-import LoginComponent from "./components/Login.jsx";
+import LoginComponent from "./components/Login-Old.jsx";
 import Transaction from "./components/AddTransaction.jsx";
+// dumb component used for templating
+var DumbComponent = () => {
+  return <div />;
+};
 
 const Main = withRouter(
   class extends Component {
-    componentDidMount() {
-      store.dispatch(getMe()).then(() => {
-        this.props.history.push("/");
-      });
-    }
+    // componentDidMount() {
+    //   store.dispatch(getMe()).then(() => {
+    //     this.props.history.push("/");
+    //   });
+    // }
 
     render() {
       return (
         <Switch>
-          <Route exact path="/home" component={HomePage} />
-          <Route exact path="/account" component={AccountPage} />
-          <Route component={Login} />
           <Route path="/" exact component={Login} />
-          <Route path="/Home/" component={HomePage} />
+          <Route exact path="/account" component={Home} />
+          <Route path="/Home/" component={Home} />
           <Route path="/Transaction/" component={Transaction} />
           {/* <Route path="/Budget/" component={DumbComponent} /> */}
+          <Route path="/Account/" component={DumbComponent} />
           <Route path="/Login/" component={LoginComponent} />
           <Route path="/NewAccount/" component={NewAccount} />
+          <Route path="/Budget/" component={Home} />
         </Switch>
       );
     }

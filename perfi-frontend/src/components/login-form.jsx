@@ -5,6 +5,7 @@ const LoginForm = props => {
   return (
     <form onSubmit={handleSubmit}>
         <div>
+	  <h1> Login </h1>
           <table>
             <tbody>
               <tr>
@@ -26,9 +27,11 @@ const LoginForm = props => {
             </tbody>
           </table>
       </div>
+	<div className="center">
           <button type="submit">
             Submit
           </button>
+	  </div>
     </form>
   );
 };

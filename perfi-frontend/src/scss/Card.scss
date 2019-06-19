@@ -12,14 +12,13 @@
     padding: 25px;
 }
 
-.cardbox {
+.card {
     margin: 20px;
     display: flex;
+    align-content: center;
     flex-flow: row wrap;
     justify-content: center;
     border: 1px solid lightgrey;
-    width: 300px;
-    height: 400px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     border-radius: $brdr-rad;
     transition: all .4s ease-in-out;
@@ -43,4 +42,33 @@
         margin: 0px;
         padding: 0px;
     }
+    h1 {
+        text-align: center;
+    }
+}
+
+.card-portrait {
+    width: 300px;
+    height: 400px;
+}
+
+.card-login {
+    width:  300px;
+    height: 200px;
+    padding: 15px;
+    h1 {
+        padding: 10px;
+        margin: 0px;
+    }
+    td {
+        padding: 10px;
+    }
+}
+
+
+.center {
+    margin: auto;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
 }
