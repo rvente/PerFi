@@ -6,7 +6,7 @@ import Login2 from "./components/Login.jsx";
 import Transaction from "./components/AddTransaction.jsx";
 import Login from "./components/login";
 import AccountPage from "./components/account-page";
-import HomePage from "./components/home-page";
+import Home from "./components/Home";
 
 import "./css/App.css";
 import "./css/Global.css";
@@ -24,7 +24,7 @@ function App() {
       <Router>
         <div>
           <NavBar />
-          <Route exact path="/home" component={HomePage} />
+          <Route exact path="/home" component={Home} />
           <Route exact path="/account" component={AccountPage} />
           <Route component={Login} />
           <Route path="/" exact component={DumbComponent} />

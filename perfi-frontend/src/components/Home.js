@@ -1,17 +1,17 @@
 import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
 import NavBar from "./NavBar";
 
-class NewAccount extends Component {
+class Home extends Component {
   render() {
     return (
       <div>
         <NavBar />
-        New Account goes here.
+        <header>Home</header>
+        {/*edit here*/}
       </div>
     );
   }
 }
 
-export default NewAccount;
-
-// username email firstName lastName password
+export default Home;

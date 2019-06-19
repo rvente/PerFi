@@ -175,11 +175,6 @@ button {
   box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.2);
   transition: all .3s ease-in-out; }
 
-*:focus {
-  outline: 1 !important;
-  outline-color: #36648b;
-  outline-offset: 5px; }
-
 .button-list-container {
   /* visibility: hidden; */
   opacity: 0;
@@ -239,5 +234,8 @@ button {
 .wrapper-home ul li {
   display: inline; }
 
-* {
-  -moz-outline-radius: 5px; }
+*:focus {
+  outline: 0 !important;
+  -moz-outline-radius: 5px;
+  outline-color: #36648b;
+  outline-offset: 5px; }

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { withRouter } from "react-router";
 import NavBar from "./NavBar";
 
-class Transaction extends Component {
+class AddTransaction extends Component {
   constructor(props) {
     super(props);
 
@@ -61,4 +61,4 @@ class Transaction extends Component {
   }
 }
 
-export default withRouter(Transaction);
+export default withRouter(AddTransaction);

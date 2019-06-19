@@ -14,7 +14,7 @@ import {
 import store, { getMe } from "./store/index";
 import Login from "./components/login";
 import AccountPage from "./components/account-page";
-import HomePage from "./components/home-page";
+import Home from "./components/Home";
 import NavBar from "./components/NavBar";
 import NewAccount from "./components/NewAccount.jsx";
 import LoginComponent from "./components/Login.jsx";
@@ -31,15 +31,14 @@ const Main = withRouter(
     render() {
       return (
         <Switch>
-          <Route exact path="/home" component={HomePage} />
-          <Route exact path="/account" component={AccountPage} />
-          <Route component={Login} />
           <Route path="/" exact component={Login} />
-          <Route path="/Home/" component={HomePage} />
+          <Route exact path="/account" component={Home} />
+          <Route path="/Home/" component={Home} />
           <Route path="/Transaction/" component={Transaction} />
           {/* <Route path="/Budget/" component={DumbComponent} /> */}
           <Route path="/Account/" component={LoginComponent} />
           <Route path="/NewAccount/" component={NewAccount} />
+          <Route path="/Budget/" component={Home} />
         </Switch>
       );
     }

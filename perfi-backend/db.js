@@ -6,37 +6,40 @@ const db = new Sequelize('postgres://localhost/perfi', {logging:false})
 // defines User module
 const User = db.define('users', {
 	username: {
-		type: Sequelize.STRING,
+		type: Sequelize.STRING
 	},
 	email: {
-		type: Sequelize.STRING,
+		type: Sequelize.STRING
 	},
 	firstname: {
-		type: Sequelize.STRING,
+		type: Sequelize.STRING
 	},
 	lastname: {
-		type: Sequelize.STRING,
+		type: Sequelize.STRING
 	}, 
 	password: {
-		type: Sequelize.STRING,
+		type: Sequelize.STRING
 	}
 })
 
 const Transaction = db.define('transactions', {
 	date: {
-		type: Sequelize.STRING,
+		type: Sequelize.STRING
 	},
 	cost: {
-		type: Sequelize.INTEGER,
+		type: Sequelize.INTEGER
 	},
 	title: {
-		type: Sequelize.STRING,
+		type: Sequelize.STRING
 	},
 	category: {
-		type: Sequelize.STRING,
+		type: Sequelize.STRING
+	},
+	userid: {
+		type: Sequelize.INTEGER
 	},
 	subscription: {
-		type: Sequelize.INTEGER,
+		type: Sequelize.INTEGER
 	}
 	// accessor
 	// mutator
