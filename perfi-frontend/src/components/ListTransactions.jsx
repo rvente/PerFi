@@ -13,7 +13,7 @@ class ListTransactions extends Component {
 
   render() {
     let trans = this.props.transactions.map(trans => (
-      <div>
+      <div className="card card-portrait">
         <ul>
           <li>Date: {trans.date} </li>
           <li>Cost: {trans.cost} </li>

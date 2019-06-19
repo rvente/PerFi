@@ -78,7 +78,7 @@ export const logout = () => dispatch => {
 
 export const register = formData => dispatch => {
   return console.log(formData);
-}
+};
 
 
 const reducer = (state = initialState, action) => {
