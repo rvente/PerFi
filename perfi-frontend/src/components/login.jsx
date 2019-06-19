@@ -7,12 +7,11 @@ const Login = props => {
   const { handleSubmit } = props;
 
   return (
-    <div className="">
-      <h1>Log In</h1>
-      <div className="">
-        <LocalLoginForm handleSubmit={handleSubmit} />
+      <div className="center">
+        <div className="card card-login">
+            <LocalLoginForm handleSubmit={handleSubmit} />
+        </div>
       </div>
-    </div>
   );
 };
 
@@ -26,7 +25,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       dispatch(login({ email, password }))
       .then(() => {
         ownProps.history.push("/account");
-      })
+      });
     }
   };
 };

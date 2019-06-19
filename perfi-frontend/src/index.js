@@ -42,6 +42,7 @@ const Main = withRouter(
           <Route path="/Transaction/" component={Transaction} />
           {/* <Route path="/Budget/" component={DumbComponent} /> */}
           <Route path="/Account/" component={DumbComponent} />
+          <Route path="/Login/" component={LoginComponent} />
           <Route path="/NewAccount/" component={NewAccount} />
           <Route path="/Budget/" component={Home} />
         </Switch>
