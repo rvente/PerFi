@@ -38,7 +38,7 @@ const Main = withRouter(
           <Route path="/Home/" component={HomePage} />
           <Route path="/Transaction/" component={Transaction} />
           {/* <Route path="/Budget/" component={DumbComponent} /> */}
-          <Route path="/Account/" component={LoginComponent} />
+          <Route path="/Login/" component={LoginComponent} />
           <Route path="/NewAccount/" component={NewAccount} />
         </Switch>
       );
