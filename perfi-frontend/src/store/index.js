@@ -3,13 +3,15 @@ import loggerMiddleware from "redux-logger";
 import thunkMiddleware from "redux-thunk";
 import axios from "axios";
 
+
+// FOR initially no user logged in
 const initialState = {
   user: {}
 };
 
+// GET USER from database to confirm login
 const GET_USER = "GET_USER";
-const GET_ACCOUNT = "GET_ACCOUNT";
-
+const NEW_USER = "NEW_USER";
 // unimplemented
 // const ADD_TRANSACTION = 'ADD_TRANSACTION'
 // const REMOVE_TRANSACTION = 'REMOVE_TRANSACTION'
@@ -21,13 +23,15 @@ const gotMe = (user) => ({
   user
 });
 
-export const getAccount = () => dispatch => {
-  return axios
-    .get("http://localhost:3000/auth/account")
-    .then(res => res.data)
-    .then(user => dispatch(gotMe(user)))
+const newUser = () => ({
+  type: NEW_USER
+})
+
+// FOR registering a new user, adds user object into table
+export const registerThunk = (userData) => dispatch => {
+  return axios.post('http://localhost:3000/routers/users',userData)
     .catch(console.error.bind(console));
-};
+}
 
 // get user verification
 export const getMe = () => dispatch => {
@@ -38,7 +42,9 @@ export const getMe = () => dispatch => {
     .catch(console.error.bind(console));
 };
 
-// for logging in, beginning session
+// FOR logging in, beginning session 
+// RETURNS user as object
+// {"email":"john@john.com", "password":"12345"}
 export const login = formData => dispatch => {
   return axios
     .put("http://localhost:3000/auth/login", formData)
@@ -55,12 +61,6 @@ export const logout = () => dispatch => {
     .catch(console.error.bind(console));
 };
 
-// for registering a new user
-export const register = () => dispatch => {
-  return axios.post('http://localhost:3000/auth/newaccount')
-    .then((res)=>console.log(res))
-}
-
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_USER:
@@ -68,11 +68,11 @@ const reducer = (state = initialState, action) => {
         ...state,
         user: action.user
       };
-    case GET_ACCOUNT:
+    case NEW_ACCOUNT:
       return {
         ...state,
         user: action.user
-      };
+      }
     default:
       return state;
   }
@@ -80,5 +80,6 @@ const reducer = (state = initialState, action) => {
 
 export default createStore(
   reducer,
+  registerThunk,
   applyMiddleware(thunkMiddleware, loggerMiddleware)
 );

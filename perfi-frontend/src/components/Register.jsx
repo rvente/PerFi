@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {register} from '../store/index';
+import {registerThunk} from '../store/index';
 import RegisterForm from './RegisterForm';
 
 const RegisterComponent = (props) => {
@@ -18,11 +18,14 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     handleSubmit (evt) {
       evt.preventDefault()
+      const username = evt.target.username.value
+      const email = evt.target.email.value
       const firstname = evt.target.firstname.value
       const lastname = evt.target.lastname.value
-      const email = evt.target.email.value
       const password = evt.target.password1.value
-      dispatch(register({firstname, lastname, email, password}))
+
+// registerThunk expects user as object to post to database
+      dispatch(registerThunk({username, email, firstname, lastname, password}))
        .then(() => {
           ownProps.history.push('/account')
         })
