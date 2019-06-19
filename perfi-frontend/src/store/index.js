@@ -4,16 +4,33 @@ import thunkMiddleware from "redux-thunk";
 import axios from "axios";
 
 const initialState = {
-  user: {}
+  user: {},
+  transactions: []
 };
 
 const GET_USER = "GET_USER";
 const GET_ACCOUNT = "GET_ACCOUNT";
+const GET_TRANSACTIONS = "GET_TRANSACTIONS";
 
 const gotMe = user => ({
   type: GET_USER,
   user
 });
+
+const gotTransactions = transactions => ({
+  type: GET_TRANSACTIONS,
+  transactions
+});
+
+export const getTransactions = () => dispatch => {
+  return axios
+    .get("http://localhost:3000/auth/transaction")
+    .then(res => {
+      return res.data;
+    })
+    .then(transactions => dispatch(gotTransactions(transactions)))
+    .catch(console.error.bind(console));
+};
 
 export const getAccount = () => dispatch => {
   return axios
@@ -60,6 +77,11 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         user: action.user
+      };
+    case GET_TRANSACTIONS:
+      return {
+        ...state,
+        transactions: action.transactions
       };
     default:
       return state;
