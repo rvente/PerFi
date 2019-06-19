@@ -8,9 +8,6 @@ import AccountPage from './components/account-page'
 import HomePage from './components/home-page'
 
 // creates store for redux components
-const createStoreWithMiddleware = compose(applyMiddleware(reduxThunk))(createStore);
-
-const store = createStoreWithMiddleware(reducers);
 
 const Main = withRouter(class extends Component {
   componentDidMount () {
@@ -30,11 +27,12 @@ const Main = withRouter(class extends Component {
     )
   }
 })
-
+/*
 const token = localStorage.getItem('token');
 if (token) {
     store.dispatch({ type: AUTHENTICATE_THE_USER });
 }
+*/
 
 ReactDOM.render(
   <Provider store={store}>

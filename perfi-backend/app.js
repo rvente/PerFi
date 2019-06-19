@@ -36,12 +36,14 @@ app.use(passport.initialize())
 // and attempt to put our user on 'req.user'
 app.use(passport.session())
 
+// creates cookie
 // after finding or creating user, it is serialized on session
 passport.serializeUser((user, done) => {
   done(null, user.id)
 })
 
 // after serializing a user, serialize user on session
+// reads cookie
 passport.deserializeUser(async (id, done) => {
   try {
     const user = await User.findById(id)
@@ -57,6 +59,8 @@ app.use(express.static(path.join(__dirname, '..', 'public')))
 
 // authentication router
 app.use('/auth', require('./auth'))
+app.use('/routers', require('./routers'))
+
 
 // for all GET requests, send the index.html
 app.get('/*', (req, res, next) => {

@@ -1,7 +1,8 @@
 const router = require('express').Router()
-const {User} = require('./db')
+const {User,Transaction} = require('./db')
 module.exports = router
 
+// dummy data
 let accountArray=[
     {
       username:"John",
@@ -72,7 +73,6 @@ router.post('/newaccount', (req, res, next) => {
 
 
 /*
-
 // create new user
 const { name, email } = request.body
 
@@ -178,7 +178,7 @@ router.post('/deletetransaction', (req, res, next) => {
 // route for transaction history X
 router.get('/transaction', (req, res, next) => {
   //res.json('transaction')
-  res.json(transactionArray, budetArray)
+  res.json(transactionArray, budgetArray)
 
 /*  try {
     const user = await User.findOne({
