@@ -96,12 +96,18 @@ router.use(
 */
 // TRANSACTION METHODS
 router.route('/transactions/:id')
-    
 
-/*
     //DELETE TRANSACTION
-    .delete('/transactions/:id', queries.deleteTransaction)
-*/
+    .delete(async function(req,res,next)
+    {
+        Transaction.destroy({
+            where:{id:req.params.id}
+        })
+        .catch(error => {
+            response.status(400).send(error)
+        })
+        .next();
+    })
 
     // CHANGE transaction by TRANSACTION ID
     .put(async function(req, res) {
