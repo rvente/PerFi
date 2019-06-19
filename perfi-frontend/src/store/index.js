@@ -4,12 +4,15 @@ import thunkMiddleware from "redux-thunk";
 import axios from "axios";
 
 const initialState = {
-  user: {}
+  user: {},
+  transactions: []
 };
 
 const GET_USER = "GET_USER";
 const GET_ACCOUNT = "GET_ACCOUNT";
+const GET_TRANSACTIONS = "GET_TRANSACTIONS";
 
+<<<<<<< HEAD
 // unimplemented
 const ADD_TRANSACTION = 'ADD_TRANSACTION' //using '/transactions'
 const REMOVE_TRANSACTION = 'REMOVE_TRANSACTION' //using 'transactions/:id'
@@ -20,9 +23,27 @@ const GET_TRANSACTIONS = 'GET_TRANSACTIONS' //using 'transaction/:userid'
 // const REMOVE_BUDGET = 'REMOVE_BUDGET'
 
 const gotMe = (user) => ({
+=======
+const gotMe = user => ({
+>>>>>>> bdea35a3fad3d79cab011ae2c6b91aa2f0e3dbb2
   type: GET_USER,
   user
 });
+
+const gotTransactions = transactions => ({
+  type: GET_TRANSACTIONS,
+  transactions
+});
+
+export const getTransactions = () => dispatch => {
+  return axios
+    .get("http://localhost:3000/auth/transaction")
+    .then(res => {
+      return res.data;
+    })
+    .then(transactions => dispatch(gotTransactions(transactions)))
+    .catch(console.error.bind(console));
+};
 
 export const getAccount = () => dispatch => {
   return axios
@@ -58,10 +79,8 @@ export const logout = () => dispatch => {
     .catch(console.error.bind(console));
 };
 
-// for registering a new user
-export const register = () => dispatch => {
-  return axios.post('http://localhost:3000/auth/newaccount')
-    .then((res)=>console.log(res))
+export const register = formData => dispatch => {
+  return console.log(formData);
 }
 
 
@@ -76,6 +95,11 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         user: action.user
+      };
+    case GET_TRANSACTIONS:
+      return {
+        ...state,
+        transactions: action.transactions
       };
     default:
       return state;
