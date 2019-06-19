@@ -24,7 +24,7 @@ const gotTransactions = transactions => ({
 
 export const getTransactions = () => dispatch => {
   return axios
-    .get("http://localhost:3000/auth/transaction")
+    .get("http://localhost:3000/routers/transactions")
     .then(res => {
       return res.data;
     })
@@ -68,7 +68,7 @@ export const logout = () => dispatch => {
 
 export const register = formData => dispatch => {
   return console.log(formData);
-}
+};
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
