@@ -224,15 +224,16 @@ router.put('/login', async (req, res, next) => {
 
 // Logout, deletes session request X
 router.delete('/logout', (req, res, next) => {
-  if (req.session) {
-    // delete session object
-    req.session.destroy((err) => {
-      if (err) {
-        return next(err);
-      }
-      else {
-        return res.redirect('/')
-      }
-    });
-  }
+  return res.json('logging out')
+  // if (req.session) {
+  //   // delete session object
+  //   req.session.destroy((err) => {
+  //     if (err) {
+  //       return next(err);
+  //     }
+  //     else {
+  //       return res.redirect('/')
+  //     }
+  //   });
+  // }
 });

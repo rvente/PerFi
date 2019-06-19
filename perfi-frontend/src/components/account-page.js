@@ -2,6 +2,8 @@ import React from "react";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { logout } from "../store/index";
+import NavBar from "./NavBar.jsx";
+import "../css/Global.css"
 
 const AccountPage = props => {
   const {user, handleClick} = props;
@@ -12,8 +14,12 @@ const AccountPage = props => {
 
   return (
     <div>
+      <NavBar />
       <header>Account</header>
-      <h1>Welcome back {user.firstname}</h1>
+      <h1>Welcome back {user.firstname}!</h1>
+      <h2>Full Name:</h2> {user.firstname} {user.lastname}
+      <h2>Email:</h2> {user.email}
+      <h2>Username:</h2> {user.username}<br /><br /><br />
       <button onClick={handleClick}>Logout</button>
     </div>
   );
