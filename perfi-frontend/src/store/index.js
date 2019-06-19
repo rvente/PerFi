@@ -110,20 +110,20 @@ export default createStore(
 
 // TRANSACTIONS THUNKS
 // const ADD_TRANSACTION = 'ADD_TRANSACTION' //using '/transactions'
-export const addTransactionThunk = (object) => dispatch =>
+export const addTransactionThunk = (object) =>
 {
     return axios.post('/routers/transactions', object);
 }
 
 //const REMOVE_TRANSACTION = 'REMOVE_TRANSACTION' 'transactions/:id'
-export const removeTransactionThunk = (id) => dispatch =>
+export const removeTransactionThunk = (id) =>
 {
     let url = "/routers/transactions" + id;
     return axios.delete(url);
 }
 
 // const EDIT_TRANSACTION = 'EDIT_TRANSACTION' 'transaction/:id'
-export const editTransactionThunk = (id) => dispatch =>
+export const editTransactionThunk = (id) =>
 {
     let url = '/routers/transactions' + id;
     return axios.put(url);
