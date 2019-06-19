@@ -2,7 +2,6 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { Provider } from "react-redux";
 import {
@@ -32,11 +31,10 @@ const Main = withRouter(
       return (
         <Switch>
           <Route path="/" exact component={Login} />
-          <Route exact path="/account" component={Home} />
           <Route path="/Home/" component={Home} />
           <Route path="/Transaction/" component={Transaction} />
           {/* <Route path="/Budget/" component={DumbComponent} /> */}
-          <Route path="/Account/" component={LoginComponent} />
+          <Route path="/Account/" component={AccountPage} />
           <Route path="/NewAccount/" component={NewAccount} />
           <Route path="/Budget/" component={Home} />
         </Switch>

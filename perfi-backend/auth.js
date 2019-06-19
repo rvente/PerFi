@@ -47,7 +47,7 @@ router.get('/home', (req,res,next) => {
 })
 
 // route to request user information for account page X
-// send back 
+// send back
 router.get('/account', (req, res, next) => {
    // res.json('account');
     res.json(accountArray);
@@ -224,18 +224,15 @@ router.put('/login', async (req, res, next) => {
 
 // Logout, deletes session request X
 router.delete('/logout', (req, res, next) => {
-  res.json('logout')
-  /*
   if (req.session) {
     // delete session object
     req.session.destroy((err) => {
-    if (err) {
-      return next(err);
-    }
-    else {
-      return res.redirect('/')
-    }
-  });
+      if (err) {
+        return next(err);
+      }
+      else {
+        return res.redirect('/')
+      }
+    });
   }
-  */
 });
