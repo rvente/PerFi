@@ -6,6 +6,9 @@
 @import 'GlobalVars.scss';
 @import 'Card.scss', 'NavBar.scss', 'Login.scss', 'Buttons.scss';
 
-* {
+*:focus {
+    outline: 0 !important;
     -moz-outline-radius: $brdr-rad;
+    outline-color: $steel_blue_4;
+    outline-offset: 5px;
 }

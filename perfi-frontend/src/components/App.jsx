@@ -1,9 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import NavBar from './NavBar';
-import NewAccount from './NewAccount.jsx';
 import Login from './Login.jsx';
 import Transaction from './AddTransaction.jsx';
+import RegisterComponent from './Register';
 import '../css/App.css';
 import '../css/Global.css';
 
@@ -23,7 +23,7 @@ function App() {
           <Route path="/Transaction/" component={Transaction} />
           <Route path="/Budget/" component={DumbComponent} />
           <Route path="/Account/" component={LoginComponent}/>
-          <Route path="/NewAccount/" component={NewAccount}/>
+          <Route path="/NewAccount/" component={RegisterComponent}/>
         </div>
       </Router>
     </div>

@@ -66,6 +66,7 @@ router.get('/me', (req, res, next) => {
 // creates new user in database X
 // post new user from /newuser
 router.post('/newaccount', (req, res, next) => {
+<<<<<<< HEAD
     res.json('newaccount')
 
   // check fields if complete
@@ -126,6 +127,9 @@ const updateUser = (request, response) => {
       }
     })
   }*/
+=======
+  res.json('newaccount')
+>>>>>>> refs/remotes/origin/master
 })
 
 // creates new transaction in database X
@@ -238,5 +242,3 @@ router.delete('/logout', (req, res, next) => {
   }
   */
 });
-
-
