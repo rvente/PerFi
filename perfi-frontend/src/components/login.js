@@ -23,10 +23,10 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       evt.preventDefault();
       const email = evt.target.email.value;
       const password = evt.target.password.value;
-      dispatch(login({ email, password }));
-      // .then(() => {
-      ownProps.history.push("/account");
-      //})
+      dispatch(login({ email, password }))
+      .then(() => {
+        ownProps.history.push("/account");
+      })
     }
   };
 };

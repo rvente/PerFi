@@ -22,11 +22,11 @@ import Transaction from "./components/AddTransaction.jsx";
 
 const Main = withRouter(
   class extends Component {
-    componentDidMount() {
-      store.dispatch(getMe()).then(() => {
-        this.props.history.push("/");
-      });
-    }
+    // componentDidMount() {
+    //   store.dispatch(getMe()).then(() => {
+    //     this.props.history.push("/");
+    //   });
+    // }
 
     render() {
       return (
