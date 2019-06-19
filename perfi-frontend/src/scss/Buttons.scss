@@ -2,32 +2,26 @@
 
 button {
   user-select: none !important;
-	background-color: $base_dark;
-	text-align: center;
-	justify-content: center;
+  background-color: $base_dark;
+  text-align: center;
+  justify-content: center;
   color: $base_light;
-	font-size: 15px;
-	margin: 5px;
-	padding: 10px;
+  font-size: 15px;
+  margin: 5px;
+  padding: 10px;
   border-width: 0px;
-	border-radius: $brdr-rad;
-	box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.2);
-	transition: all .3s ease-in-out;
-}
-
-*:focus {
-    outline: 1 !important;
-    outline-color: $steel_blue_4;
-    outline-offset: 5px;
+  border-radius: $brdr-rad;
+  box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.2);
+  transition: all .3s ease-in-out;
 }
 
 @mixin color-button ($color) {
     border-color: darken($color, 40%);
     background-color: lighten($color, 7%);
-	  color: darken($color, 30%);
+    color: darken($color, 30%);
     &:hover {
         text-shadow: 0px 0px 2px grey;
-	      color: $base_light;
+        color: $base_light;
         /* font-weight: bold; */
         background-color: darken( $color, 10% );
     }
@@ -40,20 +34,20 @@ button {
     /* visibility: hidden; */
     opacity: 0;
     margin: 15px;
-		transition: all .4s ease-in-out;
-	  ul {
-		    list-style-type: none;
-		    margin: 0;
-		    text-align: center;
-		    display: flex;
-	      flex-flow: row wrap;
+    transition: all .4s ease-in-out;
+    ul {
+        list-style-type: none;
+        margin: 0;
+        text-align: center;
+        display: flex;
+        flex-flow: row wrap;
         align-content: flex-start;
         justify-content: center;
         align-items: center;
-	      li {
-		        float: top;
-	      }
-	  }
+        li {
+            float: top;
+        }
+    }
 }
 
 .green {
@@ -69,25 +63,25 @@ button {
 }
 
 .wrapper {
-	ul {
-		li {
-			a {
-				display: inline;
-				color: $base_light;
-				text-decoration: none;
-				font-size: calc(5px + 2vmin);
-				transition: all .3s ease-in-out;
-				text-align: center;
-				align-content: center;
-			}
-		}
-	}
+  ul {
+    li {
+      a {
+        display: inline;
+        color: $base_light;
+        text-decoration: none;
+        font-size: calc(5px + 2vmin);
+        transition: all .3s ease-in-out;
+        text-align: center;
+        align-content: center;
+      }
+    }
+  }
 }
 
 .wrapper-home {
-	ul {
-		li {
-			display: inline;
-		}
-	}
+  ul {
+    li {
+      display: inline;
+    }
+  }
 }
