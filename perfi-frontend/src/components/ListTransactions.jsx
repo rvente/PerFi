@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 
 const axios = require("axios");
 
@@ -10,16 +11,8 @@ class ListTransactions extends Component {
     };
   }
 
-  componentDidMount() {
-    axios
-      .get("http://localhost:3000/auth/transaction")
-      .then(res => {
-        return res.data;
-      })
-      .then(transactions => this.setState({ transactions }));
-  }
   render() {
-    let trans = this.state.transactions.map(trans => (
+    let trans = this.props.transactions.map(trans => (
       <div>
         <ul>
           <li>Date: {trans.date} </li>
@@ -39,4 +32,8 @@ class ListTransactions extends Component {
   }
 }
 
-export default ListTransactions;
+const mapState = state => {
+  return { transactions: state.transactions };
+};
+
+export default connect(mapState)(ListTransactions);

@@ -1,6 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 import { login } from "../store/index";
+import { getTransactions } from "../store/index";
+
 import LocalLoginForm from "./login-form";
 
 const Login = props => {
@@ -27,6 +29,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         ownProps.history.push("/account");
       });
     }
+    // getTrans: dispatch(getTransactions)
   };
 };
 

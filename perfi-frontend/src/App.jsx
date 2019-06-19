@@ -25,14 +25,14 @@ function App() {
         <div>
           <NavBar />
           <Route exact path="/home" component={Home} />
-          <Route exact path="/account" component={AccountPage} />
+          {/* <Route exact path="/account" component={AccountPage} />
           <Route component={Login} />
           <Route path="/" exact component={DumbComponent} />
-          <Route path="/Home/" component={DumbComponent} />
+          <Route path="/Home/" component={Home} />
           <Route path="/Transaction/" component={Transaction} />
           <Route path="/Budget/" component={DumbComponent} />
           <Route path="/Account/" component={LoginComponent} />
-          <Route path="/NewAccount/" component={NewAccount} />
+          <Route path="/NewAccount/" component={NewAccount} /> */}
         </div>
       </Router>
     </div>
