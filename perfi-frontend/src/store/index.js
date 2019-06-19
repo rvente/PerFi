@@ -16,7 +16,6 @@ const GET_TRANSACTIONS = "GET_TRANSACTIONS";
 const ADD_TRANSACTION = 'ADD_TRANSACTION' //using '/transactions'
 const REMOVE_TRANSACTION = 'REMOVE_TRANSACTION' //using 'transactions/:id'
 const EDIT_TRANSACTION = 'EDIT_TRANSACTION' //using 'transaction/:id'
-const GET_TRANSACTIONS = 'GET_TRANSACTIONS' //using 'transaction/:userid'
 
 // const ADD_BUDGET = 'ADD_BUDGET'
 // const REMOVE_BUDGET = 'REMOVE_BUDGET'
@@ -78,7 +77,7 @@ export const logout = () => dispatch => {
 
 export const register = formData => dispatch => {
   return console.log(formData);
-};
+}
 
 
 const reducer = (state = initialState, action) => {
@@ -108,7 +107,7 @@ export default createStore(
   applyMiddleware(thunkMiddleware, loggerMiddleware)
 );
 
-/*
+
 // TRANSACTIONS THUNKS
 // const ADD_TRANSACTION = 'ADD_TRANSACTION' //using '/transactions'
 export const addTransactionThunk = (object) => dispatch =>
@@ -130,11 +129,4 @@ export const editTransactionThunk = (id) => dispatch =>
     return axios.put(url);
 }
 
-// const GET_TRANSACTIONS = 'GET_TRANSACTIONS' 'transaction/:userid'
-export const getTransactionsThunk = (userid) => dispatch =>
-{
-   let url = '/routers/transactions' + userid;
-   return axios.get(url)
-   .then(result => dispatch(gotTransactions(result)));
-}
-*/
+
