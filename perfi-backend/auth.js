@@ -1,78 +1,76 @@
-const router = require('express').Router()
-const {User,Transaction} = require('./db')
-module.exports = router
+const router = require("express").Router();
+const { User, Transaction } = require("./db");
+module.exports = router;
 
 // dummy data
-let accountArray=[
-    {
-      username:"John",
-      email: "john@john.com",
-      firstname: "John",
-      lastname: "Nohj",
-    }
-]
+let accountArray = [
+  {
+    username: "John",
+    email: "john@john.com",
+    firstname: "John",
+    lastname: "Nohj"
+  }
+];
 
-let transactionArray=[
-    {
-      date: "05092019",
-      cost: 10.00,
-      title: "matcha",
-      category: "food",
-      subscription: 0
-    },
-    {
-      date: "05092019",
-      cost: 5.00,
-      title: "coffee",
-      category: "food",
-      subscription: 0
-    },
-        {
-      date: "05092019",
-      cost: 17.00,
-      title: "apples",
-      category: "food",
-      subscription: 0
-    }
-  ]
-  let budgetArray=[
-    {
-      amount: 1000
-    }
-  ]
+let transactionArray = [
+  {
+    date: "05092019",
+    cost: 10.0,
+    title: "matcha",
+    category: "food",
+    subscription: 0
+  },
+  {
+    date: "05092019",
+    cost: 5.0,
+    title: "coffee",
+    category: "food",
+    subscription: 0
+  },
+  {
+    date: "05092019",
+    cost: 17.0,
+    title: "apples",
+    category: "food",
+    subscription: 0
+  }
+];
+let budgetArray = [
+  {
+    amount: 1000
+  }
+];
 
 // route for home page X
-router.get('/home', (req,res,next) => {
-  res.json("home")
-})
+router.get("/home", (req, res, next) => {
+  res.json("home");
+});
 
 // route to request user information for account page X
-// send back 
-router.get('/account', (req, res, next) => {
-   // res.json('account');
-    res.json(accountArray);
+// send back
+router.get("/account", (req, res, next) => {
+  // res.json('account');
+  res.json(accountArray);
 
- /* const account = account.filter(q => (q.id === parseInt(req.params.id)));
+  /* const account = account.filter(q => (q.id === parseInt(req.params.id)));
   res.send(account);
   */
-})
+});
 
 // route for user X
 // home page request
-router.get('/me', (req, res, next) => {
-  res.json(req.user || {})
-})
+router.get("/me", (req, res, next) => {
+  res.json(req.user || {});
+});
 
 // creates new user in database X
 // post new user from /newuser
-router.post('/newaccount', (req, res, next) => {
-    res.json('newaccount')
+router.post("/newaccount", (req, res, next) => {
+  res.json("newaccount");
 
   // check fields if complete
 
-
-
-/*
+  /*
 // create new user
 const { name, email } = request.body
 
@@ -126,13 +124,13 @@ const updateUser = (request, response) => {
       }
     })
   }*/
-  res.json('newaccount')
-})
+  res.json("newaccount");
+});
 
 // creates new transaction in database X
 // post new transaction from /newuser
-router.post('/newtransaction', (req, res, next) => {
-  res.json('newtransaction')
+router.post("/newtransaction", (req, res, next) => {
+  res.json("newtransaction");
   /*
   // check if fields complete
   if(req.body.date &&
@@ -158,11 +156,10 @@ router.post('/newtransaction', (req, res, next) => {
       }
     })
   }*/
-})
+});
 
-
-router.post('/deletetransaction', (req, res, next) => {
-  res.json('deletetransaction')
+router.post("/deletetransaction", (req, res, next) => {
+  res.json("deletetransaction");
 
   /*const deleteUser = (request, response) => {
     const id = parseInt(request.params.id)
@@ -175,13 +172,13 @@ router.post('/deletetransaction', (req, res, next) => {
     })
   }
 */
-})
+});
 // route for transaction history X
-router.get('/transaction', (req, res, next) => {
+router.get("/transaction", (req, res, next) => {
   //res.json('transaction')
-  res.json(transactionArray, budgetArray)
+  res.json(transactionArray);
 
-/*  try {
+  /*  try {
     const user = await User.findOne({
       where: {
         email: req.body.email,
@@ -199,32 +196,32 @@ router.get('/transaction', (req, res, next) => {
     next(err)
   }
   */
-})
+});
 
 // Login page request to database
-router.put('/login', async (req, res, next) => {
+router.put("/login", async (req, res, next) => {
   try {
     const user = await User.findOne({
       where: {
         email: req.body.email,
         password: req.body.password
       }
-    })
+    });
     if (user) {
-      req.login(user, (err) => err ? next(err) : res.json(user))
+      req.login(user, err => (err ? next(err) : res.json(user)));
     } else {
-      const err = new Error('Incorrect email or password!')
-      err.status = 401
-      throw err
+      const err = new Error("Incorrect email or password!");
+      err.status = 401;
+      throw err;
     }
   } catch (err) {
-    next(err)
+    next(err);
   }
 });
 
 // Logout, deletes session request X
-router.delete('/logout', (req, res, next) => {
-  res.json('logout')
+router.delete("/logout", (req, res, next) => {
+  res.json("logout");
   /*
   if (req.session) {
     // delete session object
