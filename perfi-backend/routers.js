@@ -3,7 +3,6 @@ const morgan = require('morgan')
 const parser = require('body-parser')
 const router = express.Router()
 const {User,Transaction} = require('./db');
-//const func = require('./queryTest')
 module.exports = router
 
 router.use(morgan('dev'))
@@ -15,15 +14,6 @@ router.use(
 )
 
 // USER METHODS
-    /*
-    //ADD USER
-    app.post('/users', queries.addUser)
-    
-    
-    //GET USER
-    app.get('/users/:id', queries.getUser)
-    */
-
     //GET ALL USERS
     router.get('/users',(req,res) => {
         User.findAll()
@@ -121,11 +111,7 @@ router.use(
                     response.status(400).send(error)
                 })
                 .next();
-                })
-
-    
-
-    // route requests for the transactions of a user
+            })
 
  /*   // CHANGE BUDGET
     app.put('/users/:id', queries.changeBudget)
