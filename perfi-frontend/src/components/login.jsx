@@ -26,7 +26,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       const password = evt.target.password.value;
       dispatch(login({ email, password }))
       .then(() => {
-        ownProps.history.push("/account");
+        ownProps.history.push("/Home");
       });
     }
     // getTrans: dispatch(getTransactions)
