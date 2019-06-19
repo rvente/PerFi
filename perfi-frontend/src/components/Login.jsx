@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import { withRouter } from 'react-router';
+import React from 'react';
 import {login} from '../store/index';
 import LoginForm from './LoginForm';
 import {connect} from 'react-redux';
