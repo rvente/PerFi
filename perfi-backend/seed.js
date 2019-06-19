@@ -8,14 +8,16 @@ const seed = async () => {
 			email: 'john@john.com',
 			password: '12345',
 			firstname: 'John',
-			lastname: 'Nhoj'
+			lastname: 'Nhoj',
+			budget: 1700
 		})
 		await User.create({
 			username: 'TimmyBoy',
 			email: 'Tim@tim.com',
 			password: '12345',
 			firstname: 'Tim',
-			lastname: 'Mit'
+			lastname: 'Mit',
+			budget: 2000
 		})
 
 		await Transaction.create({
