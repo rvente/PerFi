@@ -33,7 +33,12 @@ let transactionArray=[
       category: "food",
       subscription: 0
     }
-]
+  ]
+  let budgetArray=[
+    {
+      amount: 1000
+    }
+  ]
 
 // route for home page X
 router.get('/home', (req,res,next) => {
@@ -173,7 +178,7 @@ router.post('/deletetransaction', (req, res, next) => {
 // route for transaction history X
 router.get('/transaction', (req, res, next) => {
   //res.json('transaction')
-  res.json(transactionArray)
+  res.json(transactionArray, budetArray)
 
 /*  try {
     const user = await User.findOne({
@@ -194,7 +199,6 @@ router.get('/transaction', (req, res, next) => {
   }
   */
 })
-
 
 // Login page request to database
 router.put('/login', async (req, res, next) => {

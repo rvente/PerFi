@@ -7,6 +7,11 @@ import Login from './components/login'
 import AccountPage from './components/account-page'
 import HomePage from './components/home-page'
 
+// creates store for redux components
+const createStoreWithMiddleware = compose(applyMiddleware(reduxThunk))(createStore);
+
+const store = createStoreWithMiddleware(reducers);
+
 const Main = withRouter(class extends Component {
   componentDidMount () {
     store.dispatch(getMe())
@@ -15,17 +20,21 @@ const Main = withRouter(class extends Component {
       })
   }
 
-
   render () {
     return (
       <Switch>
         <Route exact path='/home' component={HomePage} />
-        <Route exact path='/auth/account' component={AccountPage} />
+        <Route exact path='/account' component={AccountPage} />
         <Route component={Login} />
       </Switch>
     )
   }
 })
+
+const token = localStorage.getItem('token');
+if (token) {
+    store.dispatch({ type: AUTHENTICATE_THE_USER });
+}
 
 ReactDOM.render(
   <Provider store={store}>
