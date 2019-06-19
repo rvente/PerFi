@@ -11,8 +11,11 @@ const GET_USER = "GET_USER";
 const GET_ACCOUNT = "GET_ACCOUNT";
 
 // unimplemented
-// const ADD_TRANSACTION = 'ADD_TRANSACTION'
-// const REMOVE_TRANSACTION = 'REMOVE_TRANSACTION'
+const ADD_TRANSACTION = 'ADD_TRANSACTION' //using '/transactions'
+const REMOVE_TRANSACTION = 'REMOVE_TRANSACTION' //using 'transactions/:id'
+const EDIT_TRANSACTION = 'EDIT_TRANSACTION' //using 'transaction/:id'
+const GET_TRANSACTIONS = 'GET_TRANSACTIONS' //using 'transaction/:userid'
+
 // const ADD_BUDGET = 'ADD_BUDGET'
 // const REMOVE_BUDGET = 'REMOVE_BUDGET'
 
@@ -61,6 +64,7 @@ export const register = () => dispatch => {
     .then((res)=>console.log(res))
 }
 
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_USER:
@@ -82,3 +86,31 @@ export default createStore(
   reducer,
   applyMiddleware(thunkMiddleware, loggerMiddleware)
 );
+
+// TRANSACTIONS THUNKS
+// const ADD_TRANSACTION = 'ADD_TRANSACTION' //using '/transactions'
+export const addTransactionThunk = (object) => dispatch =>
+{
+    return axios.post('transactions', object);
+}
+
+//const REMOVE_TRANSACTION = 'REMOVE_TRANSACTION' 'transactions/:id'
+export const removeTransactionThunk = (id) => dispatch =>
+{
+    let url = "/transactions/" + id;
+    return axios.delete(url);
+}
+
+// const EDIT_TRANSACTION = 'EDIT_TRANSACTION' 'transaction/:id'
+export const editTransactionThunk = (id) => dispatch =>
+{
+    let url = '/transactions/' + id;
+    return axios.put(url);
+}
+
+// const GET_TRANSACTIONS = 'GET_TRANSACTIONS' 'transaction/:userid'
+export const getTransactionsThunk = (userid) => dispatch =>
+{
+   let url = 'transactions/' + userid;
+   return axios.get('url');
+}
