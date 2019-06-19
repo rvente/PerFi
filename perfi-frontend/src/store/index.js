@@ -44,7 +44,7 @@ export const login = formData => dispatch => {
 // for logging out, ending session
 export const logout = () => dispatch => {
   return axios
-    .delete("/auth/logout")
+    .delete("http://localhost:3000/auth/logout")
     .then(() => dispatch(gotMe(initialState.user)))
     .catch(console.error.bind(console));
 };

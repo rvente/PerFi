@@ -20,6 +20,7 @@ import NavBar from "./components/NavBar";
 import NewAccount from "./components/NewAccount.jsx";
 import LoginComponent from "./components/Login-Old.jsx";
 import Transaction from "./components/AddTransaction.jsx";
+import NotFound from "./components/NotFound.jsx";
 // dumb component used for templating
 var DumbComponent = () => {
   return <div />;
@@ -27,23 +28,22 @@ var DumbComponent = () => {
 
 const Main = withRouter(
   class extends Component {
-    // componentDidMount() {
-    //   store.dispatch(getMe()).then(() => {
-    //     this.props.history.push("/");
-    //   });
-    // }
+    componentDidMount() {
+      store.dispatch(getMe()).then(() => {
+        this.props.history.push("/");
+      });
+    }
 
     render() {
       return (
         <Switch>
           <Route path="/" exact component={Login} />
-          <Route exact path="/account" component={Home} />
           <Route path="/Home/" component={Home} />
           <Route path="/Transaction/" component={Transaction} />
-          {/* <Route path="/Budget/" component={DumbComponent} /> */}
-          <Route path="/Account/" component={DumbComponent} />
+          <Route path="/Account/" component={AccountPage} />
           <Route path="/NewAccount/" component={NewAccount} />
           <Route path="/Budget/" component={Home} />
+          <Route component={NotFound} />
         </Switch>
       );
     }
