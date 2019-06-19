@@ -12,7 +12,6 @@ const GET_USER = "GET_USER";
 const GET_ACCOUNT = "GET_ACCOUNT";
 const GET_TRANSACTIONS = "GET_TRANSACTIONS";
 
-<<<<<<< HEAD
 // unimplemented
 const ADD_TRANSACTION = 'ADD_TRANSACTION' //using '/transactions'
 const REMOVE_TRANSACTION = 'REMOVE_TRANSACTION' //using 'transactions/:id'
@@ -23,9 +22,6 @@ const GET_TRANSACTIONS = 'GET_TRANSACTIONS' //using 'transaction/:userid'
 // const REMOVE_BUDGET = 'REMOVE_BUDGET'
 
 const gotMe = (user) => ({
-=======
-const gotMe = user => ({
->>>>>>> bdea35a3fad3d79cab011ae2c6b91aa2f0e3dbb2
   type: GET_USER,
   user
 });
@@ -35,9 +31,10 @@ const gotTransactions = transactions => ({
   transactions
 });
 
+
 export const getTransactions = () => dispatch => {
   return axios
-    .get("http://localhost:3000/auth/transaction")
+    .get("http://localhost:3000/routers/transactions")
     .then(res => {
       return res.data;
     })
@@ -111,30 +108,33 @@ export default createStore(
   applyMiddleware(thunkMiddleware, loggerMiddleware)
 );
 
+/*
 // TRANSACTIONS THUNKS
 // const ADD_TRANSACTION = 'ADD_TRANSACTION' //using '/transactions'
 export const addTransactionThunk = (object) => dispatch =>
 {
-    return axios.post('transactions', object);
+    return axios.post('/routers/transactions', object);
 }
 
 //const REMOVE_TRANSACTION = 'REMOVE_TRANSACTION' 'transactions/:id'
 export const removeTransactionThunk = (id) => dispatch =>
 {
-    let url = "/transactions/" + id;
+    let url = "/routers/transactions" + id;
     return axios.delete(url);
 }
 
 // const EDIT_TRANSACTION = 'EDIT_TRANSACTION' 'transaction/:id'
 export const editTransactionThunk = (id) => dispatch =>
 {
-    let url = '/transactions/' + id;
+    let url = '/routers/transactions' + id;
     return axios.put(url);
 }
 
 // const GET_TRANSACTIONS = 'GET_TRANSACTIONS' 'transaction/:userid'
 export const getTransactionsThunk = (userid) => dispatch =>
 {
-   let url = 'transactions/' + userid;
-   return axios.get('url');
+   let url = '/routers/transactions' + userid;
+   return axios.get(url)
+   .then(result => dispatch(gotTransactions(result)));
 }
+*/
