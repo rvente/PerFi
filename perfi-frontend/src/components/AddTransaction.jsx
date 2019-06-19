@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router';
 
-class AddTransaction extends Component {
+class Transaction extends Component {
   constructor(props){
     super(props);
 
@@ -48,4 +48,4 @@ class AddTransaction extends Component {
   }
 }
 
-export default withRouter(AddTransaction);
+export default withRouter(Transaction);
