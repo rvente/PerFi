@@ -19,6 +19,9 @@ const User = db.define('users', {
 	}, 
 	password: {
 		type: Sequelize.STRING
+	},
+	budget:{
+		type: Sequelize.INTEGER
 	}
 })
 
@@ -49,7 +52,7 @@ const Transaction = db.define('transactions', {
 /***/
 Transaction.belongsTo(User, {as: 'user'});
 User.hasMany(Transaction, {as: 'Transaction'});
-/***/
+/***/ 
 
 
 // exports db, User, and Transaction modules
