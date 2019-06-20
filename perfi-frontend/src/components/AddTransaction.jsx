@@ -17,7 +17,7 @@ class Transaction extends Component {
       cost: 0,
       title:"", 
       category:"", 
-      userid:0,
+      userid: this.props.user.id, // must FIX to actual userid of logged in user
       subscription: 0
   }
  
@@ -130,7 +130,14 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
+// maps whether user logged in to state
+const mapStateToProps = (state) => {
+  return {
+    user: state.user
+  }
+};
+
 export default connect(
-  null,mapDispatchToProps
+  mapStateToProps,mapDispatchToProps
 )(withRouter(Transaction));
 //export default withRouter(Transaction);
