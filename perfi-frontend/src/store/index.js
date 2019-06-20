@@ -12,10 +12,11 @@ const GET_USER = "GET_USER";
 const GET_ACCOUNT = "GET_ACCOUNT";
 const GET_TRANSACTIONS = "GET_TRANSACTIONS";
 
-// unimplemented
 const ADD_TRANSACTION = 'ADD_TRANSACTION' //using '/transactions'
-const REMOVE_TRANSACTION = 'REMOVE_TRANSACTION' //using 'transactions/:id'
-const EDIT_TRANSACTION = 'EDIT_TRANSACTION' //using 'transaction/:id'
+
+// implemented but not used yet
+//const REMOVE_TRANSACTION = 'REMOVE_TRANSACTION' //using 'transactions/:id'
+//const EDIT_TRANSACTION = 'EDIT_TRANSACTION' //using 'transaction/:id'
 
 // const ADD_BUDGET = 'ADD_BUDGET'
 // const REMOVE_BUDGET = 'REMOVE_BUDGET'
@@ -120,6 +121,9 @@ export const addTransactionThunk = (object) => dispatch =>
     .then(() => dispatch(addTransaction()));
 }
 
+
+//Implemented but not used yet
+/*
 //const REMOVE_TRANSACTION = 'REMOVE_TRANSACTION' 'transactions/:id'
 export const removeTransactionThunk = (id) =>
 {
@@ -133,5 +137,4 @@ export const editTransactionThunk = (id) =>
     let url = '/routers/transactions' + id;
     return axios.put(url);
 }
-
-
+*/
