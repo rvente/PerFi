@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-
-const axios = require("axios");
-
+import { removeTransactionThunk } from "../store/index";
 class ListTransactions extends Component {
   constructor(props) {
     super(props);
@@ -10,6 +8,9 @@ class ListTransactions extends Component {
       transactions: []
     };
   }
+  deleteTransaction = event => {
+    this.props.deleteTransaction(event.target.value);
+  };
   render() {
     let sorted = this.props.transactions.sort((a, b) => {
       let x = a.date.replace(/-/g, "").replace(/[\/]/g, "");
@@ -32,6 +33,15 @@ class ListTransactions extends Component {
           <li>Item: {trans.title} </li>
           <li>Category: {trans.category} </li>
           <li>Subscription: {trans.subscription} </li>
+          <li>
+            <button
+              value={trans.id}
+              type="button"
+              onClick={this.deleteTransaction}
+            >
+              Delete Transaction
+            </button>
+          </li>
         </ul>
       </div>
     ));
@@ -43,8 +53,33 @@ class ListTransactions extends Component {
   }
 }
 
+const getImage = category => {
+  let logo;
+  switch (category) {
+    case "tech":
+      logo = "../assets/tech.png";
+    case "food":
+      logo = "../assets/food.png";
+    case "clothing":
+      logo = "../assets/clothing.png";
+    case "transit":
+      logo = "../assets/transit.png";
+    case "health":
+      logo = "../assets/health.png";
+    case "entertainment":
+      logo = "../assets/entertainment.png";
+  }
+};
+
 const mapState = state => {
   return { transactions: state.transactions };
 };
-
-export default connect(mapState)(ListTransactions);
+const mapDispatchToProps = dispatch => {
+  return {
+    deleteTransaction: object => dispatch(removeTransactionThunk(object))
+  };
+};
+export default connect(
+  mapState,
+  mapDispatchToProps
+)(ListTransactions);

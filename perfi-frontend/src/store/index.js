@@ -14,8 +14,9 @@ const GET_TRANSACTIONS = "GET_TRANSACTIONS";
 
 const ADD_TRANSACTION = 'ADD_TRANSACTION' //using '/transactions'
 
+const REMOVE_TRANSACTION = 'REMOVE_TRANSACTION' //using 'transactions/:id'
+
 // implemented but not used yet
-//const REMOVE_TRANSACTION = 'REMOVE_TRANSACTION' //using 'transactions/:id'
 //const EDIT_TRANSACTION = 'EDIT_TRANSACTION' //using 'transaction/:id'
 
 // const ADD_BUDGET = 'ADD_BUDGET'
@@ -35,10 +36,14 @@ const addTransaction = () =>({
   type:ADD_TRANSACTION
 });
 
+const removeTransaction = () => ({
+   type:REMOVE_TRANSACTION
+});
 
-export const getTransactions = () => dispatch => {
+export const getTransactions = (userid) => dispatch => {
+  let url = "http://localhost:3000/routers/transactions/" + userid;
   return axios
-    .get("http://localhost:3000/routers/transactions")
+    .get(url)
     .then(res => {
       return res.data;
     })
@@ -75,13 +80,14 @@ export const login = formData => dispatch => {
 // for logging out, ending session
 export const logout = () => dispatch => {
   return axios
-    .delete("/auth/logout")
+    .delete("http://localhost:3000/auth/logout")
     .then(() => dispatch(gotMe(initialState.user)))
     .catch(console.error.bind(console));
 };
 
 export const register = formData => dispatch => {
-  return console.log(formData);
+  return axios
+    .post("http://localhost:3000/routers/users", formData)
 }
 
 
@@ -123,14 +129,15 @@ export const addTransactionThunk = (object) => dispatch =>
 
 
 //Implemented but not used yet
-/*
-//const REMOVE_TRANSACTION = 'REMOVE_TRANSACTION' 'transactions/:id'
-export const removeTransactionThunk = (id) =>
-{
-    let url = "/routers/transactions" + id;
-    return axios.delete(url);
-}
 
+//const REMOVE_TRANSACTION = 'REMOVE_TRANSACTION' 'transactions/:id'
+export const removeTransactionThunk = (id) => dispatch =>
+{
+    let url = "http://localhost:3000/routers/transactions/" + id;
+    return axios.delete(url)
+    .then(() => dispatch(removeTransaction()));
+}
+/*
 // const EDIT_TRANSACTION = 'EDIT_TRANSACTION' 'transaction/:id'
 export const editTransactionThunk = (id) =>
 {

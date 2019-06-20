@@ -5,6 +5,7 @@ import { addTransactionThunk } from "../store/index";
 import { connect } from "react-redux";
 import ListTransactions from "./ListTransactions";
 import Modal from "./Modal";
+import { removeTransactionThunk } from "../store/index";
 
 class Transaction extends Component {
   constructor(props) {
@@ -22,6 +23,10 @@ class Transaction extends Component {
     userid: this.props.user.id, // must FIX to actual userid of logged in user
     subscription: 0,
     visible: false
+  };
+
+  deleteTransaction = event => {
+    this.props.deleteTransaction(event.target.value);
   };
 
   openModal() {
@@ -102,6 +107,15 @@ class Transaction extends Component {
           <li>Item: {trans.title} </li>
           <li>Category: {trans.category} </li>
           <li>Subscription: {trans.subscription} </li>
+          <li>
+            <button
+              value={trans.id}
+              type="button"
+              onClick={this.deleteTransaction}
+            >
+              Delete Transaction
+            </button>
+          </li>
         </ul>
       </div>
     ));
@@ -219,9 +233,28 @@ class Transaction extends Component {
   }
 }
 
+const getImage = category => {
+  let logo;
+  switch (category) {
+    case "tech":
+      logo = "../assets/tech.png";
+    case "food":
+      logo = "../assets/food.png";
+    case "clothing":
+      logo = "../assets/clothing.png";
+    case "transit":
+      logo = "../assets/transit.png";
+    case "health":
+      logo = "../assets/health.png";
+    case "entertainment":
+      logo = "../assets/entertainment.png";
+  }
+};
+
 const mapDispatchToProps = dispatch => {
   return {
-    addTransaction: object => dispatch(addTransactionThunk(object))
+    addTransaction: object => dispatch(addTransactionThunk(object)),
+    deleteTransaction: object => dispatch(removeTransactionThunk(object))
   };
 };
 

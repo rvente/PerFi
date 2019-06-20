@@ -6,12 +6,18 @@ import ListTransactions from "./ListTransactions";
 import { connect } from "react-redux";
 import { login } from "../store/index";
 import { getTransactions } from "../store/index";
+import { stat } from "fs";
 
 class Home extends Component {
+
   componentDidMount() {
-    this.props.getTransactions();
+    this.props.getTransactions(this.props.user.id);
   }
+
   render() {
+    if (!this.props.user.id) {
+      return <Redirect to='/' />
+    }
     return (
       <div>
         <NavBar />
@@ -22,13 +28,20 @@ class Home extends Component {
   }
 }
 
+const mapStateToProps = (state) => {
+  return {
+    user: state.user
+  }
+}
+
+
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    getTransactions: () => dispatch(getTransactions())
+    getTransactions: (userID) => dispatch(getTransactions(userID))
   };
 };
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(Home);
