@@ -2,4 +2,6 @@ $brdr_rad: 5px;
 $steel_blue_4: #36648b;
 $base_light: white;
 $base_dark: #222;
+$base_dark: $steel_blue_4;
 $lighter_dark: lighten($base_dark, 5%);
+$active_dark: lighten($base_dark, 10%);
