@@ -14,7 +14,7 @@ import {
 } from "react-router-dom";
 import store, { getMe } from "./store/index";
 import Login from "./components/login";
-import AccountPage from "./components/account-page";
+import AccountPage from "./components/account-page.js";
 import Home from "./components/Home";
 import NavBar from "./components/NavBar";
 import NewAccount from "./components/NewAccount.jsx";
@@ -27,21 +27,20 @@ var DumbComponent = () => {
 
 const Main = withRouter(
   class extends Component {
-    // componentDidMount() {
-    //   store.dispatch(getMe()).then(() => {
-    //     this.props.history.push("/");
-    //   });
-    // }
+    componentDidMount() {
+      store.dispatch(getMe()).then(() => {
+        this.props.history.push("/");
+      });
+    }
 
     render() {
       return (
         <Switch>
           <Route path="/" exact component={Login} />
-          <Route exact path="/account" component={Home} />
           <Route path="/Home/" component={Home} />
+          <Route exact path="/Account/" component={AccountPage} />
           <Route path="/Transaction/" component={Transaction} />
           {/* <Route path="/Budget/" component={DumbComponent} /> */}
-          <Route path="/Account/" component={DumbComponent} />
           <Route path="/Login/" component={LoginComponent} />
           <Route path="/NewAccount/" component={NewAccount} />
           <Route path="/Budget/" component={Home} />
