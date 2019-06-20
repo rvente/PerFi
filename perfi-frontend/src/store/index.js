@@ -86,7 +86,8 @@ export const logout = () => dispatch => {
 };
 
 export const register = formData => dispatch => {
-  return console.log(formData);
+  return axios
+    .post("http://localhost:3000/routers/users", formData)
 }
 
 
