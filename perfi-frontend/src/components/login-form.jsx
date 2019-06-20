@@ -31,7 +31,10 @@ const LoginForm = props => {
           <button type="submit">
             Submit
           </button>
-	  </div>
+          <button type="button">
+            Register
+          </button>
+      </div>
     </form>
   );
 };
