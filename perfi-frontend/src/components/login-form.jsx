@@ -1,7 +1,7 @@
 import React from "react";
 
 const LoginForm = props => {
-  const { handleSubmit } = props;
+  const { handleSubmit, handleClick } = props;
   return (
     <form onSubmit={handleSubmit}>
         <div>
@@ -31,7 +31,10 @@ const LoginForm = props => {
           <button type="submit">
             Submit
           </button>
-	  </div>
+          <button type="button" onClick={handleClick}>
+            Register
+          </button>
+      </div>
     </form>
   );
 };
