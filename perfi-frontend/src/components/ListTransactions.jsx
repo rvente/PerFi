@@ -10,7 +10,6 @@ class ListTransactions extends Component {
       transactions: []
     };
   }
-
   render() {
     let sorted = this.props.transactions.sort((a, b) => {
       let x = a.date.replace(/-/g, "").replace(/[\/]/g, "");
@@ -24,6 +23,7 @@ class ListTransactions extends Component {
       return 0;
     });
 
+    sorted = sorted.slice(0, 4);
     let trans = sorted.map(trans => (
       <div className="card card-portrait">
         <ul>
@@ -36,9 +36,8 @@ class ListTransactions extends Component {
       </div>
     ));
     return (
-      <div>
-        List Transactions
-        <div className="card-container">{trans}</div>
+      <div id="all-trans" className="card-container">
+        {trans}
       </div>
     );
   }
