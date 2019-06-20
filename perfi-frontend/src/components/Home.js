@@ -6,6 +6,7 @@ import ListTransactions from "./ListTransactions";
 import { connect } from "react-redux";
 import { login } from "../store/index";
 import { getTransactions } from "../store/index";
+import { stat } from "fs";
 
 class Home extends Component {
   componentDidMount() {
@@ -21,6 +22,7 @@ class Home extends Component {
     );
   }
 }
+
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {

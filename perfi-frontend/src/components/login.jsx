@@ -6,12 +6,12 @@ import { getTransactions } from "../store/index";
 import LocalLoginForm from "./login-form";
 
 const Login = props => {
-  const { handleSubmit } = props;
+  const { handleSubmit, handleClick } = props;
 
   return (
       <div className="center">
         <div className="card card-login">
-            <LocalLoginForm handleSubmit={handleSubmit} />
+            <LocalLoginForm handleSubmit={handleSubmit} handleClick={handleClick} />
         </div>
       </div>
   );
@@ -27,7 +27,11 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       dispatch(login({ email, password }))
       .then(() => {
         ownProps.history.push("/Home");
-      });
+      })
+    },
+
+    handleClick() {
+      ownProps.history.push("/newaccount");
     }
     // getTrans: dispatch(getTransactions)
   };
