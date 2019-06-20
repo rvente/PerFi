@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import ListTransactions from "./ListTransactions";
 import Modal from "./Modal";
 import { removeTransactionThunk } from "../store/index";
-import plus from "../assets/plus.png";
+// import plus from "../assets/plus.png";
 
 class Transaction extends Component {
   constructor(props) {
@@ -130,9 +130,7 @@ class Transaction extends Component {
             className="card card-portrait"
             id="addcard"
             onClick={() => this.openModal()}
-          >
-            <img src={plus} />
-          </div>
+          />
           <Modal
             visible={this.state.visible}
             width="400"
