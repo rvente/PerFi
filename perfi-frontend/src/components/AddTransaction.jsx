@@ -184,9 +184,11 @@ class Transaction extends Component {
                             text="Category"
                           >
                             <option value="Food">Food</option>
-                            <option value="School/Work">School/Work</option>
-                            <option value="Fun">Fun</option>
-                            <option value="Necessities">Necessities</option>
+                            <option value="Transit">Transit</option>
+                            <option value="Entertainment">Entertainment</option>
+                            <option value="Health">Health</option>
+                            <option value="Clothing">Entertainment</option>
+                            <option value="Tech">Health</option>
                           </select>{" "}
                         </td>
                       </tr>
