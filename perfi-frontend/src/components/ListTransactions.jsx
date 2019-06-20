@@ -1,16 +1,37 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { removeTransactionThunk } from "../store/index";
+
+import {removeTransactionThunk} from "../store/index";
+
 class ListTransactions extends Component {
+
   constructor(props) {
     super(props);
     this.state = {
-      transactions: []
+        transactions: [],
+        imageurl: "assets/unknown.png"
     };
   }
-  deleteTransaction = event => {
-    this.props.deleteTransaction(event.target.value);
+
+   getImage = (category) => {
+        // images[] must contain all images in the directory
+        let images = ["clothing", "food", "transit",
+                      "entertainment", "health", "tech"];
+        let fulldir;
+        if (images.includes(category)) {
+            fulldir = "assets/"+category+".png";
+        } else if (category == "clothes") {
+            fulldir = "assets/"+"clothing"+".png";
+        } else {
+            fulldir = "assets/"+"unknown"+".png";
+        }
+       return(<img src={fulldir} alt={category}/>);
+    };
+
+  deleteTransaction = (event) => {
+      this.props.deleteTransaction(event.target.value);
   };
+
   render() {
     let sorted = this.props.transactions.sort((a, b) => {
       let x = a.date.replace(/-/g, "").replace(/[\/]/g, "");
@@ -25,26 +46,22 @@ class ListTransactions extends Component {
     });
 
     sorted = sorted.slice(0, 4);
-    let trans = sorted.map(trans => (
+    let trans = sorted.map(tran => (
       <div className="card card-portrait">
+        {this.getImage(tran.category)}
         <ul>
-          <li>Date: {trans.date} </li>
-          <li>Cost: {trans.cost} </li>
-          <li>Item: {trans.title} </li>
-          <li>Category: {trans.category} </li>
-          <li>Subscription: {trans.subscription} </li>
-          <li>
-            <button
-              value={trans.id}
-              type="button"
-              onClick={this.deleteTransaction}
-            >
+          <h2> {tran.title} </h2>
+          <li>Date: {tran.date} </li>
+          <li>Cost: {tran.cost} </li>
+          {/* <li>Category: {tran.category} </li> */}
+          {/* <li>Subscription: {tran.subscription} </li> */}
+        <button value = {tran.id} type="button" onClick={this.deleteTranaction}>
               Delete Transaction
-            </button>
-          </li>
+        </button>
         </ul>
       </div>
     ));
+
     return (
       <div id="all-trans" className="card-container">
         {trans}
@@ -52,6 +69,7 @@ class ListTransactions extends Component {
     );
   }
 }
+
 
 const getImage = category => {
   let logo;
