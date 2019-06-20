@@ -19,6 +19,9 @@ const NewAccountForm = (props) => {
         <label>Password</label>
         <input type="password" name="password"/>
         <br />
+        <label>Budget</label>
+        <input type="number" name="budget"/>
+        <br />
         <button type="submit">Register</button>
       </form>
     </div>
