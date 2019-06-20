@@ -41,9 +41,9 @@ const removeTransaction = () => ({
 });
 
 export const getTransactions = (userid) => dispatch => {
-  //let url = "http://localhost:3000/routers/transactions" + userid;
+  let url = "http://localhost:3000/routers/transactions/" + userid;
   return axios
-    .get("http://localhost:3000/routers/transactions")
+    .get(url)
     .then(res => {
       return res.data;
     })

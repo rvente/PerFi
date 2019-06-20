@@ -9,8 +9,9 @@ import { getTransactions } from "../store/index";
 import { stat } from "fs";
 
 class Home extends Component {
+
   componentDidMount() {
-    this.props.getTransactions();
+    this.props.getTransactions(this.props.user.id);
   }
 
   render() {
@@ -36,7 +37,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    getTransactions: () => dispatch(getTransactions())
+    getTransactions: (userID) => dispatch(getTransactions(userID))
   };
 };
 
