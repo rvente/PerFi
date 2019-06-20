@@ -30,6 +30,10 @@ const gotTransactions = transactions => ({
   transactions
 });
 
+const addTransaction = () =>({
+  type:ADD_TRANSACTION
+});
+
 
 export const getTransactions = () => dispatch => {
   return axios
@@ -110,9 +114,10 @@ export default createStore(
 
 // TRANSACTIONS THUNKS
 // const ADD_TRANSACTION = 'ADD_TRANSACTION' //using '/transactions'
-export const addTransactionThunk = (object) =>
+export const addTransactionThunk = (object) => dispatch =>
 {
-    return axios.post('/routers/transactions', object);
+    return axios.post('http://localhost:3000/routers/transactions', object)
+    .then(() => dispatch(addTransaction()));
 }
 
 //const REMOVE_TRANSACTION = 'REMOVE_TRANSACTION' 'transactions/:id'

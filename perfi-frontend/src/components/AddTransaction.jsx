@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router";
 import NavBar from "./NavBar";
+import {addTransactionThunk} from '../store/index';
+import { connect } from "react-redux";
 
 class Transaction extends Component {
   constructor(props) {
@@ -10,12 +12,59 @@ class Transaction extends Component {
     this.testForm = this.testForm.bind(this);
   }
 
+  state = {
+      date:"", 
+      cost: 0,
+      title:"", 
+      category:"", 
+      userid:0,
+      subscription: 0
+  }
+ 
   changePage() {
     this.props.history.push(`/Transactions`);
   }
 
+  handlename = (event) =>
+  {
+      this.setState({
+        title: event.target.value
+      })
+  }
+  handleamt = (event) =>
+  {
+      this.setState({
+        cost: event.target.value
+      })
+  }
+
+  handlecat = (event) =>
+  {
+     this.setState({
+       category:event.target.value
+     })
+  }
+  handledate = (event) =>
+  {
+    this.setState({
+      date: event.target.value
+    })
+  }
+  handlesub = (event) =>
+  {
+    this.setState({
+      subscription:event.target.value
+    })
+  }
+
   testForm(e) {
-    console.log(e.target.value);
+    e.preventDefault();
+    //console.log(e.target.value);
+    console.log(this.state.name);
+    // make object here
+    //let transactionObject = {"date":this.state.date,"cost":this.state.cost, "title":this.state.title, "category":this.state.category, "userid":this.state.userid,"subscription":this.state.subscription};
+    // call add transaction thunk here
+    this.props.addTransaction(this.state);
   }
 
   render() {
@@ -31,21 +80,35 @@ class Transaction extends Component {
                   <td> Name: </td>
                   <td>
                     {" "}
-                    <input type="text" name="transaction_name" required />{" "}
+                    <input onChange = {this.handlename} type="text" name="transaction_name" required />{" "}
                   </td>
                 </tr>
                 <tr>
-                  <td> Change in account: </td>
+                  <td> Amount: </td>
                   <td>
                     {" "}
-                    <input type="text" name="Delta" required />{" "}
+                    <input onChange = {this.handleamt}type="text" name="transaction_amount" required />{" "}
+                  </td>
+                </tr>
+                <tr>
+                  <td> Category: </td>
+                  <td>
+                    {" "}
+                    <input onChange = {this.handlecat} type="text" name="transaction_cat" required />{" "}
+                  </td>
+                </tr>
+                <tr>
+                  <td> Subscription? </td>
+                  <td>
+                    {" "}
+                    <input onChange = {this.handlesub} type="text" name="transaction_sub" required />{" "}
                   </td>
                 </tr>
                 <tr>
                   <td> Date (MMDDYYYY): </td>
                   <td>
                     {" "}
-                    <input type="text" name="Delta" required />{" "}
+                    <input onChange = {this.handledate} type="text" name="Delta" required />{" "}
                   </td>
                 </tr>
               </tbody>
@@ -61,4 +124,13 @@ class Transaction extends Component {
   }
 }
 
-export default withRouter(Transaction);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addTransaction: (object) => dispatch(addTransactionThunk(object))
+  };
+};
+
+export default connect(
+  null,mapDispatchToProps
+)(withRouter(Transaction));
+//export default withRouter(Transaction);
