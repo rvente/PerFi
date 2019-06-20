@@ -114,9 +114,7 @@ class Transaction extends Component {
               </tbody>
             </table>
             <button type="submit">Add Transaction</button>
-            <button type="button" onClick={this.changePage}>
-              New Account
-            </button>
+              
           </form>
         </div>
       </div>

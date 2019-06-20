@@ -36,7 +36,8 @@ const addTransaction = () =>({
 });
 
 
-export const getTransactions = () => dispatch => {
+export const getTransactions = (userid) => dispatch => {
+  //let url = "http://localhost:3000/routers/transactions" + userid;
   return axios
     .get("http://localhost:3000/routers/transactions")
     .then(res => {

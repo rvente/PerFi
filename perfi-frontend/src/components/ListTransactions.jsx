@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-const axios = require("axios");
-
 class ListTransactions extends Component {
   constructor(props) {
     super(props);
@@ -10,7 +8,6 @@ class ListTransactions extends Component {
       transactions: []
     };
   }
-
   render() {
     let trans = this.props.transactions.map(trans => (
       <div className="card card-portrait">
@@ -21,6 +18,9 @@ class ListTransactions extends Component {
           <li>Category: {trans.category} </li>
           <li>Subscription: {trans.subscription} </li>
         </ul>
+        <button type="button" onClick={this.deleteTransaction}>
+              Delete Transaction 
+        </button>
       </div>
     ));
     return (
@@ -33,7 +33,7 @@ class ListTransactions extends Component {
 }
 
 const mapState = state => {
-  return { transactions: state.transactions };
+  return { transactions: state.transactions};
 };
 
 export default connect(mapState)(ListTransactions);
