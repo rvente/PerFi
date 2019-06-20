@@ -9,9 +9,9 @@ class ListTransactions extends Component {
     };
   }
 
-  deleteTransaction = (id) =>
+  deleteTransaction = (event) =>
   {
-      this.props.deleteTransaction(id);
+      this.props.deleteTransaction(event.target.value);
   }
   render() {
     let trans = this.props.transactions.map(tran => (
@@ -23,7 +23,7 @@ class ListTransactions extends Component {
           <li>Category: {tran.category} </li>
           <li>Subscription: {tran.subscription} </li>
         </ul>
-        <button type="button" onClick={this.deleteTransaction(tran.id)}>
+        <button value = {tran.id} type="button" onClick={this.deleteTransaction}>
               Delete Transaction
         </button>
       </div>
