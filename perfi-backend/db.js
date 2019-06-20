@@ -6,19 +6,34 @@ const db = new Sequelize('postgres://localhost/perfi', {logging:false})
 // defines User module
 const User = db.define('users', {
 	username: {
-		type: Sequelize.STRING
+		type: Sequelize.STRING,
+		validate: {
+			notEmpty: true
+		}
 	},
 	email: {
-		type: Sequelize.STRING
+		type: Sequelize.STRING,
+		validate: {
+			notEmpty: true
+		}
 	},
 	firstname: {
-		type: Sequelize.STRING
+		type: Sequelize.STRING,
+		validate: {
+			notEmpty: true
+		}
 	},
 	lastname: {
-		type: Sequelize.STRING
-	}, 
+		type: Sequelize.STRING,
+		validate: {
+			notEmpty: true
+		}
+	},
 	password: {
-		type: Sequelize.STRING
+		type: Sequelize.STRING,
+		validate: {
+			notEmpty: true
+		}
 	},
 	budget:{
 		type: Sequelize.INTEGER
@@ -27,22 +42,40 @@ const User = db.define('users', {
 
 const Transaction = db.define('transactions', {
 	date: {
-		type: Sequelize.STRING
+		type: Sequelize.STRING,
+		validate: {
+			notEmpty: true
+		}
 	},
 	cost: {
-		type: Sequelize.INTEGER
+		type: Sequelize.INTEGER,
+		validate: {
+			notEmpty: true
+		}
 	},
 	title: {
-		type: Sequelize.STRING
+		type: Sequelize.STRING,
+		validate: {
+			notEmpty: true
+		}
 	},
 	category: {
-		type: Sequelize.STRING
+		type: Sequelize.STRING,
+		validate: {
+			notEmpty: true
+		}
 	},
 	userid: {
-		type: Sequelize.INTEGER
+		type: Sequelize.INTEGER,
+		validate: {
+			notEmpty: true
+		}
 	},
 	subscription: {
-		type: Sequelize.INTEGER
+		type: Sequelize.INTEGER,
+		validate: {
+			notEmpty: true
+		}
 	}
 	// accessor
 	// mutator
@@ -52,14 +85,12 @@ const Transaction = db.define('transactions', {
 /***/
 Transaction.belongsTo(User, {as: 'user'});
 User.hasMany(Transaction, {as: 'Transaction'});
-/***/ 
+/***/
 
 
 // exports db, User, and Transaction modules
 module.exports = {
-	db, 
-	User, 
+	db,
+	User,
 	Transaction
 }
-
-

@@ -12,7 +12,11 @@ class Home extends Component {
   componentDidMount() {
     this.props.getTransactions();
   }
+
   render() {
+    if (!this.props.user.id) {
+      return <Redirect to='/' />
+    }
     return (
       <div>
         <NavBar />
@@ -20,6 +24,12 @@ class Home extends Component {
         <ListTransactions />
       </div>
     );
+  }
+}
+
+const mapStateToProps = (state) => {
+  return {
+    user: state.user
   }
 }
 
@@ -31,6 +41,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 };
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(Home);
