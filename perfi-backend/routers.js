@@ -26,24 +26,24 @@ router.use(
     })
 
     // ADD USER, async call as the next call is not contingent upon it
-    router.post('/users', async function(req,res) {
+    router.post('/users', function(req,res) {
         User.create({
-                username:req.body.username, 
+                username:req.body.username,
                 email:req.body.email,
-                firstname:req.body.firstname, 
-                lastname:req.body.lastname, 
+                firstname:req.body.firstname,
+                lastname:req.body.lastname,
                 password:req.body.password,
                 budget:req.body.budget
             })
         .then(newUser => {
             console.log({newUser});
-            return {id};
+            res.sendStatus(200);
         })
         .catch(error => {
             res.status(400).send(error)
         })
     })
-    
+
     // USER METHODS
     router.route('/users/:id')
         // GET SPECIFIC USER (where id of user has been appended to "http://localhost:3000/routers/users/" in thunk axios request in /reducer/index)
@@ -66,10 +66,10 @@ router.use(
                 })
                 .then(user => {
                     user.updateAttributes({
-                        username:req.body.username, 
+                        username:req.body.username,
                         email:req.body.email,
-                        firstname:req.body.firstname, 
-                        lastname:req.body.lastname, 
+                        firstname:req.body.firstname,
+                        lastname:req.body.lastname,
                         password:req.body.password,
                         budget: req.body.budget
                         })
@@ -77,7 +77,7 @@ router.use(
                 .catch(error => {
                     res.status(400).send(error)
                 })
-        })      
+        })
         // DELETE USER by id, async call as the next call is not contingent upon it
         .delete(async function(req,res,next) {
             User.destroy({
@@ -100,15 +100,15 @@ router.use(
             .catch(error => {
                 res.status(400).send(error)
             })
-        }) 
+        })
 
     //ADD TRANSACTION
     router.post('/transactions', async function(req,res) {
         Transaction.create({
-                date:req.body.date, 
+                date:req.body.date,
                 cost:req.body.cost,
-                title:req.body.title, 
-                category:req.body.category, 
+                title:req.body.title,
+                category:req.body.category,
                 userid:req.body.userid,
                 subscription: req.body.subscription
             })
@@ -116,7 +116,7 @@ router.use(
             res.status(400).send(error)
             })
     })
- 
+
     router.route('/transactions/:id')
         // GET SPECIFIC transactions for a user (where userid has been appended to "http://localhost:3000/routers/transactions/" in thunk axios request in ./reducer/index)
         .get(function(req, res) {
@@ -135,10 +135,10 @@ router.use(
                 })
                 .then(transaction =>  {
                     transaction.updateAttributes({
-                        date:req.body.date, 
+                        date:req.body.date,
                         cost:req.body.cost,
-                        title:req.body.title, 
-                        category:req.body.category, 
+                        title:req.body.title,
+                        category:req.body.category,
                         userid:req.body.userid,
                         subscription: req.body.subscription
                         })

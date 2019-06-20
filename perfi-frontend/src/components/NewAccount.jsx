@@ -25,7 +25,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       const firstname = evt.target.firstname.value;
       const lastname = evt.target.lastname.value;
       const password = evt.target.password.value;
-      dispatch(register({ username, email, firstname, lastname, password }))
+      const budget = evt.target.budget.value;
+
+      dispatch(register({username, email, firstname, lastname, password, budget}))
       .then(() => {
         ownProps.history.push("/");
       })

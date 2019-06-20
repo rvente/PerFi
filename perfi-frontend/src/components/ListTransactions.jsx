@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-
-const axios = require("axios");
-
+import {removeTransactionThunk} from "../store/index";
 class ListTransactions extends Component {
   constructor(props) {
     super(props);
@@ -11,16 +9,23 @@ class ListTransactions extends Component {
     };
   }
 
+  deleteTransaction = (event) =>
+  {
+      this.props.deleteTransaction(event.target.value);
+  }
   render() {
-    let trans = this.props.transactions.map(trans => (
+    let trans = this.props.transactions.map(tran => (
       <div className="card card-portrait">
         <ul>
-          <li>Date: {trans.date} </li>
-          <li>Cost: {trans.cost} </li>
-          <li>Item: {trans.title} </li>
-          <li>Category: {trans.category} </li>
-          <li>Subscription: {trans.subscription} </li>
+          <li>Date: {tran.date} </li>
+          <li>Cost: {tran.cost} </li>
+          <li>Item: {tran.title} </li>
+          <li>Category: {tran.category} </li>
+          <li>Subscription: {tran.subscription} </li>
         </ul>
+        <button value = {tran.id} type="button" onClick={this.deleteTransaction}>
+              Delete Transaction
+        </button>
       </div>
     ));
     return (
@@ -32,8 +37,30 @@ class ListTransactions extends Component {
   }
 }
 
-const mapState = state => {
-  return { transactions: state.transactions };
-};
+const getImage = (category) => {
+    let logo;
+    switch (category) {
+    case "tech":
+        logo = "../assets/tech.png";
+    case "food":
+        logo = "../assets/food.png";
+    case "clothing":
+        logo = "../assets/clothing.png";
+    case "transit":
+        logo = "../assets/transit.png";
+    case "health":
+        logo = "../assets/health.png";
+    case "entertainment":
+        logo = "../assets/entertainment.png";
+    }
+}
 
-export default connect(mapState)(ListTransactions);
+const mapState = state => {
+  return { transactions: state.transactions};
+};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    deleteTransaction: (object) => dispatch(removeTransactionThunk(object))
+  };
+};
+export default connect(mapState, mapDispatchToProps)(ListTransactions);
