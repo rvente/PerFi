@@ -182,6 +182,8 @@ class Transaction extends Component {
                             className="dropdown-select"
                             text="Category"
                           >
+                            {/* TODO: make category unsubmittable */}
+                            <option value="Category">Category</option>
                             <option value="Food">Food</option>
                             <option value="Transit">Transit</option>
                             <option value="Entertainment">Entertainment</option>
