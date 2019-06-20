@@ -19,7 +19,7 @@ const AccountPage = props => {
       <p>Name: {user.firstname} {user.lastname}</p>
       <p>Username: {user.username}</p>
       <p>Email: {user.email}</p>
-      <button>I Don't Do Anything</button>
+      <button onClick={handleClick}>Logout</button>
     </div>
   );
 
