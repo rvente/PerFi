@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-
+import {removeTransactionThunk} from "../store/index";
 class ListTransactions extends Component {
   constructor(props) {
     super(props);
@@ -8,18 +8,23 @@ class ListTransactions extends Component {
       transactions: []
     };
   }
+
+  deleteTransaction = (id) =>
+  {
+      this.props.deleteTransaction(id);
+  }
   render() {
-    let trans = this.props.transactions.map(trans => (
+    let trans = this.props.transactions.map(tran => (
       <div className="card card-portrait">
         <ul>
-          <li>Date: {trans.date} </li>
-          <li>Cost: {trans.cost} </li>
-          <li>Item: {trans.title} </li>
-          <li>Category: {trans.category} </li>
-          <li>Subscription: {trans.subscription} </li>
+          <li>Date: {tran.date} </li>
+          <li>Cost: {tran.cost} </li>
+          <li>Item: {tran.title} </li>
+          <li>Category: {tran.category} </li>
+          <li>Subscription: {tran.subscription} </li>
         </ul>
-        <button type="button" onClick={this.deleteTransaction}>
-              Delete Transaction 
+        <button type="button" onClick={this.deleteTransaction(tran.id)}>
+              Delete Transaction
         </button>
       </div>
     ));
@@ -35,5 +40,9 @@ class ListTransactions extends Component {
 const mapState = state => {
   return { transactions: state.transactions};
 };
-
-export default connect(mapState)(ListTransactions);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    deleteTransaction: (object) => dispatch(removeTransactionThunk(object))
+  };
+};
+export default connect(mapState, mapDispatchToProps)(ListTransactions);
