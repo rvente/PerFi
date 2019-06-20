@@ -38,7 +38,7 @@ class ListTransactions extends Component {
     return (
       <div>
         List Transactions
-        {trans}
+        <div className="card-container">{trans}</div>
       </div>
     );
   }
