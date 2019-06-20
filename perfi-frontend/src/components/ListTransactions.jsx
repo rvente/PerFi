@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import {removeTransactionThunk} from "../store/index";
+import Cookies from 'js-cookie';
+import {Redirect} from 'react-router-dom';
+
 class ListTransactions extends Component {
   constructor(props) {
     super(props);

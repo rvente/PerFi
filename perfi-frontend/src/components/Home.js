@@ -7,6 +7,7 @@ import { connect } from "react-redux";
 import { login } from "../store/index";
 import { getTransactions } from "../store/index";
 import { stat } from "fs";
+import Cookies from 'js-cookie';
 
 class Home extends Component {
   componentDidMount() {

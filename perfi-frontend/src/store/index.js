@@ -2,6 +2,7 @@ import { createStore, applyMiddleware } from "redux";
 import loggerMiddleware from "redux-logger";
 import thunkMiddleware from "redux-thunk";
 import axios from "axios";
+import Cookies from 'js-cookie';
 
 const initialState = {
   user: {},
@@ -72,7 +73,10 @@ export const getMe = () => dispatch => {
 export const login = formData => dispatch => {
   return axios
     .put("http://localhost:3000/auth/login", formData)
-    .then(res => res.data)
+    .then(res => {
+      Cookies.set("userid", res.data.id, {expires: 1/48});
+      return res.data;
+    })
     .then(user => dispatch(gotMe(user)))
     .catch(console.error.bind(console));
 };
@@ -81,6 +85,7 @@ export const login = formData => dispatch => {
 export const logout = () => dispatch => {
   return axios
     .delete("http://localhost:3000/auth/logout")
+    .then(Cookies.remove("userid"))
     .then(() => dispatch(gotMe(initialState.user)))
     .catch(console.error.bind(console));
 };
