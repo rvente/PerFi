@@ -21,7 +21,6 @@ class Home extends Component {
     return (
       <div>
         <NavBar />
-        <header>Home</header>
         <ListTransactions />
       </div>
     );
