@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+
 import {removeTransactionThunk} from "../store/index";
 
 class ListTransactions extends Component {
@@ -11,8 +12,6 @@ class ListTransactions extends Component {
         imageurl: "assets/unknown.png"
     };
   }
-
-
 
    getImage = (category) => {
         // images[] must contain all images in the directory
@@ -34,7 +33,20 @@ class ListTransactions extends Component {
   };
 
   render() {
-    let trans = this.props.transactions.map(tran => (
+    let sorted = this.props.transactions.sort((a, b) => {
+      let x = a.date.replace(/-/g, "").replace(/[\/]/g, "");
+      let y = b.date.replace(/-/g, "").replace(/[\/]/g, "");
+      if (x < y) {
+        return 1;
+      }
+      if (x > y) {
+        return -1;
+      }
+      return 0;
+    });
+
+    sorted = sorted.slice(0, 4);
+    let trans = sorted.map(tran => (
       <div className="card card-portrait">
         {this.getImage(tran.category)}
         <ul>
@@ -51,8 +63,7 @@ class ListTransactions extends Component {
     ));
 
     return (
-      <div>
-        List Transactions
+      <div id="all-trans" className="card-container">
         {trans}
       </div>
     );
@@ -60,12 +71,33 @@ class ListTransactions extends Component {
 }
 
 
-const mapState = state => {
-  return { transactions: state.transactions};
+const getImage = category => {
+  let logo;
+  switch (category) {
+    case "tech":
+      logo = "../assets/tech.png";
+    case "food":
+      logo = "../assets/food.png";
+    case "clothing":
+      logo = "../assets/clothing.png";
+    case "transit":
+      logo = "../assets/transit.png";
+    case "health":
+      logo = "../assets/health.png";
+    case "entertainment":
+      logo = "../assets/entertainment.png";
+  }
 };
-const mapDispatchToProps = (dispatch) => {
+
+const mapState = state => {
+  return { transactions: state.transactions };
+};
+const mapDispatchToProps = dispatch => {
   return {
-    deleteTransaction: (object) => dispatch(removeTransactionThunk(object))
+    deleteTransaction: object => dispatch(removeTransactionThunk(object))
   };
 };
-export default connect(mapState, mapDispatchToProps)(ListTransactions);
+export default connect(
+  mapState,
+  mapDispatchToProps
+)(ListTransactions);

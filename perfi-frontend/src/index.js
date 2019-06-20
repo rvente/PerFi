@@ -20,6 +20,7 @@ import NavBar from "./components/NavBar";
 import NewAccount from "./components/NewAccount.jsx";
 import LoginComponent from "./components/Login-Old.jsx";
 import Transaction from "./components/AddTransaction.jsx";
+import Budget from "./components/Budget.jsx";
 // dumb component used for templating
 var DumbComponent = () => {
   return <div />;
@@ -43,7 +44,7 @@ const Main = withRouter(
           {/* <Route path="/Budget/" component={DumbComponent} /> */}
           <Route path="/Login/" component={LoginComponent} />
           <Route path="/NewAccount/" component={NewAccount} />
-          <Route path="/Budget/" component={Home} />
+          <Route path="/Budget/" component={Budget} />
         </Switch>
       );
     }
