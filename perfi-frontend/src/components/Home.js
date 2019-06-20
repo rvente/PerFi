@@ -11,7 +11,11 @@ class Home extends Component {
   componentDidMount() {
     this.props.getTransactions();
   }
+
   render() {
+    if (!this.props.user.id) {
+      return <Redirect to='/' />
+    }
     return (
       <div>
         <NavBar />
@@ -22,6 +26,13 @@ class Home extends Component {
   }
 }
 
+const mapStateToProps = (state) => {
+  return {
+    user: state.user
+  }
+}
+
+
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     getTransactions: () => dispatch(getTransactions())
@@ -29,6 +40,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 };
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(Home);
