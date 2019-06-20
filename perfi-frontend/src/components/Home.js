@@ -15,9 +15,6 @@ class Home extends Component {
   }
 
   render() {
-    if (!this.props.user.id) {
-      return <Redirect to='/' />
-    }
     return (
       <div>
         <NavBar />
@@ -30,7 +27,7 @@ class Home extends Component {
 const mapStateToProps = (state) => {
   return {
     user: state.user
-  }
+  };
 }
 
 

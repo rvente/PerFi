@@ -74,11 +74,13 @@ class ListTransactions extends Component {
 const mapState = state => {
   return { transactions: state.transactions };
 };
+
 const mapDispatchToProps = dispatch => {
   return {
     deleteTransaction: object => dispatch(removeTransactionThunk(object))
   };
 };
+
 export default connect(
   mapState,
   mapDispatchToProps
