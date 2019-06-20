@@ -14,15 +14,13 @@ class ListTransactions extends Component {
   render() {
     let trans = this.props.transactions.map(trans => (
       <div className="card card-portrait">
-        <div>
-        <img src="pic_trulli.jpg" alt="Italian Trulli">
-        <div/>
+        {getImage(trans.category)}
         <ul>
+          <h2> {trans.title} </h2>
           <li>Date: {trans.date} </li>
           <li>Cost: {trans.cost} </li>
-          <li>Item: {trans.title} </li>
-          <li>Category: {trans.category} </li>
-          <li>Subscription: {trans.subscription} </li>
+          {/* <li>Category: {trans.category} </li> */}
+          {/* <li>Subscription: {trans.subscription} </li> */}
         </ul>
       </div>
     ));
@@ -34,6 +32,22 @@ class ListTransactions extends Component {
     );
   }
 }
+
+const getImage = (category) => {
+    // images[] must contain all images in
+    let images = ["clothing", "food", "transit",
+                  "entertainment", "health", "tech"];
+    let fulldir;
+    if (images.includes(category)) {
+        fulldir = "assets/"+category+".png";
+    } else if (category == "clothes") {
+        fulldir = "assets/"+"clothing"+".png";
+    } else if (category == "") {
+        category = "unknown";
+    }
+
+    return <img src={fulldir} alt={category}/>;
+};
 
 const mapState = state => {
   return { transactions: state.transactions };
