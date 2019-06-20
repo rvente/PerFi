@@ -114,7 +114,6 @@ class Transaction extends Component {
               </tbody>
             </table>
             <button type="submit">Add Transaction</button>
-              
           </form>
         </div>
       </div>

@@ -41,9 +41,9 @@ const removeTransaction = () => ({
 });
 
 export const getTransactions = (userid) => dispatch => {
-  //let url = "http://localhost:3000/routers/transactions" + userid;
+  let url = "http://localhost:3000/routers/transactions/" + userid;
   return axios
-    .get("http://localhost:3000/routers/transactions")
+    .get(url)
     .then(res => {
       return res.data;
     })
@@ -80,7 +80,7 @@ export const login = formData => dispatch => {
 // for logging out, ending session
 export const logout = () => dispatch => {
   return axios
-    .delete("/auth/logout")
+    .delete("http://localhost:3000/auth/logout")
     .then(() => dispatch(gotMe(initialState.user)))
     .catch(console.error.bind(console));
 };
