@@ -6,6 +6,23 @@ import { connect } from "react-redux";
 import ListTransactions from "./ListTransactions";
 import Modal from "./Modal";
 import { removeTransactionThunk } from "../store/index";
+// import plus from "../assets/plus.png";
+
+const getImage = (category) => {
+    // images[] must contain all images in the directory
+    category = category.toLowerCase();
+    let images = ["clothing", "food", "transit",
+                  "entertainment", "health", "tech"];
+    let fulldir;
+    if (images.includes(category)) {
+        fulldir = "/assets/"+category+".png";
+    } else if (category === "clothes") {
+        fulldir = "/assets/clothing.png";
+    } else {
+        fulldir = "/assets/unknown.png";
+    }
+    return(fulldir);
+};
 
 class Transaction extends Component {
   constructor(props) {
@@ -15,21 +32,6 @@ class Transaction extends Component {
     this.testForm = this.testForm.bind(this);
   }
 
-    getImage = (category) => {
-        // images[] must contain all images in the directory
-        category = category.toLowerCase();
-        let images = ["clothing", "food", "transit",
-                      "entertainment", "health", "tech"];
-        let fulldir;
-        if (images.includes(category)) {
-            fulldir = "assets/"+category+".png";
-        } else if (category === "clothes") {
-            fulldir = "assets/clothing.png";
-        } else {
-            fulldir = "assets/unknown.png";
-        }
-        return(fulldir);
-    };
 
   state = {
     date: "",
@@ -118,7 +120,7 @@ class Transaction extends Component {
     let trans = sorted.map(trans => (
       <div className="card card-landscape text-left">
           <div>
-            <img className="small round-lhs" src={this.getImage(trans.category)} alt=""/>
+            <img className="small round-lhs" src={getImage(trans.category)} alt=""/>
           </div>
         <div style={{height: "144px", width: "196px"}}>
         <table className=".table-padded">
@@ -190,7 +192,7 @@ class Transaction extends Component {
             onClick={() => this.openModal()}
           >
             {/* + plus sign commented out*/}
-            <img src="assets/unknown.png" alt="" title="add transaction"/>
+            <img src="/assets/plus.png" alt="" title="add transaction"/>
           </div>
           <Modal
             visible={this.state.visible}
@@ -246,12 +248,17 @@ class Transaction extends Component {
                             className="dropdown-select"
                             text="Category"
                           >
+                            {/* TODO: make category unsubmittable */}
+                            <option value="Category">Category</option>
                             <option value="Food">Food</option>
-                            <option value="Transit">Transit</option>
+                            <option value="Transportation">
+                              Transportation
+                            </option>
                             <option value="Entertainment">Entertainment</option>
                             <option value="Health">Health</option>
                             <option value="Clothing">Entertainment</option>
-                            <option value="Tech">Health</option>
+                            <option value="Technology">Technology</option>
+                            <option value="Other">Other</option>
                           </select>{" "}
                         </td>
                       </tr>

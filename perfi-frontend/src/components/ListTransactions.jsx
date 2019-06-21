@@ -1,36 +1,42 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { getTransactions } from "../store/index";
 
-import {removeTransactionThunk} from "../store/index";
+import { removeTransactionThunk } from "../store/index";
 
 class ListTransactions extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
-        transactions: [],
-        imageurl: "assets/unknown.png"
+      transactions: [],
+      imageurl: "assets/unknown.png"
     };
   }
 
-   getImage = (category) => {
-        // images[] must contain all images in the directory
-       category = category.toLowerCase();
-        let images = ["clothing", "food", "transit",
-                      "entertainment", "health", "tech"];
-        let fulldir;
-        if (images.includes(category)) {
-            fulldir = "assets/"+category+".png";
-        } else if (category === "clothes") {
-            fulldir = "assets/clothing.png";
-        } else {
-            fulldir = "assets/unknown.png";
-        }
-       return(fulldir);
-    };
+  getImage = category => {
+    // images[] must contain all images in the directory
+    category = category.toLowerCase();
+    let images = [
+      "clothing",
+      "food",
+      "transit",
+      "entertainment",
+      "health",
+      "tech"
+    ];
+    let fulldir;
+    if (images.includes(category)) {
+      fulldir = "/assets/" + category + ".png";
+    } else if (category === "clothes") {
+      fulldir = "/assets/clothing.png";
+    } else {
+      fulldir = "/assets/unknown.png";
+    }
+    return fulldir;
+  };
 
-  deleteTransaction = (event) => {
-      this.props.deleteTransaction(event.target.value);
+  deleteTransaction = event => {
+    this.props.deleteTransaction(event.target.value);
   };
 
   render() {
@@ -77,12 +83,13 @@ class ListTransactions extends Component {
 }
 
 const mapState = state => {
-  return { transactions: state.transactions };
+  return { transactions: state.transactions, user: state.user };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    deleteTransaction: object => dispatch(removeTransactionThunk(object))
+    deleteTransaction: object => dispatch(removeTransactionThunk(object)),
+    getTransactions: userID => dispatch(getTransactions(userID))
   };
 };
 
