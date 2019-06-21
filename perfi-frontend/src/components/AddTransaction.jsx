@@ -130,7 +130,9 @@ class Transaction extends Component {
             className="card card-portrait"
             id="addcard"
             onClick={() => this.openModal()}
-          />
+          >
+            <img src="http://pluspng.com/img-png/free-png-plus-sign-plus-icon-512.png" />
+          </div>
           <Modal
             visible={this.state.visible}
             width="400"
