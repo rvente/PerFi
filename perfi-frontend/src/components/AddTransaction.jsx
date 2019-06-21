@@ -51,6 +51,7 @@ class Transaction extends Component {
 
   deleteTransaction = event => {
     this.props.deleteTransaction(event.target.value);
+    document.getElementById("card" + event.target.value).style.display = "none";
   };
 
   openModal() {
@@ -128,7 +129,7 @@ class Transaction extends Component {
     });
 
     let trans = sorted.map(trans => (
-      <div className="card card-landscape text-left">
+      <div id={"card" + trans.id} className="card card-landscape text-left">
         <div>
           <img
             className="small round-lhs"
