@@ -1,0 +1,16 @@
+{
+  "name": "perfi",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "npm run build-client && node app.js",
+    "start-local": "npm run build-client && PORT=8080 node server",
+    "build-client": "cd perfi-frontend && npm run build && cd ..",
+    "deploy": "bash script/deploy",
+    "start": "cd perfi-backend && node app.js"
+  },
+  "dependencies": {
+    "express": "^4.16.2"
+  }
+}
+
+
