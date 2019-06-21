@@ -7,7 +7,19 @@ class Budget extends Component {
     return (
       <div>
         <NavBar />
-        THIS IS THE BUDGET PAGE
+        <Pie />
+        <div className="card-container" >
+        <div className="card" style={{width: "200px", height: "150px", padding: "20px"}}>
+            <div>
+              <h2> {this.state.totalSpent} </h2>
+            </div>
+            <div>
+            <p>
+              Spent out of {this.props.user.budget} this month.
+            </p>
+          </div>
+          </div>
+        </div>
       </div>
     );
   }

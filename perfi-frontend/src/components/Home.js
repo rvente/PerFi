@@ -18,6 +18,7 @@ class Home extends Component {
     return (
       <div>
         <NavBar />
+        <Pie />
         <ListTransactions />
       </div>
     );
