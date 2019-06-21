@@ -98,8 +98,7 @@ class myPie extends Component {
         console.log("TRANSSS", trans.cost);
         tech += parseInt(trans.cost);
       }
-      if (trans.category === "Other") console.log("TRANSSS", trans.cost);
-      {
+      if (trans.category === "Other") {
         other += parseInt(trans.cost);
       }
     });

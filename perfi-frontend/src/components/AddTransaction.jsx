@@ -185,11 +185,14 @@ class Transaction extends Component {
                             {/* TODO: make category unsubmittable */}
                             <option value="Category">Category</option>
                             <option value="Food">Food</option>
-                            <option value="Transit">Transit</option>
+                            <option value="Transportation">
+                              Transportation
+                            </option>
                             <option value="Entertainment">Entertainment</option>
                             <option value="Health">Health</option>
                             <option value="Clothing">Entertainment</option>
-                            <option value="Tech">Health</option>
+                            <option value="Technology">Technology</option>
+                            <option value="Other">Other</option>
                           </select>{" "}
                         </td>
                       </tr>
