@@ -7,9 +7,11 @@ const NewAccount = (props) => {
   const {handleSubmit} = props;
 
   return (
-    <div>
-      <h1> Make a New Account with PerFi</h1>
-      <NewAccountForm handleSubmit={handleSubmit}/>
+    <div className="center">
+      <div className="card card-login" style={{width:"400px", height:"auto"}}>
+        <h1> Make a New Account with PerFi</h1>
+        <NewAccountForm handleSubmit={handleSubmit}/>
+      </div>
     </div>
   );
 }

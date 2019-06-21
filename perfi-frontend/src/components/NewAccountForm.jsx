@@ -6,23 +6,54 @@ const NewAccountForm = (props) => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <label>Username</label>
-        <input type="text" name="username"/>
-        <br />
-        <label>Email</label>
-        <input type="email" name="email"/>
-        <br />
-        <label>Name</label>
-        <input type="text" name="firstname"/>
-        <input type="text" name="lastname"/>
-        <br />
-        <label>Password</label>
-        <input type="password" name="password"/>
-        <br />
-        <label>Budget</label>
-        <input type="number" name="budget"/>
-        <br />
-        <button type="submit">Register</button>
+        <div>
+          <table>
+            <tbody>
+              <tr>
+                <td>
+                  <label>Username</label>
+                </td>
+                <td>
+                  <input type="text" name="username"/>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label>Email</label>
+                </td>
+                <td>
+                  <input type="email" name="email"/>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label>Name</label>
+                </td>
+                <td>
+                  <input style={{width:"67px"}} type="text" name="firstname"/>
+                  <input style={{width:"67px"}} type="text" name="lastname"/>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label>Password</label>
+                </td>
+                <td>
+                  <input type="password" name="password"/>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label>Budget</label>
+                </td>
+                <td>
+                  <input type="number" name="budget"/>
+                </td>
+              </tr>
+              <button type="submit">Register</button>
+            </tbody>
+          </table>
+        </div>
       </form>
     </div>
   );
