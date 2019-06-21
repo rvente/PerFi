@@ -21,7 +21,7 @@ class myPie extends Component {
         "Transit",
         "Health",
         "Clothing",
-        "Technology",
+        "Tech",
         "Other"
       ]
     };
@@ -54,10 +54,10 @@ class myPie extends Component {
       if (trans.category === "Health") {
         health += parseInt(trans.cost);
       }
-      if (trans.category === "Cloth") {
+      if (trans.category === "Clothing") {
         cloth += parseInt(trans.cost);
       }
-      if (trans.category === "Technology") {
+      if (trans.category === "Tech") {
         tech += parseInt(trans.cost);
       }
       if (trans.category === "Other") {
@@ -89,7 +89,7 @@ class myPie extends Component {
         <div className="card-container">
           <div className="card" style={{ width: "50%", float: "left" }}>
             <div className="pie" style={{ margin: "0px" }}>
-              <ResponsiveContainer width={450} height={450}>
+              <ResponsiveContainer width={550} height={450}>
                 <PieChart height={450}>
                   <Pie
                     isAnimationActive={false}
@@ -139,21 +139,27 @@ class myPie extends Component {
           </div>
           <div style={{}}>
             <div
-              className="card"
+              className="card center"
               style={{
                 height: "225px",
                 width: "420px",
-                verticalAlign: "center"
+                margin: "20px"
               }}
             >
               <div>
-                You have spent a total of ${total} out of ypour budget of $
+                You have spent a total of ${total} out of your budget of $
                 {this.props.user.budget}. You are on track.
               </div>
             </div>
-            <div className="card" style={{ height: "225px", width: "420px" }}>
+            <div className="card center"
+                 style={{
+                     height: "225px",
+                     width: "420px",
+                     margin: "20px"
+                 }}
+            >
               <div>
-                You have a remaining of ${this.props.user.budget - total} left
+                You have ${this.props.user.budget - total} left
                 to spend this month.
               </div>
             </div>
