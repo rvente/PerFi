@@ -192,7 +192,7 @@ class Transaction extends Component {
             onClick={() => this.openModal()}
           >
             {/* + plus sign commented out*/}
-            <img src="/assets/plus.png" alt="" title="add transaction"/>
+            <img className="small" src="/assets/plus.png" alt="" title="add transaction"/>
           </div>
           <Modal
             visible={this.state.visible}
