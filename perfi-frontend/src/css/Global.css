@@ -88,6 +88,11 @@
   height: 250px;
   object-fit: cover; }
 
+.medium {
+  width: auto;
+  height: 250px;
+  object-fill: cover; }
+
 .round-lhs {
   border-radius: 10px 0px 0px 10px; }
 
