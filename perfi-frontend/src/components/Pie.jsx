@@ -103,6 +103,8 @@ class myPie extends Component {
       }
     });
 
+    let total = food + ent + health + cloth + transportation + tech + other;
+
     const data = [
       { name: "Food", value: food },
       { name: "Transit", value: transportation },
@@ -121,55 +123,83 @@ class myPie extends Component {
 
     console.log("FOOD", food);
     return (
+      <div>
         <div className="card-container">
-        <div className="card" style={{width: "50%"}}>
-        <div className="pie" style={{ margin: "0px" }}>
-          <ResponsiveContainer width={450} height={450}>
-            <PieChart height={450} >
-              <Pie
-                isAnimationActive={false}
-                data={data}
-                cx="50%"
-                cy="50%"
-                outerRadius={100}
-                fill="#8884d8"
-                dataKey="value"
-                label={({
-                  cx,
-                  cy,
-                  midAngle,
-                  innerRadius,
-                  outerRadius,
-                  value,
-                  index
-                }) => {
-                  console.log("HANDELINNGGGGGG?");
-                  console.log("handling label?");
-                  const RADIAN = Math.PI / 180;
-                  // eslint-disable-next-line
-                  const radius = 25 + innerRadius + (outerRadius - innerRadius);
-                  // eslint-disable-next-line
-                  const x = cx + radius * Math.cos(-midAngle * RADIAN);
-                  // eslint-disable-next-line
-                  const y = cy + radius * Math.sin(-midAngle * RADIAN);
+          <div className="card" style={{ width: "50%", float: "left" }}>
+            <div className="pie" style={{ margin: "0px" }}>
+              <ResponsiveContainer width={450} height={450}>
+                <PieChart height={450}>
+                  <Pie
+                    isAnimationActive={false}
+                    data={data}
+                    cx="50%"
+                    cy="50%"
+                    outerRadius={100}
+                    fill="#8884d8"
+                    dataKey="value"
+                    label={({
+                      cx,
+                      cy,
+                      midAngle,
+                      innerRadius,
+                      outerRadius,
+                      value,
+                      index
+                    }) => {
+                      console.log("HANDELINNGGGGGG?");
+                      console.log("handling label?");
+                      const RADIAN = Math.PI / 180;
+                      // eslint-disable-next-line
+                      const radius =
+                        25 + innerRadius + (outerRadius - innerRadius);
+                      // eslint-disable-next-line
+                      const x = cx + radius * Math.cos(-midAngle * RADIAN);
+                      // eslint-disable-next-line
+                      const y = cy + radius * Math.sin(-midAngle * RADIAN);
 
-                  return (
-                    <text
-                      x={x}
-                      y={y}
-                      fill="#8884d8"
-                      textAnchor={x > cx ? "start" : "end"}
-                      dominantBaseline="central"
-                    >
-                      {data[index].name} ({value})
-                    </text>
-                  );
-                }}
-              />
-            </PieChart>
-          </ResponsiveContainer>
+                      return (
+                        <text
+                          x={x}
+                          y={y}
+                          fill="#8884d8"
+                          textAnchor={x > cx ? "start" : "end"}
+                          dominantBaseline="central"
+                        >
+                          {data[index].name} (
+                          {((value / total) * 100).toFixed(0) + "%"})
+                        </text>
+                      );
+                    }}
+                  />
+                </PieChart>
+              </ResponsiveContainer>
+            </div>
+          </div>
+          <div style={{}}>
+            <div
+              className="card"
+              style={{
+                height: "225px",
+                width: "420px",
+                verticalAlign: "center"
+              }}
+            >
+              <div>
+                You have spent a total of ${total} out of ypour budget of $
+                {this.props.user.budget}. You are on track.
+              </div>
+            </div>
+            <div className="card" style={{ height: "225px", width: "420px" }}>
+              <div>
+                You have a remaining of ${this.props.user.budget - total} left
+                to spend this month.
+              </div>
+            </div>
+          </div>
         </div>
-        </div>
+        {/* <div className="card"> */}
+
+        {/* </div> */}
       </div>
     );
   }
@@ -178,6 +208,7 @@ class myPie extends Component {
 const mapState = state => {
   return { user: state.user, transactions: state.transactions };
 };
+
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     getTransactions: userID => dispatch(getTransactions(userID))

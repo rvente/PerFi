@@ -1,121 +1,120 @@
-@import 'GlobalVars.scss';
+@import "GlobalVars.scss";
 
 .card-container {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
-    text-align: center;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  text-align: center;
 }
 
 .card-container-outer {
-    display: flex;
-    padding: 25px;
+  display: flex;
+  padding: 25px;
 }
 
 .card {
-    margin: 20px;
-    display: flex;
-    vertical-align: top;
-    flex-flow: row wrap;
-    justify-content: center;
-    border: 1px solid lightgrey;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    border-radius: $brdr-rad;
-    transition: all .4s ease-in-out;
-    &:hover {
-        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-        transition: all .4s ease-in-out;
-        .button-list-container {
-            opacity: 1;
-            transition: all .4s ease-in-out;
-        }
+  margin: 20px;
+  display: flex;
+  vertical-align: top;
+  flex-flow: row wrap;
+  justify-content: center;
+  border: 1px solid lightgrey;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: $brdr-rad;
+  transition: all 0.4s ease-in-out;
+  &:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    transition: all 0.4s ease-in-out;
+    .button-list-container {
+      opacity: 1;
+      transition: all 0.4s ease-in-out;
     }
-    img {
-        min-width: 100%;
-        object-fit: fill;
-    }
-    ul {
-        list-style-type: none;
-        margin: 0px;
-        padding: 20px;
-    }
-    h1 {
-        text-align: center;
-    }
-    h2 {
-        padding: 0px;
-        margin: 0px;
-        color: $steel_blue_4;
-    }
+  }
+  img {
+    min-width: 100%;
+    object-fit: fill;
+  }
+  ul {
+    list-style-type: none;
+    margin: 0px;
+    padding: 20px;
+  }
+  h1 {
+    text-align: center;
+  }
+  h2 {
+    padding: 0px;
+    margin: 0px;
+    color: $steel_blue_4;
+  }
 }
 
 .card-portrait {
-    width: 250px;
-    height: auto;
+  width: 250px;
+  height: auto;
 }
 
 .card-addcard {
-    width: 150px;
-    height: 150px;
+  width: 150px;
+  height: 150px;
 }
 
 .card-landscape {
-    justify-content: flex-start;
-    align-items: center;
-    align-content: stretch;
-    width: 400px;
-    height: 150px;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: stretch;
+  width: 400px;
+  height: 150px;
 }
 
 .card-account {
-    width:  300px;
-    height: auto;
-    padding: 15px;
-    h1 {
-        padding: 10px;
-        margin: 0px;
-    }
-    td {
-        padding: 10px;
-    }
+  width: 300px;
+  height: auto;
+  padding: 15px;
+  h1 {
+    padding: 10px;
+    margin: 0px;
+  }
+  td {
+    padding: 10px;
+  }
 }
 
 .card-align-vertical {
-    display: flex;
-    align-content: center;
+  display: flex;
+  align-content: center;
 }
 
 .card-login {
-    width:  300px;
-    height: 200px;
-    padding: 15px;
-    h1 {
-        padding: 10px;
-        margin: 0px;
-    }
-    td {
-        padding: 10px;
-    }
+  width: 300px;
+  height: 200px;
+  padding: 15px;
+  h1 {
+    padding: 10px;
+    margin: 0px;
+  }
+  td {
+    padding: 10px;
+  }
 }
 
-
 .center {
-    margin: auto;
-    padding: 10px;
-    display: flex;
-    justify-content: center;
+  margin: auto;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
 }
 
 .small {
-    min-width: 100%;
-    height: 150px;
-    object-fit: fill;
+  min-width: 100%;
+  height: 150px;
+  object-fit: fill;
 }
 // TODO: this doesn't seem active in addTransaction.jsx
 .round-lhs {
-    border-radius: $brdr-rad 0px 0px $brdr-rad;
+  border-radius: $brdr-rad 0px 0px $brdr-rad;
 }
 
 .round-topside {
-    border-radius: $brdr-rad $brdr-rad 0px 0px;
+  border-radius: $brdr-rad $brdr-rad 0px 0px;
 }
