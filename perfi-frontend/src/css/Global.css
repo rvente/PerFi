@@ -18,6 +18,7 @@
   justify-content: center;
   border: 1px solid lightgrey;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+<<<<<<< HEAD
   border-radius: 5px;
   transition: all 0.4s ease-in-out;
 }
@@ -53,6 +54,48 @@
   width: 325px;
   height: auto;
 }
+=======
+  border-radius: 10px;
+  transition: all .4s ease-in-out; }
+  .card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    transition: all .4s ease-in-out; }
+    .card:hover .button-list-container {
+      opacity: 1;
+      transition: all .4s ease-in-out; }
+  .card img {
+    min-width: 100%;
+    border-radius: 10px 10px 0px 0px;
+    object-fit: fill; }
+  .card ul {
+    list-style-type: none;
+    margin: 0px;
+    padding: 20px; }
+  .card h1 {
+    text-align: center; }
+  .card h2 {
+    padding: 0px;
+    margin: 0px;
+    color: #36648b; }
+
+.card-portrait {
+  width: 250px;
+  height: auto; }
+>>>>>>> b683a0888a5d253d2a2f8ccbabf6f1d10108e532
+
+.card-account {
+  width: 300px;
+  height: auto;
+  padding: 15px; }
+  .card-account h1 {
+    padding: 10px;
+    margin: 0px; }
+  .card-account td {
+    padding: 10px; }
+
+.card-align-vertical {
+  display: flex;
+  align-content: center; }
 
 .card-login {
   width: 300px;
@@ -75,6 +118,7 @@
 }
 
 nav {
+<<<<<<< HEAD
   user-select: none;
 }
 nav ul {
@@ -113,6 +157,40 @@ nav li a:active {
   transition: all 0.01s ease-in-out;
   box-shadow: 0px 0px 8px 3px #528bbc;
 }
+=======
+  user-select: none; }
+  nav ul {
+    list-style-type: none;
+    margin: 0px;
+    text-align: center;
+    background-color: #36648b;
+    display: flex;
+    flex-flow: row wrap;
+    align-content: flex-start;
+    justify-content: center; }
+  nav li {
+    float: top;
+    margin-left: 3%;
+    margin-right: 3%;
+    margin-top: 25px;
+    margin-bottom: 25px; }
+    nav li a {
+      display: inline;
+      color: white;
+      padding: 15px;
+      text-decoration: none;
+      text-align: center;
+      align-content: center;
+      transition: all .4s ease-in-out; }
+      nav li a:hover {
+        background-color: #3d719d;
+        border-radius: 10px;
+        transition: all .2s ease-in-out;
+        animation-delay: .2s; }
+      nav li a:active {
+        transition: all .01s ease-in-out;
+        box-shadow: 0px 0px 8px 3px #528bbc; }
+>>>>>>> b683a0888a5d253d2a2f8ccbabf6f1d10108e532
 
 @media only screen and (max-width: 500px) {
   nav ul {
@@ -134,7 +212,7 @@ button {
   margin: 5px;
   padding: 10px;
   border-width: 0px;
-  border-radius: 5px;
+  border-radius: 10px;
   box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease-in-out;
 }
@@ -233,7 +311,7 @@ button {
   margin: 5px;
   padding: 10px;
   border-width: 0px;
-  border-radius: 5px;
+  border-radius: 10px;
   box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease-in-out;
 }
@@ -310,7 +388,7 @@ button {
 
 *:focus {
   outline: 0 !important;
-  -moz-outline-radius: 5px;
+  -moz-outline-radius: 10px;
   outline-color: #36648b;
   outline-offset: 5px;
 }

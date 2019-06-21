@@ -57,15 +57,9 @@ class Home extends Component {
   // }
 
   render() {
-    if (!this.props.user.id) {
-      return <Redirect to="/" />;
-    }
-
     return (
       <div>
         <NavBar />
-        <header>Home</header>
-        <Pie />
         <ListTransactions />
       </div>
     );

@@ -4,7 +4,7 @@ const LoginForm = props => {
   const { handleSubmit, handleClick } = props;
   return (
     <form onSubmit={handleSubmit}>
-      <div>
+      <div >
         <h1> Login </h1>
         <table>
           <tbody>

@@ -27,7 +27,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       dispatch(login({ email, password }))
       .then(() => {
         ownProps.history.push("/Home");
-      })
+      });
     },
 
     handleClick() {

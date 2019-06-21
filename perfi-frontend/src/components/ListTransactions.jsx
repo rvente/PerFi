@@ -13,10 +13,6 @@ class ListTransactions extends Component {
     };
   }
 
-  componentDidMount() {
-    this.props.getTransactions(this.props.user.id);
-  }
-
   getImage = category => {
     // images[] must contain all images in the directory
     category = category.toLowerCase();
@@ -32,9 +28,9 @@ class ListTransactions extends Component {
     if (images.includes(category)) {
       fulldir = "assets/" + category + ".png";
     } else if (category === "clothes") {
-      fulldir = "assets/" + "clothing" + ".png";
+      fulldir = "assets/clothing.png";
     } else {
-      fulldir = "assets/" + "unknown" + ".png";
+      fulldir = "assets/unknown.png";
     }
     return fulldir;
   };
@@ -45,8 +41,8 @@ class ListTransactions extends Component {
 
   render() {
     let sorted = this.props.transactions.sort((a, b) => {
-      let x = a.date.replace(/-/g, "").replace(/[\/]/g, "");
-      let y = b.date.replace(/-/g, "").replace(/[\/]/g, "");
+      let x = a.date.replace(/-/g, "").replace(/[/]/g, "");
+      let y = b.date.replace(/-/g, "").replace(/[/]/g, "");
       if (x < y) {
         return 1;
       }
@@ -84,12 +80,14 @@ class ListTransactions extends Component {
 const mapState = state => {
   return { transactions: state.transactions, user: state.user };
 };
+
 const mapDispatchToProps = dispatch => {
   return {
     deleteTransaction: object => dispatch(removeTransactionThunk(object)),
     getTransactions: userID => dispatch(getTransactions(userID))
   };
 };
+
 export default connect(
   mapState,
   mapDispatchToProps

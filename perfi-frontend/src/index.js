@@ -14,7 +14,7 @@ import {
 } from "react-router-dom";
 import store, { getMe } from "./store/index";
 import Login from "./components/login";
-import AccountPage from "./components/account-page.js";
+import AccountPage from "./components/account-page";
 import Home from "./components/Home";
 import NavBar from "./components/NavBar";
 import NewAccount from "./components/NewAccount.jsx";
