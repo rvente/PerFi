@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import ListTransactions from "./ListTransactions";
 import Modal from "./Modal";
 import { removeTransactionThunk } from "../store/index";
+import { Route, Redirect } from "react-router";
 // import plus from "../assets/plus.png";
 
 const getImage = category => {
@@ -62,7 +63,10 @@ class Transaction extends Component {
     this.setState({
       visible: false
     });
-    this.props.history.push(`/Home`);
+
+    this.props.handleClose();
+
+    // window.location.reload();
   }
 
   changePage() {
@@ -184,6 +188,7 @@ class Transaction extends Component {
                 className="x"
                 value={trans.id}
                 type="button"
+                id={trans.id}
                 onClick={this.deleteTransaction}
               />
             </li>
@@ -215,7 +220,9 @@ class Transaction extends Component {
             width="400"
             height="300"
             effect="fadeInDown"
-            onClickAway={() => this.closeModal()}
+            onClickAway={() => {
+              this.closeModal();
+            }}
           >
             <div>
               <a
@@ -322,10 +329,13 @@ class Transaction extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     addTransaction: object => dispatch(addTransactionThunk(object)),
-    deleteTransaction: object => dispatch(removeTransactionThunk(object))
+    deleteTransaction: object => dispatch(removeTransactionThunk(object)),
+    handleClose() {
+      ownProps.history.push("/Home");
+    }
   };
 };
 

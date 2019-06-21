@@ -29,38 +29,6 @@ class myPie extends Component {
 
   componentDidMount() {
     this.props.getTransactions(this.props.user.id);
-    // let arr1 = this.props.transactions;
-    // console.log(arr1);
-    // console.log(this.props.transactions);
-    // let sum = 0;
-    // let dict = {};
-    // let sums = {};
-    // this.state.Categories.forEach(item => (dict[item] = []));
-    // this.state.Categories.forEach(item => (sums[item] = []));
-    // arr1.forEach(trans => {
-    //   console.log(trans.title);
-    //   dict[trans.category].push(trans);
-    // });
-    // console.log("DICTTTT", dict);
-    // let empty = true;
-    // for (let i in dict) {
-    //   if (dict[i].length > 0) {
-    //     empty = false;
-    //   }
-    // }
-    // console.log(empty);
-    // if (empty === false) {
-    //   for (let i in dict) {
-    //     if (dict[i].length > 0) {
-    //       let sumFor = dict[i].reduce((a, b) => a.cost + b.cost);
-    //       console.log("CATEGORY", i);
-    //       console.log("SUM", sumFor);
-    //       sums[i].push(sumFor);
-    //       this.setState({ [i]: sums[i].category });
-    //     }
-    //   }
-    //   console.log("TRANSIT", sums);
-    // }
   }
 
   myFunction() {}
@@ -75,27 +43,21 @@ class myPie extends Component {
     this.props.transactions.forEach(trans => {
       console.log(this.props.transactions[0].category);
       if (trans.category === "Food") {
-        console.log("TRANSSS", trans.cost);
         food += trans.cost;
       }
       if (trans.category === "Entertainment") {
-        console.log("TRANSSS", trans.cost);
         ent += parseInt(trans.cost);
       }
       if (trans.category === "Transportation") {
-        console.log("TRANSSS", trans.cost);
         transportation += parseInt(trans.cost);
       }
       if (trans.category === "Health") {
-        console.log("TRANSSS", trans.cost);
         health += parseInt(trans.cost);
       }
       if (trans.category === "Cloth") {
-        console.log("TRANSSS", trans.cost);
         cloth += parseInt(trans.cost);
       }
       if (trans.category === "Technology") {
-        console.log("TRANSSS", trans.cost);
         tech += parseInt(trans.cost);
       }
       if (trans.category === "Other") {
