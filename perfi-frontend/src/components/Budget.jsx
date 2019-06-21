@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import NavBar from "./NavBar";
+import Pie from "./Pie";
 
 class Budget extends Component {
   state = {};
@@ -8,6 +9,7 @@ class Budget extends Component {
       <div>
         <NavBar />
         THIS IS THE BUDGET PAGE
+        <Pie />
       </div>
     );
   }

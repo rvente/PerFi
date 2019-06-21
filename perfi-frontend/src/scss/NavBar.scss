@@ -39,10 +39,9 @@ nav {
       }
 
       &:active {
-          $clicked_color: darken($steel_blue_4, 10%);
-          background-color: $clicked_color;
+          $clicked_color: $lighter_dark;
           transition: all .01s ease-in-out;
-          box-shadow: 0px 0px 8px 3px darken($clicked_color, 10%);
+          box-shadow: 0px 0px 8px 3px lighten($clicked_color, 10%);
       }
     }
   }

@@ -7,7 +7,7 @@ import { connect } from "react-redux";
 import { login } from "../store/index";
 import { getTransactions } from "../store/index";
 import { stat } from "fs";
-import PieChart from "react-minimal-pie-chart";
+// import PieChart from "react-minimal-pie-chart";
 import Pie from "./Pie";
 
 class Home extends Component {
@@ -32,8 +32,8 @@ class Home extends Component {
       ]
     };
   }
-  async componentDidMount() {
-    await this.props.getTransactions(this.props.user.id);
+  componentDidMount() {
+    this.props.getTransactions(this.props.user.id);
   }
 
   // componentDidUpdate() {
@@ -66,7 +66,6 @@ class Home extends Component {
         <NavBar />
         <header>Home</header>
         <Pie />
-
         <ListTransactions />
       </div>
     );

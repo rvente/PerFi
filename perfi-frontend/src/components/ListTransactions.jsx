@@ -1,35 +1,46 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { getTransactions } from "../store/index";
 
-import {removeTransactionThunk} from "../store/index";
+import { removeTransactionThunk } from "../store/index";
 
 class ListTransactions extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
-        transactions: [],
-        imageurl: "assets/unknown.png"
+      transactions: [],
+      imageurl: "assets/unknown.png"
     };
   }
 
-   getImage = (category) => {
-        // images[] must contain all images in the directory
-        let images = ["clothing", "food", "transit",
-                      "entertainment", "health", "tech"];
-        let fulldir;
-        if (images.includes(category)) {
-            fulldir = "assets/"+category+".png";
-        } else if (category == "clothes") {
-            fulldir = "assets/"+"clothing"+".png";
-        } else {
-            fulldir = "assets/"+"unknown"+".png";
-        }
-       return(<img src={fulldir} alt={category}/>);
-    };
+  componentDidMount() {
+    this.props.getTransactions(this.props.user.id);
+  }
 
-  deleteTransaction = (event) => {
-      this.props.deleteTransaction(event.target.value);
+  getImage = category => {
+    // images[] must contain all images in the directory
+    category = category.toLowerCase();
+    let images = [
+      "clothing",
+      "food",
+      "transit",
+      "entertainment",
+      "health",
+      "tech"
+    ];
+    let fulldir;
+    if (images.includes(category)) {
+      fulldir = "assets/" + category + ".png";
+    } else if (category === "clothes") {
+      fulldir = "assets/" + "clothing" + ".png";
+    } else {
+      fulldir = "assets/" + "unknown" + ".png";
+    }
+    return fulldir;
+  };
+
+  deleteTransaction = event => {
+    this.props.deleteTransaction(event.target.value);
   };
 
   render() {
@@ -45,19 +56,19 @@ class ListTransactions extends Component {
       return 0;
     });
 
-    sorted = sorted.slice(0, 4);
+    // sorted = sorted.slice(0, 10);
     let trans = sorted.map(tran => (
       <div className="card card-portrait">
-        {this.getImage(tran.category)}
+        <img src={this.getImage(tran.category)} alt={tran.category} />
         <ul>
           <h2> {tran.title} </h2>
           <li>Date: {tran.date} </li>
           <li>Cost: {tran.cost} </li>
           {/* <li>Category: {tran.category} </li> */}
           {/* <li>Subscription: {tran.subscription} </li> */}
-        <button value = {tran.id} type="button" onClick={this.deleteTranaction}>
-              Delete Transaction
-        </button>
+          <button value={tran.id} type="button" onClick={this.deleteTranaction}>
+            Delete Transaction
+          </button>
         </ul>
       </div>
     ));
@@ -70,31 +81,13 @@ class ListTransactions extends Component {
   }
 }
 
-
-const getImage = category => {
-  let logo;
-  switch (category) {
-    case "tech":
-      logo = "../assets/tech.png";
-    case "food":
-      logo = "../assets/food.png";
-    case "clothing":
-      logo = "../assets/clothing.png";
-    case "transit":
-      logo = "../assets/transit.png";
-    case "health":
-      logo = "../assets/health.png";
-    case "entertainment":
-      logo = "../assets/entertainment.png";
-  }
-};
-
 const mapState = state => {
-  return { transactions: state.transactions };
+  return { transactions: state.transactions, user: state.user };
 };
 const mapDispatchToProps = dispatch => {
   return {
-    deleteTransaction: object => dispatch(removeTransactionThunk(object))
+    deleteTransaction: object => dispatch(removeTransactionThunk(object)),
+    getTransactions: userID => dispatch(getTransactions(userID))
   };
 };
 export default connect(

@@ -81,7 +81,7 @@ nav ul {
   list-style-type: none;
   margin: 0px;
   text-align: center;
-  background-color: #222;
+  background-color: #36648b;
   display: flex;
   flex-flow: row wrap;
   align-content: flex-start;
@@ -104,15 +104,14 @@ nav li a {
   transition: all 0.4s ease-in-out;
 }
 nav li a:hover {
-  background-color: #2f2f2f;
+  background-color: #3d719d;
   border-radius: 5px;
   transition: all 0.2s ease-in-out;
   animation-delay: 0.2s;
 }
 nav li a:active {
-  background-color: #284a66;
   transition: all 0.01s ease-in-out;
-  box-shadow: 0px 0px 8px 3px #192f42;
+  box-shadow: 0px 0px 8px 3px #528bbc;
 }
 
 @media only screen and (max-width: 500px) {
@@ -127,7 +126,7 @@ nav li a:active {
 }
 
 button {
-  background-color: #222;
+  background-color: #36648b;
   text-align: center;
   justify-content: center;
   color: white;
@@ -226,7 +225,7 @@ button {
 
 button {
   user-select: none !important;
-  background-color: #222;
+  background-color: #36648b;
   text-align: center;
   justify-content: center;
   color: white;
@@ -314,4 +313,10 @@ button {
   -moz-outline-radius: 5px;
   outline-color: #36648b;
   outline-offset: 5px;
+}
+
+h1,
+h2,
+h3 {
+  color: #36648b;
 }
