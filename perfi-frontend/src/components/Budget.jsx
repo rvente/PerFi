@@ -1,37 +1,34 @@
 import React, { Component } from "react";
 import NavBar from "./NavBar";
+import Pie from "./Pie";
 import { connect } from "react-redux";
 
 class Budget extends Component {
   constructor(props) {
     super(props);
-
   }
   state = {
-    totalSpent:0 
-    };
+    totalSpent: 0
+  };
 
-  componentDidMount()
-  {
-      let total = 0;
-      for (var i = 0; i < this.props.transactions.length; i++)
-      {
-        total = total + this.props.transactions[i].cost;
-      }
-      this.setState({
-        totalSpent: total
-      })
+  componentDidMount() {
+    let total = 0;
+    for (var i = 0; i < this.props.transactions.length; i++) {
+      total = total + this.props.transactions[i].cost;
+    }
+    this.setState({
+      totalSpent: total
+    });
   }
 
   render() {
     return (
       <div>
         <NavBar />
+        <Pie />
         BUDGET: {this.props.user.budget}
-        <br></br>
-        <div>
-        TOTAL SPENT: {this.state.totalSpent}
-        </div>
+        <br />
+        <div>TOTAL SPENT: {this.state.totalSpent}</div>
       </div>
     );
   }

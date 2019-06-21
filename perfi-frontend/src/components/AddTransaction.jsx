@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import ListTransactions from "./ListTransactions";
 import Modal from "./Modal";
 import { removeTransactionThunk } from "../store/index";
+// import plus from "../assets/plus.png";
 
 class Transaction extends Component {
   constructor(props) {
@@ -130,7 +131,7 @@ class Transaction extends Component {
             id="addcard"
             onClick={() => this.openModal()}
           >
-            +
+            <img src="http://pluspng.com/img-png/free-png-plus-sign-plus-icon-512.png" />
           </div>
           <Modal
             visible={this.state.visible}
@@ -183,12 +184,17 @@ class Transaction extends Component {
                             className="dropdown-select"
                             text="Category"
                           >
+                            {/* TODO: make category unsubmittable */}
+                            <option value="Category">Category</option>
                             <option value="Food">Food</option>
-                            <option value="Transit">Transit</option>
+                            <option value="Transportation">
+                              Transportation
+                            </option>
                             <option value="Entertainment">Entertainment</option>
                             <option value="Health">Health</option>
                             <option value="Clothing">Entertainment</option>
-                            <option value="Tech">Health</option>
+                            <option value="Technology">Technology</option>
+                            <option value="Other">Other</option>
                           </select>{" "}
                         </td>
                       </tr>

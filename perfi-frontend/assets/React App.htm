@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<!-- saved from url=(0026)http://localhost:5001/Home -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <link rel="shortcut icon" href="http://localhost:5001/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#000000">
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="http://localhost:5001/manifest.json">
+    <!--
+      Notice the use of  in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>React App</title>
+  <style type="text/css">body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+</style><style type="text/css">.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+</style><style type="text/css">.card-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  text-align: center;
+}
+
+.card-container-outer {
+  display: flex;
+  padding: 25px;
+}
+
+.card {
+  margin: 20px;
+  display: flex;
+  vertical-align: top;
+  flex-flow: row wrap;
+  justify-content: center;
+  border: 1px solid lightgrey;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  transition: all 0.4s ease-in-out;
+}
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  transition: all 0.4s ease-in-out;
+}
+.card:hover .button-list-container {
+  opacity: 1;
+  transition: all 0.4s ease-in-out;
+}
+.card img {
+  min-width: 100%;
+  height: 275px;
+  border-radius: 5px 5px 0px 0px;
+  object-fit: fill;
+}
+.card ul {
+  list-style-type: none;
+  margin: 0px;
+  padding: 20px;
+}
+.card h1 {
+  text-align: center;
+}
+.card h2 {
+  padding: 0px;
+  margin: 0px;
+  color: #36648b;
+}
+
+.card-portrait {
+  width: 325px;
+  height: auto;
+}
+
+.card-login {
+  width: 300px;
+  height: 200px;
+  padding: 15px;
+}
+.card-login h1 {
+  padding: 10px;
+  margin: 0px;
+}
+.card-login td {
+  padding: 10px;
+}
+
+.center {
+  margin: auto;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+nav {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+nav ul {
+  list-style-type: none;
+  margin: 0px;
+  text-align: center;
+  background-color: #36648b;
+  display: flex;
+  flex-flow: row wrap;
+  align-content: flex-start;
+  justify-content: center;
+}
+nav li {
+  float: top;
+  margin-left: 3%;
+  margin-right: 3%;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+nav li a {
+  display: inline;
+  color: white;
+  padding: 15px;
+  text-decoration: none;
+  text-align: center;
+  align-content: center;
+  transition: all 0.4s ease-in-out;
+}
+nav li a:hover {
+  background-color: #3d719d;
+  border-radius: 5px;
+  transition: all 0.2s ease-in-out;
+  animation-delay: 0.2s;
+}
+nav li a:active {
+  transition: all 0.01s ease-in-out;
+  box-shadow: 0px 0px 8px 3px #528bbc;
+}
+
+@media only screen and (max-width: 500px) {
+  nav ul {
+    padding: 5px;
+    display: block;
+  }
+  nav ul a {
+    margin: 0px;
+    padding: 10px;
+  }
+}
+
+button {
+  background-color: #36648b;
+  text-align: center;
+  justify-content: center;
+  color: white;
+  font-size: 15px;
+  margin: 5px;
+  padding: 10px;
+  border-width: 0px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease-in-out;
+}
+
+.button-list-container {
+  /* visibility: hidden; */
+  opacity: 0;
+  margin: 15px;
+  transition: all 0.4s ease-in-out;
+}
+.button-list-container ul {
+  list-style-type: none;
+  margin: 0;
+  text-align: center;
+  display: flex;
+  flex-flow: row wrap;
+  align-content: flex-start;
+  justify-content: center;
+  align-items: center;
+}
+.button-list-container ul li {
+  float: top;
+}
+
+.green {
+  border-color: #3ab93a;
+  background-color: #eaf9ea;
+  color: #5acc5a;
+}
+.green:hover {
+  text-shadow: 0px 0px 2px grey;
+  color: white;
+  /* font-weight: bold; */
+  background-color: #a8e4a8;
+}
+
+.red {
+  border-color: red;
+  background-color: #fff0f0;
+  color: #ff3333;
+}
+.red:hover {
+  text-shadow: 0px 0px 2px grey;
+  color: white;
+  /* font-weight: bold; */
+  background-color: #ff9999;
+}
+
+.blue {
+  border-color: #3a3ab9;
+  background-color: #eaeaf9;
+  color: #5a5acc;
+}
+.blue:hover {
+  text-shadow: 0px 0px 2px grey;
+  color: white;
+  /* font-weight: bold; */
+  background-color: #a8a8e4;
+}
+
+.wrapper ul li a {
+  display: inline;
+  color: white;
+  text-decoration: none;
+  font-size: calc(5px + 2vmin);
+  transition: all 0.3s ease-in-out;
+  text-align: center;
+  align-content: center;
+}
+
+.wrapper-home ul li {
+  display: inline;
+}
+
+.login-boxes table {
+  text-align: left;
+  background-color: white;
+  margin: auto;
+}
+
+input {
+  border-radius: 5px;
+}
+
+button {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+
+button {
+  -webkit-user-select: none !important;
+     -moz-user-select: none !important;
+          user-select: none !important;
+  background-color: #36648b;
+  text-align: center;
+  justify-content: center;
+  color: white;
+  font-size: 15px;
+  margin: 5px;
+  padding: 10px;
+  border-width: 0px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease-in-out;
+}
+
+.button-list-container {
+  /* visibility: hidden; */
+  opacity: 0;
+  margin: 15px;
+  transition: all 0.4s ease-in-out;
+}
+.button-list-container ul {
+  list-style-type: none;
+  margin: 0;
+  text-align: center;
+  display: flex;
+  flex-flow: row wrap;
+  align-content: flex-start;
+  justify-content: center;
+  align-items: center;
+}
+.button-list-container ul li {
+  float: top;
+}
+
+.green {
+  border-color: #3ab93a;
+  background-color: #eaf9ea;
+  color: #5acc5a;
+}
+.green:hover {
+  text-shadow: 0px 0px 2px grey;
+  color: white;
+  /* font-weight: bold; */
+  background-color: #a8e4a8;
+}
+
+.red {
+  border-color: red;
+  background-color: #fff0f0;
+  color: #ff3333;
+}
+.red:hover {
+  text-shadow: 0px 0px 2px grey;
+  color: white;
+  /* font-weight: bold; */
+  background-color: #ff9999;
+}
+
+.blue {
+  border-color: #3a3ab9;
+  background-color: #eaeaf9;
+  color: #5a5acc;
+}
+.blue:hover {
+  text-shadow: 0px 0px 2px grey;
+  color: white;
+  /* font-weight: bold; */
+  background-color: #a8a8e4;
+}
+
+.wrapper ul li a {
+  display: inline;
+  color: white;
+  text-decoration: none;
+  font-size: calc(5px + 2vmin);
+  transition: all 0.3s ease-in-out;
+  text-align: center;
+  align-content: center;
+}
+
+.wrapper-home ul li {
+  display: inline;
+}
+
+*:focus {
+  outline: 0 !important;
+  -moz-outline-radius: 5px;
+  outline-color: #36648b;
+  outline-offset: 5px;
+}
+
+h1,
+h2,
+h3 {
+  color: #36648b;
+}
+</style></head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"><div><nav><ul><li> <a href="http://localhost:5001/Home">Home</a> </li><li> <a href="http://localhost:5001/Transaction/">Transaction</a> </li><li> <a href="http://localhost:5001/Budget/">Budget</a> </li><li> <a href="http://localhost:5001/Account/">Account</a> </li></ul></nav><header>Home</header><div>Pie<div class="pie" style="margin: 30px; padding: 100px;"><div class="recharts-responsive-container" style="width: 100%; height: 250px;"><div class="recharts-wrapper" style="position: relative;cursor: default;width: 589px;height: 350px;"><svg class="recharts-surface" width="589" height="250" viewBox="0 0 589 250" version="1.1"><defs><clippath id="recharts1-clip"><rect x="5" y="5" height="240" width="579"></rect></clippath></defs><g class="recharts-layer recharts-pie"><g class="recharts-layer recharts-pie-sector"><path fill="#8884d8" stroke="#fff" class="recharts-sector" d="M 394.5,125
+    A 100,100,0,
+    0,0,
+    384.5968867902419,81.6116260882442
+  L 294.5,125 Z"></path></g><g class="recharts-layer recharts-pie-sector"></g><g class="recharts-layer recharts-pie-sector"><path fill="#8884d8" stroke="#fff" class="recharts-sector" d="M 384.5968867902419,81.6116260882442
+    A 100,100,0,
+    0,0,
+    356.84898018587336,46.81685175319703
+  L 294.5,125 Z"></path></g><g class="recharts-layer recharts-pie-sector"><path fill="#8884d8" stroke="#fff" class="recharts-sector" d="M 356.84898018587336,46.81685175319703
+    A 100,100,0,
+    0,0,
+    316.75209339563145,27.50720878181764
+  L 294.5,125 Z"></path></g><g class="recharts-layer recharts-pie-sector"></g><g class="recharts-layer recharts-pie-sector"></g><g class="recharts-layer recharts-pie-sector"><path fill="#8884d8" stroke="#fff" class="recharts-sector" d="M 316.75209339563145,27.50720878181764
+    A 100,100,0,
+    1,0,
+    394.5,125.00000000000003
+  L 294.5,125 Z"></path></g><g class="recharts-layer recharts-pie-labels"><g class="recharts-layer"><path fill="none" stroke="#8884d8" class="recharts-curve recharts-pie-label-line" d="M391.99279121818233,102.74790660436857L411.4913494618188,98.29748792524228"></path><text x="416.36598902272794" y="97.1848832554607" fill="#8884d8" text-anchor="start" dominant-baseline="central">Food (10)</text></g><g class="recharts-layer"><path fill="none" stroke="#8884d8" class="recharts-curve recharts-pie-label-line" d="M384.5968867902419,81.6116260882442L402.61626414829027,72.93395130589303"></path><text x="407.1211084878024" y="70.76453261030524" fill="#8884d8" text-anchor="start" dominant-baseline="central">Transit (0)</text></g><g class="recharts-layer"><path fill="none" stroke="#8884d8" class="recharts-curve recharts-pie-label-line" d="M372.683148246803,62.65101981412665L388.3197778961636,50.18122377695198"></path><text x="392.2289353085037" y="47.063774767658316" fill="#8884d8" text-anchor="start" dominant-baseline="central">Entertainment (10)</text></g><g class="recharts-layer"><path fill="none" stroke="#8884d8" class="recharts-curve recharts-pie-label-line" d="M337.8883739117558,34.90311320975809L346.566048694107,16.883735851709716"></path><text x="348.7354673896948" y="12.378891512197626" fill="#8884d8" text-anchor="start" dominant-baseline="central">Health (10)</text></g><g class="recharts-layer"><path fill="none" stroke="#8884d8" class="recharts-curve recharts-pie-label-line" d="M316.75209339563145,27.50720878181764L321.20251207475775,8.008650538181172"></path><text x="322.3151167445393" y="3.134010977272041" fill="#8884d8" text-anchor="start" dominant-baseline="central"> (0)</text></g><g class="recharts-layer"><path fill="none" stroke="#8884d8" class="recharts-curve recharts-pie-label-line" d="M316.75209339563145,27.50720878181764L321.20251207475775,8.008650538181172"></path><text x="322.3151167445393" y="3.134010977272041" fill="#8884d8" text-anchor="start" dominant-baseline="central">Technology (0)</text></g><g class="recharts-layer"><path fill="none" stroke="#8884d8" class="recharts-curve recharts-pie-label-line" d="M216.316851753197,187.34898018587333L200.6802221038364,199.81877622304802"></path><text x="196.77106469149626" y="202.93622523234166" fill="#8884d8" text-anchor="end" dominant-baseline="central">Other (110)</text></g></g></g></svg></div><div style="position: absolute; width: 0px; height: 0px; visibility: hidden; display: none;"></div></div></div></div><div id="all-trans" class="card-container"><div class="card card-portrait"><img src="./React App_files/entertainment.png" alt="Entertainment"><ul><h2> Burger </h2><li>Date: 061819 </li><li>Cost: 10 </li><button value="3" type="button">Delete Transaction</button></ul></div><div class="card card-portrait"><img src="./React App_files/health.png" alt="Health"><ul><h2> Burger </h2><li>Date: 061819 </li><li>Cost: 10 </li><button value="4" type="button">Delete Transaction</button></ul></div><div class="card card-portrait"><img src="./React App_files/transit.png" alt="Transit"><ul><h2> Mta </h2><li>Date: 061819 </li><li>Cost: 80 </li><button value="5" type="button">Delete Transaction</button></ul></div><div class="card card-portrait"><img src="./React App_files/food.png" alt="Food"><ul><h2> Burger </h2><li>Date: 061819 </li><li>Cost: 10 </li><button value="6" type="button">Delete Transaction</button></ul></div></div></div></div>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+  <script src="./React App_files/bundle.js"></script><script src="./React App_files/0.chunk.js"></script><script src="./React App_files/main.chunk.js"></script><script src="./React App_files/main.e9e3e18ca94dbfccbcce.hot-update.js"></script>
+
+</body></html>

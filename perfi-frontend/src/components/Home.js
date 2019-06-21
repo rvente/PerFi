@@ -7,33 +7,78 @@ import { connect } from "react-redux";
 import { login } from "../store/index";
 import { getTransactions } from "../store/index";
 import { stat } from "fs";
+// import PieChart from "react-minimal-pie-chart";
+import Pie from "./Pie";
 
 class Home extends Component {
-
+  constructor(props) {
+    super(props);
+    this.state = {
+      Food: 0,
+      Entertainment: 0,
+      Transit: 0,
+      Health: 0,
+      Clothing: 0,
+      Technology: 0,
+      Other: 0,
+      Categories: [
+        "Food",
+        "Entertainment",
+        "Transit",
+        "Health",
+        "Clothing",
+        "Technology",
+        "Other"
+      ]
+    };
+  }
   componentDidMount() {
     this.props.getTransactions(this.props.user.id);
   }
+
+  // componentDidUpdate() {
+  //   let arr1 = this.props.transactions;
+  //   let sum = 0;
+  //   let dict = {};
+  //   this.state.Categories.forEach(item => (dict[item] = []));
+  //   arr1.forEach(trans => {
+  //     console.log(trans.title);
+  //     dict[trans.category].push(trans);
+  //   });
+  //   for (let i in dict) {
+  //     sum += i.cost;
+  //     this.setState({ [i]: sum });
+  //   }
+  // }
+
+  // findSum() {
+  //   arr = this.props.transactions;
+  //   arr.map;
+  // }
 
   render() {
     return (
       <div>
         <NavBar />
+        <header>Home</header>
+        <Pie />
         <ListTransactions />
       </div>
     );
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
+  console.log(state.transactions);
   return {
-    user: state.user
+    user: state.user,
+    transactions: state.transactions
   };
-}
-
+};
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    getTransactions: (userID) => dispatch(getTransactions(userID))
+    getTransactions: userID => dispatch(getTransactions(userID))
   };
 };
 
