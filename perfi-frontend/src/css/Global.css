@@ -17,13 +17,13 @@
   border: 1px solid lightgrey;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   border-radius: 10px;
-  transition: all 0.4s ease-in-out; }
+  transition: all .4s ease-in-out; }
   .card:hover {
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-    transition: all 0.4s ease-in-out; }
+    transition: all .4s ease-in-out; }
     .card:hover .button-list-container {
       opacity: 1;
-      transition: all 0.4s ease-in-out; }
+      transition: all .4s ease-in-out; }
   .card img {
     min-width: 100%;
     object-fit: fill; }
