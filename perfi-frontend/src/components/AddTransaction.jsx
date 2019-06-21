@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import ListTransactions from "./ListTransactions";
 import Modal from "./Modal";
 import { removeTransactionThunk } from "../store/index";
+import { Route, Redirect } from "react-router";
 // import plus from "../assets/plus.png";
 
 class Transaction extends Component {
@@ -16,21 +17,27 @@ class Transaction extends Component {
     this.testForm = this.testForm.bind(this);
   }
 
-    getImage = (category) => {
-        // images[] must contain all images in the directory
-        category = category.toLowerCase();
-        let images = ["clothing", "food", "transit",
-                      "entertainment", "health", "tech"];
-        let fulldir;
-        if (images.includes(category)) {
-            fulldir = "assets/"+category+".png";
-        } else if (category === "clothes") {
-            fulldir = "assets/clothing.png";
-        } else {
-            fulldir = "assets/unknown.png";
-        }
-        return(fulldir);
-    };
+  getImage = category => {
+    // images[] must contain all images in the directory
+    category = category.toLowerCase();
+    let images = [
+      "clothing",
+      "food",
+      "transit",
+      "entertainment",
+      "health",
+      "tech"
+    ];
+    let fulldir;
+    if (images.includes(category)) {
+      fulldir = "assets/" + category + ".png";
+    } else if (category === "clothes") {
+      fulldir = "assets/clothing.png";
+    } else {
+      fulldir = "assets/unknown.png";
+    }
+    return fulldir;
+  };
 
   state = {
     date: "",
@@ -56,6 +63,10 @@ class Transaction extends Component {
     this.setState({
       visible: false
     });
+
+    this.props.handleClose();
+
+    // window.location.reload();
   }
 
   changePage() {
@@ -118,63 +129,68 @@ class Transaction extends Component {
 
     let trans = sorted.map(trans => (
       <div className="card card-landscape text-left">
-          <div>
-            <img className="small round-lhs" src={this.getImage(trans.category)} alt=""/>
-          </div>
+        <div>
+          <img
+            className="small round-lhs"
+            src={this.getImage(trans.category)}
+            alt=""
+          />
+        </div>
         <table className=".table-padded">
           <ul>
-          <tbody>
-            <tr>
-              <td>
-                <li>Date: </li>
-              </td>
-              <td>
-                <li>{trans.date} </li>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <li>Cost:</li>
-              </td>
-              <td>
-                <li>{trans.cost} </li>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <li>Item:</li>
-              </td>
-              <td>
-                <li>{trans.title} </li>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <li>Type:</li>
-              </td>
-              <td>
-                <li>{trans.category} </li>
-              </td>
-            </tr>
-            <tr>
-              {/* TODO: subscription is not working yet */}
-              {/* <td> <li>Subscription:</li> </td> */}
-              {/* <td> <li>{trans.subscription} </li> </td> */}
-            </tr>
-          </tbody>
+            <tbody>
+              <tr>
+                <td>
+                  <li>Date: </li>
+                </td>
+                <td>
+                  <li>{trans.date} </li>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <li>Cost:</li>
+                </td>
+                <td>
+                  <li>{trans.cost} </li>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <li>Item:</li>
+                </td>
+                <td>
+                  <li>{trans.title} </li>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <li>Type:</li>
+                </td>
+                <td>
+                  <li>{trans.category} </li>
+                </td>
+              </tr>
+              <tr>
+                {/* TODO: subscription is not working yet */}
+                {/* <td> <li>Subscription:</li> </td> */}
+                {/* <td> <li>{trans.subscription} </li> </td> */}
+              </tr>
+            </tbody>
           </ul>
         </table>
-            <div className="button-list-container">
-              <ul>
-                <li>
-            <button className="x"
-              value={trans.id}
-              type="button"
-              onClick={this.deleteTransaction} >
-            </button>
-                </li>
-              </ul>
-            </div>
+        <div className="button-list-container">
+          <ul>
+            <li>
+              <button
+                className="x"
+                value={trans.id}
+                type="button"
+                onClick={this.deleteTransaction}
+              />
+            </li>
+          </ul>
+        </div>
       </div>
     ));
 
@@ -189,17 +205,23 @@ class Transaction extends Component {
             onClick={() => this.openModal()}
           >
             {/* + plus sign commented out*/}
-            <img src="assets/unknown.png" alt="" title="add transaction"/>
+            <img src="assets/unknown.png" alt="" title="add transaction" />
           </div>
           <Modal
             visible={this.state.visible}
             width="400"
             height="300"
             effect="fadeInDown"
-            onClickAway={() => this.closeModal()}
+            onClickAway={() => {
+              this.closeModal();
+            }}
           >
             <div>
-              <a className="xmodal" href="javascript:void(0);" onClick={() => this.closeModal()}>
+              <a
+                className="xmodal"
+                href="javascript:void(0);"
+                onClick={() => this.closeModal()}
+              >
                 x
               </a>
               <h1>Add Transaction</h1>
@@ -299,11 +321,13 @@ class Transaction extends Component {
   }
 }
 
-
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     addTransaction: object => dispatch(addTransactionThunk(object)),
-    deleteTransaction: object => dispatch(removeTransactionThunk(object))
+    deleteTransaction: object => dispatch(removeTransactionThunk(object)),
+    handleClose() {
+      ownProps.history.push("/Home");
+    }
   };
 };
 
