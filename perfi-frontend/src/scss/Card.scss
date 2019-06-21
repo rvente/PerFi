@@ -55,6 +55,14 @@
     height: auto;
 }
 
+.card-landscape {
+    justify-content: flex-start;
+    align-items: center;
+    width: 400px;
+    height: 150px;
+    height: auto;
+}
+
 .card-account {
     width:  300px;
     height: auto;
@@ -93,4 +101,11 @@
     padding: 10px;
     display: flex;
     justify-content: center;
+}
+
+.small {
+    min-width: 100%;
+    height: 150px;
+    border-radius: $brdr-rad $brdr-rad 0px 0px;
+    object-fit: fill;
 }

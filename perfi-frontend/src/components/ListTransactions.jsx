@@ -50,15 +50,18 @@ class ListTransactions extends Component {
     let trans = sorted.map(tran => (
       <div className="card card-portrait">
         <img src={this.getImage(tran.category)} alt={tran.category}/>
+        {/* TODO: button doesn't work on this page*/}
+        {/* <div className="button-list-container"> */}
+        {/* <button value = {tran.id} type="button" className="x" onClick={this.deleteTranaction}> */}
+        {/*   x */}
+        {/* </button> */}
+        {/* </div> */}
         <ul>
           <h2> {tran.title} </h2>
           <li>Date: {tran.date} </li>
           <li>Cost: {tran.cost} </li>
           {/* <li>Category: {tran.category} </li> */}
           {/* <li>Subscription: {tran.subscription} </li> */}
-        <button value = {tran.id} type="button" onClick={this.deleteTranaction}>
-              Delete Transaction
-        </button>
         </ul>
       </div>
     ));

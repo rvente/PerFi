@@ -27,25 +27,51 @@ button {
     }
 }
 
+.x {
+    position: relative;
+    border-radius: 50px;
+    background: red;
+    color: white;
+    font-size: 15px;
+    font-family: Courier;
+    // right: -30px;
+    // top: -10px;
+}
+.narrow {
+    height: 150px;
+    width: 300px;
+}
+.text-left {
+    text-align: left;
+}
 
 // todo: see if you can replace the margin in the below class with a margin on
 // the inner ul of the card class
 .button-list-container {
     /* visibility: hidden; */
-    opacity: 0;
-    margin: 15px;
+    opacity: 0%;
+    margin: 0px;
     transition: all .4s ease-in-out;
     ul {
+        margin: 0px;
+        padding: 0px;
         list-style-type: none;
-        margin: 0;
         text-align: center;
-        display: flex;
+        display: block;
         flex-flow: row wrap;
         align-content: flex-start;
         justify-content: center;
         align-items: center;
         li {
             float: top;
+        }
+    }
+}
+
+.table-padded {
+    tr {
+        td {
+            padding: 10px;
         }
     }
 }
