@@ -26,11 +26,11 @@ class ListTransactions extends Component {
     ];
     let fulldir;
     if (images.includes(category)) {
-      fulldir = "assets/" + category + ".png";
+      fulldir = "/assets/" + category + ".png";
     } else if (category === "clothes") {
-      fulldir = "assets/clothing.png";
+      fulldir = "/assets/clothing.png";
     } else {
-      fulldir = "assets/unknown.png";
+      fulldir = "/assets/unknown.png";
     }
     return fulldir;
   };
@@ -62,6 +62,7 @@ class ListTransactions extends Component {
         {/*   x */}
         {/* </button> */}
         {/* </div> */}
+        <div style={{height: "144px", width: "196px"}}>
         <ul>
           <h2> {tran.title} </h2>
           <li>Date: {tran.date} </li>
@@ -69,6 +70,7 @@ class ListTransactions extends Component {
           {/* <li>Category: {tran.category} </li> */}
           {/* <li>Subscription: {tran.subscription} </li> */}
         </ul>
+        </div>
       </div>
     ));
 

@@ -9,6 +9,28 @@ import { removeTransactionThunk } from "../store/index";
 import { Route, Redirect } from "react-router";
 // import plus from "../assets/plus.png";
 
+const getImage = category => {
+  // images[] must contain all images in the directory
+  category = category.toLowerCase();
+  let images = [
+    "clothing",
+    "food",
+    "transit",
+    "entertainment",
+    "health",
+    "tech"
+  ];
+  let fulldir;
+  if (images.includes(category)) {
+    fulldir = "/assets/" + category + ".png";
+  } else if (category === "clothes") {
+    fulldir = "/assets/clothing.png";
+  } else {
+    fulldir = "/assets/unknown.png";
+  }
+  return fulldir;
+};
+
 class Transaction extends Component {
   constructor(props) {
     super(props);
@@ -16,28 +38,6 @@ class Transaction extends Component {
     this.changePage = this.changePage.bind(this);
     this.testForm = this.testForm.bind(this);
   }
-
-  getImage = category => {
-    // images[] must contain all images in the directory
-    category = category.toLowerCase();
-    let images = [
-      "clothing",
-      "food",
-      "transit",
-      "entertainment",
-      "health",
-      "tech"
-    ];
-    let fulldir;
-    if (images.includes(category)) {
-      fulldir = "assets/" + category + ".png";
-    } else if (category === "clothes") {
-      fulldir = "assets/clothing.png";
-    } else {
-      fulldir = "assets/unknown.png";
-    }
-    return fulldir;
-  };
 
   state = {
     date: "",
@@ -132,53 +132,55 @@ class Transaction extends Component {
         <div>
           <img
             className="small round-lhs"
-            src={this.getImage(trans.category)}
+            src={getImage(trans.category)}
             alt=""
           />
         </div>
-        <table className=".table-padded">
-          <ul>
-            <tbody>
-              <tr>
-                <td>
-                  <li>Date: </li>
-                </td>
-                <td>
-                  <li>{trans.date} </li>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <li>Cost:</li>
-                </td>
-                <td>
-                  <li>{trans.cost} </li>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <li>Item:</li>
-                </td>
-                <td>
-                  <li>{trans.title} </li>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <li>Type:</li>
-                </td>
-                <td>
-                  <li>{trans.category} </li>
-                </td>
-              </tr>
-              <tr>
-                {/* TODO: subscription is not working yet */}
-                {/* <td> <li>Subscription:</li> </td> */}
-                {/* <td> <li>{trans.subscription} </li> </td> */}
-              </tr>
-            </tbody>
-          </ul>
-        </table>
+        <div style={{ height: "144px", width: "196px" }}>
+          <table className=".table-padded">
+            <ul>
+              <tbody>
+                <tr>
+                  <td>
+                    <li>Date: </li>
+                  </td>
+                  <td>
+                    <li>{trans.date} </li>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <li>Cost:</li>
+                  </td>
+                  <td>
+                    <li>{trans.cost} </li>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <li>Item:</li>
+                  </td>
+                  <td>
+                    <li>{trans.title} </li>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <li>Type:</li>
+                  </td>
+                  <td>
+                    <li>{trans.category} </li>
+                  </td>
+                </tr>
+                <tr>
+                  {/* TODO: subscription is not working yet */}
+                  {/* <td> <li>Subscription:</li> </td> */}
+                  {/* <td> <li>{trans.subscription} </li> </td> */}
+                </tr>
+              </tbody>
+            </ul>
+          </table>
+        </div>
         <div className="button-list-container">
           <ul>
             <li>
@@ -205,7 +207,7 @@ class Transaction extends Component {
             onClick={() => this.openModal()}
           >
             {/* + plus sign commented out*/}
-            <img src="assets/unknown.png" alt="" title="add transaction" />
+            <img src="/assets/plus.png" alt="" title="add transaction" />
           </div>
           <Modal
             visible={this.state.visible}
