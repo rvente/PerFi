@@ -287,6 +287,9 @@ button {
     .button-list-container ul li {
       float: top; }
 
+.table-padded tbody {
+  width: 150px; }
+
 .table-padded tr td {
   padding: 10px; }
 

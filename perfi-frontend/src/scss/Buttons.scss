@@ -89,6 +89,10 @@ button {
 }
 
 .table-padded {
+
+    tbody {
+        width: 150px;
+    }
     tr {
         td {
             padding: 10px;

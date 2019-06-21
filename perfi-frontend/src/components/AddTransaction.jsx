@@ -120,6 +120,7 @@ class Transaction extends Component {
           <div>
             <img className="small round-lhs" src={this.getImage(trans.category)} alt=""/>
           </div>
+        <div style={{height: "144px", width: "196px"}}>
         <table className=".table-padded">
           <ul>
           <tbody>
@@ -163,6 +164,7 @@ class Transaction extends Component {
           </tbody>
           </ul>
         </table>
+        </div>
             <div className="button-list-container">
               <ul>
                 <li>
