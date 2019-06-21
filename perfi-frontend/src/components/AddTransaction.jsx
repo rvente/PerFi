@@ -8,20 +8,26 @@ import Modal from "./Modal";
 import { removeTransactionThunk } from "../store/index";
 // import plus from "../assets/plus.png";
 
-const getImage = (category) => {
-    // images[] must contain all images in the directory
-    category = category.toLowerCase();
-    let images = ["clothing", "food", "transit",
-                  "entertainment", "health", "tech"];
-    let fulldir;
-    if (images.includes(category)) {
-        fulldir = "/assets/"+category+".png";
-    } else if (category === "clothes") {
-        fulldir = "/assets/clothing.png";
-    } else {
-        fulldir = "/assets/unknown.png";
-    }
-    return(fulldir);
+const getImage = category => {
+  // images[] must contain all images in the directory
+  category = category.toLowerCase();
+  let images = [
+    "clothing",
+    "food",
+    "transit",
+    "entertainment",
+    "health",
+    "tech"
+  ];
+  let fulldir;
+  if (images.includes(category)) {
+    fulldir = "/assets/" + category + ".png";
+  } else if (category === "clothes") {
+    fulldir = "/assets/clothing.png";
+  } else {
+    fulldir = "/assets/unknown.png";
+  }
+  return fulldir;
 };
 
 class Transaction extends Component {
@@ -31,7 +37,6 @@ class Transaction extends Component {
     this.changePage = this.changePage.bind(this);
     this.testForm = this.testForm.bind(this);
   }
-
 
   state = {
     date: "",
@@ -57,6 +62,7 @@ class Transaction extends Component {
     this.setState({
       visible: false
     });
+    this.props.history.push(`/Home`);
   }
 
   changePage() {
@@ -119,65 +125,70 @@ class Transaction extends Component {
 
     let trans = sorted.map(trans => (
       <div className="card card-landscape text-left">
-          <div>
-            <img className="small round-lhs" src={getImage(trans.category)} alt=""/>
-          </div>
-        <div style={{height: "144px", width: "196px"}}>
-        <table className=".table-padded">
-          <ul>
-          <tbody>
-            <tr>
-              <td>
-                <li>Date: </li>
-              </td>
-              <td>
-                <li>{trans.date} </li>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <li>Cost:</li>
-              </td>
-              <td>
-                <li>{trans.cost} </li>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <li>Item:</li>
-              </td>
-              <td>
-                <li>{trans.title} </li>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <li>Type:</li>
-              </td>
-              <td>
-                <li>{trans.category} </li>
-              </td>
-            </tr>
-            <tr>
-              {/* TODO: subscription is not working yet */}
-              {/* <td> <li>Subscription:</li> </td> */}
-              {/* <td> <li>{trans.subscription} </li> </td> */}
-            </tr>
-          </tbody>
-          </ul>
-        </table>
+        <div>
+          <img
+            className="small round-lhs"
+            src={getImage(trans.category)}
+            alt=""
+          />
         </div>
-            <div className="button-list-container">
-              <ul>
-                <li>
-            <button className="x"
-              value={trans.id}
-              type="button"
-              onClick={this.deleteTransaction} >
-            </button>
-                </li>
-              </ul>
-            </div>
+        <div style={{ height: "144px", width: "196px" }}>
+          <table className=".table-padded">
+            <ul>
+              <tbody>
+                <tr>
+                  <td>
+                    <li>Date: </li>
+                  </td>
+                  <td>
+                    <li>{trans.date} </li>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <li>Cost:</li>
+                  </td>
+                  <td>
+                    <li>{trans.cost} </li>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <li>Item:</li>
+                  </td>
+                  <td>
+                    <li>{trans.title} </li>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <li>Type:</li>
+                  </td>
+                  <td>
+                    <li>{trans.category} </li>
+                  </td>
+                </tr>
+                <tr>
+                  {/* TODO: subscription is not working yet */}
+                  {/* <td> <li>Subscription:</li> </td> */}
+                  {/* <td> <li>{trans.subscription} </li> </td> */}
+                </tr>
+              </tbody>
+            </ul>
+          </table>
+        </div>
+        <div className="button-list-container">
+          <ul>
+            <li>
+              <button
+                className="x"
+                value={trans.id}
+                type="button"
+                onClick={this.deleteTransaction}
+              />
+            </li>
+          </ul>
+        </div>
       </div>
     ));
 
@@ -192,7 +203,12 @@ class Transaction extends Component {
             onClick={() => this.openModal()}
           >
             {/* + plus sign commented out*/}
-            <img src="/assets/plus.png" alt="" title="add transaction"/>
+            <img
+              className="small"
+              src="/assets/plus.png"
+              alt=""
+              title="add transaction"
+            />
           </div>
           <Modal
             visible={this.state.visible}
@@ -202,7 +218,11 @@ class Transaction extends Component {
             onClickAway={() => this.closeModal()}
           >
             <div>
-              <a className="xmodal" href="javascript:void(0);" onClick={() => this.closeModal()}>
+              <a
+                className="xmodal"
+                href="javascript:void(0);"
+                onClick={() => this.closeModal()}
+              >
                 x
               </a>
               <h1>Add Transaction</h1>
@@ -301,7 +321,6 @@ class Transaction extends Component {
     );
   }
 }
-
 
 const mapDispatchToProps = dispatch => {
   return {

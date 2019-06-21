@@ -32,7 +32,7 @@ class Home extends Component {
       ]
     };
   }
-  componentDidMount() {
+  componentWillUpdate() {
     this.props.getTransactions(this.props.user.id);
   }
 
