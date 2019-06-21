@@ -5,7 +5,7 @@ const LoginForm = props => {
   return (
     <form onSubmit={handleSubmit}>
       <div >
-        <h1> Log In to Perfi</h1>
+        <h1> PerFi Login</h1>
         <table>
           <tbody>
             <tr>
