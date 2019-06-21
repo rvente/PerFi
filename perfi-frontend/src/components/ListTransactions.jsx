@@ -49,7 +49,7 @@ class ListTransactions extends Component {
     // sorted = sorted.slice(0, 10);
     let trans = sorted.map(tran => (
       <div className="card card-portrait">
-        <img src={this.getImage(tran.category)} alt={tran.category}/>
+        <img className="round-topside"src={this.getImage(tran.category)} alt={tran.category}/>
         {/* TODO: button doesn't work on this page*/}
         {/* <div className="button-list-container"> */}
         {/* <button value = {tran.id} type="button" className="x" onClick={this.deleteTranaction}> */}

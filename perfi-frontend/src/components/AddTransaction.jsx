@@ -117,9 +117,8 @@ class Transaction extends Component {
 
     let trans = sorted.map(trans => (
       <div className="card card-landscape text-left">
-          {/* <img className="small" src={this.getImage(trans.category)} alt=""/> */}
           <div>
-            <img className="small" src={"assets/transit.png"} alt="" />
+            <img className="small round-lhs" src={this.getImage(trans.category)} alt=""/>
           </div>
         <table className=".table-padded">
           <ul>
