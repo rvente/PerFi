@@ -15,4 +15,10 @@
 
 h1, h2, h3 {
     color: $base_dark;
+    font-size: 20px;
+}
+
+// prevent select any text
+* {
+    user-select: none;
 }

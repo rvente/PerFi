@@ -16,6 +16,22 @@ class Transaction extends Component {
     this.testForm = this.testForm.bind(this);
   }
 
+    getImage = (category) => {
+        // images[] must contain all images in the directory
+        category = category.toLowerCase();
+        let images = ["clothing", "food", "transit",
+                      "entertainment", "health", "tech"];
+        let fulldir;
+        if (images.includes(category)) {
+            fulldir = "assets/"+category+".png";
+        } else if (category === "clothes") {
+            fulldir = "assets/clothing.png";
+        } else {
+            fulldir = "assets/unknown.png";
+        }
+        return(fulldir);
+    };
+
   state = {
     date: "",
     cost: 0,
@@ -101,23 +117,64 @@ class Transaction extends Component {
     });
 
     let trans = sorted.map(trans => (
-      <div className="card card-portrait">
-        <ul>
-          <li>Date: {trans.date} </li>
-          <li>Cost: {trans.cost} </li>
-          <li>Item: {trans.title} </li>
-          <li>Category: {trans.category} </li>
-          <li>Subscription: {trans.subscription} </li>
-          <li>
-            <button
+      <div className="card card-landscape text-left">
+          <div>
+            <img className="small round-lhs" src={this.getImage(trans.category)} alt=""/>
+          </div>
+        <table className=".table-padded">
+          <ul>
+          <tbody>
+            <tr>
+              <td>
+                <li>Date: </li>
+              </td>
+              <td>
+                <li>{trans.date} </li>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <li>Cost:</li>
+              </td>
+              <td>
+                <li>{trans.cost} </li>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <li>Item:</li>
+              </td>
+              <td>
+                <li>{trans.title} </li>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <li>Type:</li>
+              </td>
+              <td>
+                <li>{trans.category} </li>
+              </td>
+            </tr>
+            <tr>
+              {/* TODO: subscription is not working yet */}
+              {/* <td> <li>Subscription:</li> </td> */}
+              {/* <td> <li>{trans.subscription} </li> </td> */}
+            </tr>
+          </tbody>
+          </ul>
+        </table>
+            <div className="button-list-container">
+              <ul>
+                <li>
+            <button className="x"
               value={trans.id}
               type="button"
-              onClick={this.deleteTransaction}
-            >
-              Delete Transaction
+              onClick={this.deleteTransaction} >
             </button>
-          </li>
-        </ul>
+                </li>
+              </ul>
+            </div>
       </div>
     ));
 
@@ -127,11 +184,12 @@ class Transaction extends Component {
 
         <div className="card-container">
           <div
-            className="card card-portrait"
+            className="card card-addcard"
             id="addcard"
             onClick={() => this.openModal()}
           >
-            <img src="http://pluspng.com/img-png/free-png-plus-sign-plus-icon-512.png" />
+            {/* + plus sign commented out*/}
+            <img src="assets/unknown.png" alt="" title="add transaction"/>
           </div>
           <Modal
             visible={this.state.visible}
@@ -141,6 +199,9 @@ class Transaction extends Component {
             onClickAway={() => this.closeModal()}
           >
             <div>
+              <a className="xmodal" href="javascript:void(0);" onClick={() => this.closeModal()}>
+                x
+              </a>
               <h1>Add Transaction</h1>
               <div
                 className="login-boxes"
@@ -229,9 +290,6 @@ class Transaction extends Component {
                   {/* <button type="button" onClick={this.changePage} /> */}
                 </form>
               </div>
-              <a href="javascript:void(0);" onClick={() => this.closeModal()}>
-                Close
-              </a>
             </div>
           </Modal>
           {trans}
@@ -241,23 +299,6 @@ class Transaction extends Component {
   }
 }
 
-const getImage = category => {
-  let logo;
-  switch (category) {
-    case "tech":
-      logo = "../assets/tech.png";
-    case "food":
-      logo = "../assets/food.png";
-    case "clothing":
-      logo = "../assets/clothing.png";
-    case "transit":
-      logo = "../assets/transit.png";
-    case "health":
-      logo = "../assets/health.png";
-    case "entertainment":
-      logo = "../assets/entertainment.png";
-  }
-};
 
 const mapDispatchToProps = dispatch => {
   return {

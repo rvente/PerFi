@@ -1,11 +1,12 @@
 @import 'GlobalVars.scss';
 
 nav {
-    // prevent select navbar text
-    user-select: none;
+    // uppercase text in navbar
+    text-transform: uppercase;
 
   ul {
     list-style-type: none;
+    font-size: 20px;
     margin: 0px;
     text-align: center;
     background-color: $base_dark;
@@ -50,7 +51,7 @@ nav {
 
 // small phone screen and narrow web
 // value under max-width depends on the number of items in the div
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 700px) {
     nav {
         ul {
             padding: 5px;
