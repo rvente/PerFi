@@ -122,16 +122,16 @@ class myPie extends Component {
     console.log("FOOD", food);
     return (
         <div className="card-container">
-        <div className="card" style={{width: "50%"}}>
-        <div className="pie" style={{ margin: "0px" }}>
-          <ResponsiveContainer width={450} height={450}>
-            <PieChart height={450} >
+        <div className="card" style={{width: "75%"}}>
+          <div className="pie" style={{ margin: "0px"}}>
+          <ResponsiveContainer width={650} height={650}>
+            <PieChart height={650} >
               <Pie
                 isAnimationActive={false}
                 data={data}
                 cx="50%"
                 cy="50%"
-                outerRadius={100}
+                outerRadius={200}
                 fill="#8884d8"
                 dataKey="value"
                 label={({
