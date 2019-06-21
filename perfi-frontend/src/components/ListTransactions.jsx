@@ -13,6 +13,18 @@ class ListTransactions extends Component {
     };
   }
 
+  componentDidMount(){
+    this.setState((state, props) => {return{transactions: this.props.transactions}})
+  }
+
+  componentDidUpdate(){
+    if(this.state.transactions !== this.props.transactions){
+      console.log("hey");
+      console.log('transactions state', this.state.transactions);
+      console.log('transactions props', this.props.transactions);
+    }
+  }
+
   getImage = category => {
     // images[] must contain all images in the directory
     category = category.toLowerCase();
@@ -37,6 +49,7 @@ class ListTransactions extends Component {
 
   deleteTransaction = event => {
     this.props.deleteTransaction(event.target.value);
+    this.render();
   };
 
   render() {
