@@ -1,8 +1,8 @@
 @import 'GlobalVars.scss';
 
 nav {
-    // prevent select navbar text
-    user-select: none;
+    // uppercase text in navbar
+    text-transform: uppercase;
 
   ul {
     list-style-type: none;

@@ -29,14 +29,34 @@ button {
 
 .x {
     position: relative;
+    transform: rotate(0deg);
+    height: 10px;
     border-radius: 50px;
     background: red;
-    color: white;
+    color: red;
     font-size: 15px;
+    text-align: center;
     font-family: Courier;
-    // right: -30px;
-    // top: -10px;
+    right: -30px;
+    top: -67px;
 }
+
+.xmodal {
+    position: relative;
+    transform: rotate(0deg);
+    height: 10px;
+    width: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    background: red;
+    color: red;
+    font-size: 1px;
+    text-align: center;
+    font-family: Courier;
+    right: -200px;
+    top: -15px;
+}
+
 .narrow {
     height: 150px;
     width: 300px;

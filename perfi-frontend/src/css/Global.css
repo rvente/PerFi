@@ -42,6 +42,10 @@
   width: 250px;
   height: auto; }
 
+.card-addcard {
+  width: 250px;
+  height: 250px; }
+
 .card-landscape {
   justify-content: flex-start;
   align-items: center;
@@ -91,7 +95,7 @@
   border-radius: 10px 10px 0px 0px; }
 
 nav {
-  user-select: none; }
+  text-transform: uppercase; }
   nav ul {
     list-style-type: none;
     font-size: 20px;
@@ -232,11 +236,31 @@ button {
 
 .x {
   position: relative;
+  transform: rotate(0deg);
+  height: 10px;
   border-radius: 50px;
   background: red;
-  color: white;
+  color: red;
   font-size: 15px;
-  font-family: Courier; }
+  text-align: center;
+  font-family: Courier;
+  right: -30px;
+  top: -67px; }
+
+.xmodal {
+  position: relative;
+  transform: rotate(0deg);
+  height: 10px;
+  width: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  background: red;
+  color: red;
+  font-size: 1px;
+  text-align: center;
+  font-family: Courier;
+  right: -200px;
+  top: -15px; }
 
 .narrow {
   height: 150px;
@@ -316,4 +340,7 @@ button {
 
 h1, h2, h3 {
   color: #284a66;
-  font-size: 25px; }
+  font-size: 20px; }
+
+* {
+  user-select: none; }

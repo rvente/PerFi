@@ -170,7 +170,6 @@ class Transaction extends Component {
               value={trans.id}
               type="button"
               onClick={this.deleteTransaction} >
-              x
             </button>
                 </li>
               </ul>
@@ -184,11 +183,12 @@ class Transaction extends Component {
 
         <div className="card-container">
           <div
-            className="card card-portrait"
+            className="card card-addcard"
             id="addcard"
             onClick={() => this.openModal()}
           >
-            +
+            {/* + plus sign commented out*/}
+            <img src="assets/unknown.png" alt="" title="add transaction"/>
           </div>
           <Modal
             visible={this.state.visible}
@@ -198,6 +198,9 @@ class Transaction extends Component {
             onClickAway={() => this.closeModal()}
           >
             <div>
+              <a className="xmodal" href="javascript:void(0);" onClick={() => this.closeModal()}>
+                x
+              </a>
               <h1>Add Transaction</h1>
               <div
                 className="login-boxes"
@@ -281,9 +284,6 @@ class Transaction extends Component {
                   {/* <button type="button" onClick={this.changePage} /> */}
                 </form>
               </div>
-              <a href="javascript:void(0);" onClick={() => this.closeModal()}>
-                Close
-              </a>
             </div>
           </Modal>
           {trans}
